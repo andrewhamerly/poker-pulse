@@ -1,16 +1,26 @@
-const models = require('../models');
-const db = require('../config/connection');
+const mongoose = require('mongoose');
+const Event = require('../models/Event');
+const Player = require('../models/Player');
+const Profile = require('../models/Profile');
 
-module.exports = async (modelName, collectionName) => {
+const cleanDB = async () => {
   try {
-    let modelExists = await models[modelName].db.db.listCollections({
-      name: collectionName
-    }).toArray()
+    await mongoose.connect('mongodb://localhost:27017/yourdbname', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
-    if (modelExists.length) {
-      await db.dropCollection(collectionName);
-    }
+    console.log('Database connected.');
+
+    await Event.deleteMany({});
+    await Player.deleteMany({});
+    await Profile.deleteMany({});
+
+    console.log('Database cleaned.');
+    mongoose.connection.close();
   } catch (err) {
-    throw err;
+    console.error(err);
   }
-}
+};
+
+cleanDB();
