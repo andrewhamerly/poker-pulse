@@ -1,0 +1,42 @@
+[
+    {
+      "date": "2024-08-01",
+      "time": "18:00",
+      "venue": "Casino Royale",
+      "entryFee": "$100",
+      "type": "NLH",
+      "series": "Summer Poker Championship",
+      "event": "Main Event",
+      "multiDay": true,
+      "chips": "10,000",
+      "levels": "20 minutes",
+      "guarantee": "$50,000"
+    },
+    {
+      "date": "2024-08-02",
+      "time": "12:00",
+      "venue": "High Stakes Club",
+      "entryFee": "$50",
+      "type": "PLO",
+      "series": "High Stakes Week",
+      "event": "Omaha Showdown",
+      "multiDay": false,
+      "chips": "5,000",
+      "levels": "15 minutes",
+      "guarantee": "$10,000"
+    },
+    {
+      "date": "2024-08-03",
+      "time": "14:00",
+      "venue": "Downtown Poker Lounge",
+      "entryFee": "$200",
+      "type": "Mixed",
+      "series": "Monthly Mega Tournament",
+      "event": "HORSE",
+      "multiDay": true,
+      "chips": "15,000",
+      "levels": "30 minutes",
+      "guarantee": "$100,000"
+    }
+  ]
+  
