@@ -1,16 +1,29 @@
-const db = require('../config/connection');
-const { Profile } = require('../models');
-const cleanDB = require('./cleanDB');
-const profileSeeds = require('./profileSeeds.json');
+const mongoose = require('mongoose');
+const Event = require('../models/Event');
+const Profile = require('../models/Profile');
+const eventSeed = require('./tournamentSeed.json');
+const profileSeed = require('./profileSeed.json');
 
-db.once('open', async () => {
+const seedDB = async () => {
   try {
-    await cleanDB('Profile', 'profiles')
-    await Profile.create(profileSeeds);
+    await mongoose.connect('mongodb://localhost:27017/yourdbname', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
-    console.log('all done!');
-    process.exit(0);
+    console.log('Database connected.');
+
+    await Event.deleteMany({});
+    await Profile.deleteMany({});
+
+    await Event.insertMany(eventSeed);
+    await Profile.insertMany(profileSeed);
+
+    console.log('Database seeded.');
+    mongoose.connection.close();
   } catch (err) {
-    throw err;
+    console.error(err);
   }
-});
+};
+
+seedDB();
