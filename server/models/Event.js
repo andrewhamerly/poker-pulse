@@ -8,12 +8,12 @@ const eventSchema = new Schema({
 
   eventTime: {
     type: Date,
-    required: false,
+    required: true,
   },
 
   venue: {
     type: String,
-    required: false,
+    required: true,
   },
 
   entryFee: {
