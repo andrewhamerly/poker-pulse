@@ -1,3 +1,5 @@
+import { Avatar } from '@chakra-ui/react';
+
 export default function ProfileSection(props) {
     return (
         <div className="profile-container">
