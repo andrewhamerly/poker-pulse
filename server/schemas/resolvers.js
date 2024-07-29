@@ -1,5 +1,5 @@
-const User = require('../models/user');
-const Event = require('../models/event');
+const User = require('../models/User');
+const Event = require('../models/Event');
 const Schedule = require('../models/schedule');
 const { signToken, AuthenticationError } = require('../utils/auth');
 

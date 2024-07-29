@@ -1,5 +1,6 @@
 import logo from '../../assets/images/poker-pulse-logo.png';
 import NavTabs from '../../components/NavTabs/NavTabs.jsx';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -32,22 +33,25 @@ const Header = () => {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    stroke-width="2"
+                    strokeWidth="2"
                 >
                     <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                     />
                 </svg>
+                
                 </button>
-
+                <Link to="/login">
                 <button
                 className="inline-block rounded bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring"
                 type="button"
                 >
                 Sign in
                 </button>
+                </Link>
+                
             </div>
             </div>
         </div>
