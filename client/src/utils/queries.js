@@ -3,7 +3,9 @@
 import { gql } from '@apollo/client';
 
 // Query to get details of a specific tournament
-export const GET_TOURNAMENT_DETAILS = gql`
+
+export const GET_EVENT_DETAILS = gql`
+
   query getTournamentDetails($id: ID!) {
     tournament(id: $id) {
       id
@@ -21,7 +23,9 @@ export const GET_TOURNAMENT_DETAILS = gql`
 `;
 
 // Query to get all tournaments
-export const GET_TOURNAMENTS = gql`
+
+export const GET_EVENTS = gql`
+
   query getTournaments {
     tournaments {
       id
@@ -48,7 +52,9 @@ export const GET_PROFILE = gql`
 `;
 
 // Mutation to create a new tournament
-export const CREATE_TOURNAMENT = gql`
+
+export const CREATE_EVENT = gql`
+
   mutation createTournament($name: String!, $date: String!, $location: String!, $buyIn: Float!, $prizePool: Float!) {
     createTournament(name: $name, date: $date, location: $location, buyIn: $buyIn, prizePool: $prizePool) {
       id
