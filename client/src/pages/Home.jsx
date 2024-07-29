@@ -10,7 +10,7 @@ const Home = () => {
 
   return (
     <main>
-      <Box bg="brand.dark" color="white" p={10} textAlign="center">
+      <Box bg="brand.onyx" color="brand.white" p={10} textAlign="center">
         <Heading as="h1" size="2xl" mb={4}>
           Welcome to Winning
         </Heading>
