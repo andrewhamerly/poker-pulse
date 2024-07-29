@@ -1,17 +1,7 @@
-
-
 const typeDefs = `
-  type Profile {
-    _id: ID
-    name: String
-    email: String
-    password: String
-    skills: [String]!
-  }
-
-  type Auth {
+    type Auth {
     token: ID!
-    profile: Profile
+    user: User
   }
 
   type User {
@@ -48,7 +38,23 @@ const typeDefs = `
 
 
   type Query {
-  users: [Profile]
+    users: [User]
+    user(_id: ID!): User
+    events: [Event]
+    event(_id: ID!): Event
+    schedules: [Schedule]
+    schedule(_id: ID!): Schedule
+  }
+
+  type Mutation {
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+    addEvent(eventDate: String!, eventTime: String!, venue: String!, entryFee: Float!, eventType: String!, series: String, eventTitle: String, multiDay: Boolean, chipCount: String!, levels: String!, guarantee: String!): Event
+    updateEvent(_id: ID!, eventDate: String, eventTime: String, venue: String, entryFee: Float, eventType: String, series: String, eventTitle: String, multiDay: Boolean, chipCount: String, levels: String, guarantee: String): Event
+    deleteEvent(_id: ID!): Boolean
+    addSchedule(userId: ID!, scheduleTitle: String!, events: [ID]!): Schedule
+    updateSchedule(_id: ID!, scheduleTitle: String, events: [ID]): Schedule
+    deleteSchedule(_id: ID!): Boolean
   }
 
 `;
