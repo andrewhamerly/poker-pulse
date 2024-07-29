@@ -1,6 +1,6 @@
-import ProfileSection from "../components/Profile/ProfileSection";
-import ScheduleAndPostsSection from "../components/Profile/ScheduleAndPostsSection";
-import BottomSection from "../components/Profile/BottomSection";
+import ProfileSection from "../components/Profile/Sections/ProfileSection";
+import ScheduleAndPostsSection from "../components/Profile/Sections/PostsSchedules/ScheduleAndPostsSection";
+import BottomSection from "../components/Profile/Sections/BottomSection";
 
 const user = {
     userpic: "",
