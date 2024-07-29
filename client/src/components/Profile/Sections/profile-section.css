@@ -1,0 +1,19 @@
+.profile-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.pic-user-level {
+    display: flex;
+    flex-direction: column;
+}
+
+.youstake-link {
+    display: flex;
+    flex-direction: column;
+}
+
+.hendon-link {
+    display: flex;
+    flex-direction: column;
+}

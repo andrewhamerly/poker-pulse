@@ -11,7 +11,7 @@ const scheduleSchema = new Schema({
     required: true,
   },
 
-  event: [
+  events: [
     {
       type: Schema.Types.ObjectId,
       ref: "Event"

@@ -1,0 +1,4 @@
+.schedule-posts {
+    display: flex;
+    flex-direction: row;
+}

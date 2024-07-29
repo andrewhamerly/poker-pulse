@@ -1,11 +1,11 @@
-<<<<<<< Updated upstream
-=======
 // Starter code for queries. We will need to fine tune these along the way
 
 import { gql } from '@apollo/client';
 
 // Query to get details of a specific tournament
+
 export const GET_EVENT_DETAILS = gql`
+
   query getTournamentDetails($id: ID!) {
     tournament(id: $id) {
       id
@@ -23,7 +23,9 @@ export const GET_EVENT_DETAILS = gql`
 `;
 
 // Query to get all tournaments
+
 export const GET_EVENTS = gql`
+
   query getTournaments {
     tournaments {
       id
@@ -50,7 +52,9 @@ export const GET_PROFILE = gql`
 `;
 
 // Mutation to create a new tournament
+
 export const CREATE_EVENT = gql`
+
   mutation createTournament($name: String!, $date: String!, $location: String!, $buyIn: Float!, $prizePool: Float!) {
     createTournament(name: $name, date: $date, location: $location, buyIn: $buyIn, prizePool: $prizePool) {
       id
@@ -95,4 +99,3 @@ export const UPDATE_PROFILE = gql`
 `;
 
 // We can add more queries as needed
->>>>>>> Stashed changes
