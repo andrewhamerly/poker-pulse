@@ -37,9 +37,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <ChakraProvider theme={theme}>
-      <div className="flex-column justify-flex-start min-100-vh">
+      <div className="flex flex-col justify-start min-h-screen">
         <Header />
-        <div className="container">
+        <div className="container mx-auto">
           <Outlet />
         </div>
         <Footer />

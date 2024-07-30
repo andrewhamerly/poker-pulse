@@ -1,10 +1,14 @@
 import { useState } from 'react';
-import { ScheduleFunctions } from '../components/Schedule';
-import { guaranteeType } from '../components/Schedule'
+import { ScheduleFunctions } from '../components/Schedule/Schedule';
+import { guaranteeType } from '../components/Schedule/Schedule'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarCirclePlus } from '@fortawesome/free-solid-svg-icons';
 
-export default function ScheduleList() {
+export default function ScheduleList({events}) {
+  // Define addToSchedule function or properly import it if it's part of ScheduleFunctions
+  const addToSchedule = (id) => {
+    // Implementation for adding to schedule
+  };
 
   return (
     <div>
@@ -45,7 +49,7 @@ export default function ScheduleList() {
                     type='button'
                     onClick={() => addToSchedule(event.id)}
                   >
-                    <span role="img" aria-label="close">
+                    <span role="img" aria-label="add to schedule">
                       <p>
                         <FontAwesomeIcon icon={faCalendarCirclePlus} />
                       </p>
