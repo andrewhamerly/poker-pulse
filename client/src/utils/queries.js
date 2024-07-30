@@ -5,19 +5,20 @@ import { gql } from '@apollo/client';
 // Query to get details of a specific tournament
 
 export const GET_EVENT_DETAILS = gql`
-
-  query getTournamentDetails($id: ID!) {
-    tournament(id: $id) {
-      id
-      name
-      date
-      location
-      buyIn
-      prizePool
-      players {
-        id
-        name
-      }
+  query getEventDetails($id: ID!) {
+    event(_id: $id) {
+      _id
+      eventDate
+      eventTime
+      venue
+      entryFee
+      eventType
+      series
+      eventTitle
+      multiDay
+      chipCount
+      levels
+      guarantee
     }
   }
 `;
@@ -25,75 +26,96 @@ export const GET_EVENT_DETAILS = gql`
 // Query to get all tournaments
 
 export const GET_EVENTS = gql`
-
-  query getTournaments {
-    tournaments {
-      id
-      name
-      date
-      location
+  query getEvents {
+    events {
+      _id
+      eventDate
+      eventTime
+      venue
+      entryFee
+      eventType
+      series
+      eventTitle
+      multiDay
+      chipCount
+      levels
+      guarantee
     }
   }
 `;
 
-// Query to get user profile information
-export const GET_PROFILE = gql`
-  query getProfile($id: ID!) {
-    profile(id: $id) {
-      id
+// Query to get all users
+export const GET_USERS = gql`
+  query getUsers {
+    users {
+      _id
       username
       email
-      tournaments {
-        id
-        name
+      schedule {
+        _id
+        scheduleTitle
       }
+      userBio
+      youStake
+      hendonMob
     }
   }
 `;
 
-// Mutation to create a new tournament
-
-export const CREATE_EVENT = gql`
-
-  mutation createTournament($name: String!, $date: String!, $location: String!, $buyIn: Float!, $prizePool: Float!) {
-    createTournament(name: $name, date: $date, location: $location, buyIn: $buyIn, prizePool: $prizePool) {
-      id
-      name
-    }
-  }
-`;
-
-// Mutation to create a new user profile
-export const CREATE_PROFILE = gql`
-  mutation createProfile($username: String!, $email: String!, $password: String!) {
-    createProfile(username: $username, email: $email, password: $password) {
-      id
+//Query to get a specific user by ID
+export const GET_USER = gql`
+  query getUser($_id: ID!) {
+    user(_id: $_id) {
+      _id
       username
       email
+      schedule {
+        _id
+        scheduleTitle
+      }
+      userBio
+      youStake
+      hendonMob
     }
   }
 `;
 
-// Mutation to login a user
-export const LOGIN_USER = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-      user {
-        id
+//Query to get all schedules
+export const GET_SCHEDULES = gql`
+  query getSchedules {
+    schedules {
+      _id
+      userId {
+        _id
         username
       }
+      scheduleTitle
+      events {
+        _id
+        eventDate
+        eventTime
+        venue
+      }
     }
   }
 `;
 
-// Mutation to update user profile
-export const UPDATE_PROFILE = gql`
-  mutation updateProfile($id: ID!, $username: String, $email: String, $password: String) {
-    updateProfile(id: $id, username: $username, email: $email, password: $password) {
-      id
-      username
-      email
+//Query to get a specific Schedule by ID
+export const GET_SCHEDULE = gql`
+  query getSchedule($_id: ID!) {
+    schedule(_id: $_id) {
+      _id
+      userId {
+        _id
+        username
+      }
+      scheduleTitle
+      events {
+        _id
+        eventDate
+        eventTime
+        venue
+      }
     }
   }
 `;
