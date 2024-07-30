@@ -1,9 +1,3 @@
-.bottom-section {
-    display: flex;
-    flex-direction: row;
-}
-
-.sub-section {
-    display: flex;
-    flex-direction: column;
+.bottom-buttons:hover {
+    background-color: dimgray;
 }
