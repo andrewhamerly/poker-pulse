@@ -75,4 +75,20 @@ export const DELETE_SCHEDULE = gql`
     deleteSchedule(_id: $_id)
   }
 `;
+
+// Mutation to add an event to a schedule
+export const ADD_TO_SCHEDULE = gql`
+  mutation addToSchedule($eventId: ID!) {
+    addToSchedule(eventId: $eventId) {
+      _id
+      userId
+      scheduleTitle
+      events {
+        _id
+        eventDate
+        eventTime
+      }
+    }
+  }
+`;
 // We can add more mutations as needed
