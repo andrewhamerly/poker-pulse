@@ -1,6 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [],
+  content: [
+    "./index.html",
+    "./src/**/**/*.jsx",
+    "./src/**/*.jsx",
+    "./src/*.jsx",
+    "*",
+  ],
   theme: {
     colors: {
       onyx: '#353B3B',
