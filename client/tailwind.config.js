@@ -15,7 +15,7 @@ export default {
       gunmetal: '#2A3030',
       outerSpace: '#454C4C',
       rojo: '#DA342D',
-      vermilllion: '#F45149',
+      vermillion: '#F45149',
       whiteSmoke: '#F5F5F5',
       white: '#FBFCFF',
       },
