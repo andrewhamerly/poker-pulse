@@ -9,7 +9,7 @@ function NavTabs() {
       <li className="nav-item">
         <Link
           to="/"
-          className={`px-4 py-2 ${currentPage === '/' ? 'text-white bg-hunterGreen' : 'text-whiteSmoke'}`}
+          className={`px-4 py-2 ${currentPage === '/' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke'}`}
           aria-current={currentPage === '/' ? 'page' : undefined}
         >
           Home
@@ -18,7 +18,7 @@ function NavTabs() {
       <li className="nav-item">
         <Link
           to="/profile"
-          className={`px-4 py-2 ${currentPage === '/profile' ? 'text-white bg-hunterGreen' : 'text-whiteSmoke'}`}
+          className={`px-4 py-2 ${currentPage === '/profile' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke'}`}
           aria-current={currentPage === '/profile' ? 'page' : undefined}
         >
           Profile
@@ -27,7 +27,7 @@ function NavTabs() {
       <li className="nav-item">
         <Link
           to="/feed"
-          className={`px-4 py-2 ${currentPage === '/feed' ? 'text-white bg-hunterGreen' : 'text-whiteSmoke'}`}
+          className={`px-4 py-2 ${currentPage === '/feed' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke'}`}
           aria-current={currentPage === '/feed' ? 'page' : undefined}
         >
           Feed
@@ -35,20 +35,20 @@ function NavTabs() {
       </li>
       <li className="nav-item">
         <Link
-          to="/signup"
-          className={`px-4 py-2 rounded ${currentPage === '/signup' ? 'text-white bg-hunterGreen' : 'text-eerieBlack border border-outerSpace bg-whiteSmoke transition hover:bg-rojo hover:text-gray-700 focus:outline-none focus:ring focus:ring-hunterGreen'}`}
-          aria-current={currentPage === '/signup' ? 'page' : undefined}
+          to="/login"
+          className={`px-4 py-2 rounded ${currentPage === '/login' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-eerieBlack bg-vermillion transition hover:bg-rojo focus:outline-none focus:ring focus:ring-hunterGreen'}`}
+          aria-current={currentPage === '/login' ? 'page' : undefined}
         >
-          Sign up
+          Sign in
         </Link>
       </li>
       <li className="nav-item">
         <Link
-          to="/login"
-          className={`px-4 py-2 rounded ${currentPage === '/login' ? 'text-white bg-hunterGreen' : 'text-eerieBlack bg-vermillion transition hover:bg-rojo focus:outline-none focus:ring focus:ring-hunterGreen'}`}
-          aria-current={currentPage === '/login' ? 'page' : undefined}
+          to="/signup"
+          className={`px-4 py-2 rounded ${currentPage === '/signup' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-eerieBlack border border-outerSpace bg-vermillion transition hover:bg-rojo hover:text-gray-700 focus:outline-none focus:ring focus:ring-hunterGreen'}`}
+          aria-current={currentPage === '/signup' ? 'page' : undefined}
         >
-          Sign in
+          Sign up
         </Link>
       </li>
     </ul>
