@@ -6,7 +6,7 @@ const profileSeed = require('./profileSeed.json');
 
 const seedDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/yourdbname', {
+    await mongoose.connect('mongodb://localhost:27017/vegas-poker-pulse', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
