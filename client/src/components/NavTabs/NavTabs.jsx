@@ -27,28 +27,28 @@ function NavTabs() {
       <li className="nav-item">
         <Link
           to="/feed"
-          className={`px-4 py-2 ${currentPage === '/feed' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke'}`}
-          aria-current={currentPage === '/feed' ? 'page' : undefined}
+          className={`px-4 py-2 ${currentPage === '/schedule' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke'}`}
+          aria-current={currentPage === '/schedule' ? 'page' : undefined}
         >
-          Feed
+          Schedule
         </Link>
       </li>
       <li className="nav-item">
         <Link
           to="/login"
-          className={`px-4 py-2 rounded ${currentPage === '/login' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-eerieBlack bg-vermillion transition hover:bg-rojo focus:outline-none focus:ring focus:ring-hunterGreen'}`}
+          className={`px-4 py-2 rounded ${currentPage === '/login' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-eerieBlack bg-whiteSmoke transition hover:bg-hunterGreen hover:text-whiteSmoke focus:outline-none focus:ring focus:ring-hunterGreen'}`}
           aria-current={currentPage === '/login' ? 'page' : undefined}
         >
-          Sign in
+          Login
         </Link>
       </li>
       <li className="nav-item">
         <Link
           to="/signup"
-          className={`px-4 py-2 rounded ${currentPage === '/signup' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-eerieBlack border border-outerSpace bg-vermillion transition hover:bg-rojo hover:text-gray-700 focus:outline-none focus:ring focus:ring-hunterGreen'}`}
+          className={`px-4 py-2 rounded ${currentPage === '/signup' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-white bg-hunterGreen border border-outerSpace transition hover:bg-whiteSmoke hover:text-eerieBlack focus:outline-none focus:ring focus:ring-hunterGreen'}`}
           aria-current={currentPage === '/signup' ? 'page' : undefined}
         >
-          Sign up
+          Sign Up
         </Link>
       </li>
     </ul>
