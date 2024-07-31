@@ -88,4 +88,24 @@ export const ADD_TO_SCHEDULE = gql`
     }
   }
 `;
+
+export const ADD_POST = gql`
+  mutation addPost($userId: ID!, $content: String!) {
+    addPost(userId: $userId, content: $content) {
+      _id
+      content
+      createdAt
+      user {
+        username
+      }
+    }
+  }
+`;
+
+export const DELETE_POST = gql`
+  mutation deletePost($id: ID!) {
+    deletePost(_id: $id)
+  }
+`;
+
 // We can add more mutations as needed
