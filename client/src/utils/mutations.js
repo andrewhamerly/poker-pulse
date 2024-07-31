@@ -31,14 +31,13 @@ export const ADD_USER = gql`
 
 // Mutation to add a new schedule
 export const ADD_SCHEDULE = gql`
-  mutation addSchedule($userId: ID!, $scheduleTitle: String!, $events: [ID]!) {
-    addSchedule(userId: $userId, scheduleTitle: $scheduleTitle, events: $events) {
+  mutation addSchedule($userId: ID!, $events: [ID]!) {
+    addSchedule(userId: $userId, events: $events) {
       _id
       userId {
         _id
         username
       }
-      scheduleTitle
       events {
         _id
         eventDate
@@ -51,14 +50,13 @@ export const ADD_SCHEDULE = gql`
 
 // Mutation to update a schedule
 export const UPDATE_SCHEDULE = gql`
-  mutation updateSchedule($_id: ID!, $scheduleTitle: String, $events: [ID]) {
-    updateSchedule(_id: $_id, scheduleTitle: $scheduleTitle, events: $events) {
+  mutation updateSchedule($_id: ID!, $events: [ID]) {
+    updateSchedule(_id: $_id, events: $events) {
       _id
       userId {
         _id
         username
       }
-      scheduleTitle
       events {
         _id
         eventDate
@@ -82,7 +80,6 @@ export const ADD_TO_SCHEDULE = gql`
     addToSchedule(eventId: $eventId) {
       _id
       userId
-      scheduleTitle
       events {
         _id
         eventDate
