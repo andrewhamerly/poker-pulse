@@ -3,8 +3,16 @@ const GetPrefix = (guarantee) => {
 };
 
 const FormatDate = (eventDate) => {
-  const eDate = new Date(eventDate);
+  const eDateNumber = Number(eventDate);
+  const eDate = new Date(eDateNumber);
   const formattedDate = eDate.toLocaleDateString();
   return formattedDate
 }
-export { GetPrefix, FormatDate }
+
+const FormatTime = (eventTime) => {
+  const eDateNumber = Number(eventTime);
+  const eDate = new Date(eDateNumber);
+  const formattedDate = eDate.toLocaleTimeString();
+  return formattedDate
+}
+export { GetPrefix, FormatDate, FormatTime }
