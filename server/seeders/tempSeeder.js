@@ -21,7 +21,7 @@ let profileSeed = [
     
 let eventSeed = [
     {
-      "eventDate": new Date("2024-08-01"),
+      "eventDate": new Date("2024-08-01T18:00:00"),
       "eventTime": new Date("2024-08-01T18:00:00"),
       "venue": "Casino Royale",
       "entryFee": 100,
@@ -34,7 +34,7 @@ let eventSeed = [
       "guarantee": "50,000"
     },
     {
-      "eventDate": new Date("2024-08-02"),
+      "eventDate": new Date("2024-08-02T12:00:00"),
       "eventTime": new Date("2024-08-02T12:00:00"),
       "venue": "High Stakes Club",
       "entryFee": 50,
@@ -47,7 +47,7 @@ let eventSeed = [
       "guarantee": "10,000"
     },
     {
-      "eventDate": new Date("2024-08-03"),
+      "eventDate": new Date("2024-08-03T14:00:00"),
       "eventTime": new Date("2024-08-03T14:00:00"),
       "venue": "Downtown Poker Lounge",
       "entryFee": 200,
@@ -60,7 +60,7 @@ let eventSeed = [
       "guarantee": "100,000"
     },
     {
-      "eventDate": new Date("2024-08-03"),
+      "eventDate": new Date("2024-08-03T14:00:00"),
       "eventTime": new Date("2024-08-03T14:00:00"),
       "venue": "Downtown Poker Lounge",
       "entryFee": 200,
