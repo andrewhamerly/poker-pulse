@@ -21,30 +21,40 @@ const importTournaments = async () => {
         fs.createReadStream(path.resolve(__dirname, `../../data/${file}`))
           .pipe(csvParser())
           .on('data', (row) => {
+            const entryFeeCleaned = row.entryFee.replace(/[$,]/g, ''); // Remove $ and commas
+            const eventDate = new Date(row.eventDate);
+            const eventTime = `${row.eventDate}T${row.eventTime}:00Z`; // Combine date and time for full ISO format
+
             events.push({
-              eventDate: new Date(row.eventDate),
-              eventTime: new Date(`2024-08-07T${row.eventTime}Z`),
+              eventDate: eventDate,
+              eventTime: new Date(eventTime), // Ensure time is correctly parsed
               venue: row.venue,
-              entryFee: parseFloat(row.entryFee),
+              entryFee: parseFloat(entryFeeCleaned),
               eventType: row.eventType,
               series: row.series || null,
               eventTitle: row.eventTitle || null,
-              multiDay: row.multiDay === 'true',
-              chipCount: row.chipCount,
+              multiDay: row.multiDay.toLowerCase() === 'true', // Case insensitive check
+              chipCount: parseInt(row.chipCount.replace(/,/g, '')), // Remove commas for thousands
               levels: row.levels,
-              guarantee: row.guarantee,
+              guarantee: row.guarantee.replace(/[$,]/g, ''), // Clean currency format
             });
           })
-          .on('end', resolve)
-          .on('error', reject);
+          .on('end', () => {
+            console.log(`${file} processed`);
+            resolve();
+          })
+          .on('error', (error) => {
+            console.error(`Error processing ${file}:`, error);
+            reject(error);
+          });
       });
     }
 
     await Event.insertMany(events);
-    console.log('Events have been successfully added to the database.');
-    mongoose.connection.close();
+    console.log('All events have been successfully added to the database.');
   } catch (error) {
     console.error('Error importing events:', error);
+  } finally {
     mongoose.connection.close();
   }
 };
