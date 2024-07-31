@@ -15,4 +15,12 @@ const FormatTime = (eventTime) => {
   const formattedDate = eDate.toLocaleTimeString();
   return formattedDate
 }
+
+// const MultiDayValue = (multiDay) => {
+//   if (multiDay === true) {
+//     return <div>✔</div>
+//   } else
+//     return <div>-</div>
+// }
+
 export { GetPrefix, FormatDate, FormatTime }
