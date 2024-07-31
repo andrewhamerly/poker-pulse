@@ -1,4 +1,4 @@
-﻿DATE,TIME,VENUE,ENTRY FEE,TYPE,SERIES,EVENT,MULIT-DAY,CHIPS,LEVELS,GUARANTEE,
+﻿eventDate,eventTime,venue,entryFee,eventType,series,eventTitle,multiDay,chipCount,levels,guarantee
 2024-08-04,11:00:00,Orleans,$200 ,NLH,Orleans Summer Open,Sunday Special ,false,30000,30 Min,"$20,000",
 2024-08-04,16:00:00,Orleans,$100 ,Omaha 8/B,Orleans Summer Open,Championship Satellite ,false,30000,30 Min,"$20,000",
 2024-08-04,18:00:00,Orleans,$200 ,NLH,Orleans Summer Open,Super Stack ,false,30000,30 Min,"$20,000",
