@@ -109,7 +109,6 @@ export const GET_SCHEDULE = gql`
         _id
         username
       }
-      scheduleTitle
       events {
         _id
         eventDate
