@@ -31,7 +31,7 @@ let eventSeed = [
       "multiDay": true,
       "chipCount": "10,000",
       "levels": "20 minutes",
-      "guarantee": "$50,000"
+      "guarantee": "50,000"
     },
     {
       "eventDate": new Date("2024-08-02"),
@@ -44,7 +44,7 @@ let eventSeed = [
       "multiDay": false,
       "chipCount": "5,000",
       "levels": "15 minutes",
-      "guarantee": "$10,000"
+      "guarantee": "10,000"
     },
     {
       "eventDate": new Date("2024-08-03"),
@@ -57,7 +57,20 @@ let eventSeed = [
       "multiDay": true,
       "chipCount": "15,000",
       "levels": "30 minutes",
-      "guarantee": "$100,000"
+      "guarantee": "100,000"
+    },
+    {
+      "eventDate": new Date("2024-08-03"),
+      "eventTime": new Date("2024-08-03T14:00:00"),
+      "venue": "Downtown Poker Lounge",
+      "entryFee": 200,
+      "eventType": "Mixed",
+      "series": "Monthly Mega Tournament",
+      "eventTitle": "HORSE",
+      "multiDay": true,
+      "chipCount": "15,000",
+      "levels": "30 minutes",
+      "guarantee": "10 seats"
     }
   ]
   
