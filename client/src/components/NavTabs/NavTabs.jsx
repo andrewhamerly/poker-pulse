@@ -1,4 +1,3 @@
-// import './NavTab.css';
 import { Link, useLocation } from 'react-router-dom';
 
 function NavTabs() {
@@ -9,8 +8,8 @@ function NavTabs() {
       <li className="nav-item">
         <Link
           to="/"
-          className={`block px-4 py-2 ${currentPage === '/' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke'}`}
-          aria-current={currentPage === '/' ? 'page' : undefined}
+          className={`block px-4 py-2 ${currentPage === '/' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
+          aria-current={currentPage === '/' ? 'home page' : undefined}
         >
           Home
         </Link>
@@ -18,8 +17,8 @@ function NavTabs() {
       <li className="nav-item">
         <Link
           to="/profile"
-          className={`block px-4 py-2 ${currentPage === '/profile' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke'}`}
-          aria-current={currentPage === '/profile' ? 'page' : undefined}
+          className={`block px-4 py-2 ${currentPage === '/profile' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
+          aria-current={currentPage === '/profile' ? 'profile page' : undefined}
         >
           Profile
         </Link>
@@ -27,8 +26,8 @@ function NavTabs() {
       <li className="nav-item">
         <Link
           to="/schedule"
-          className={`block px-4 py-2 ${currentPage === '/schedule' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke'}`}
-          aria-current={currentPage === '/schedule' ? 'page' : undefined}
+          className={`block px-4 py-2 ${currentPage === '/schedule' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
+          aria-current={currentPage === '/schedule' ? 'schedule page' : undefined}
         >
           Schedule
         </Link>
@@ -37,7 +36,7 @@ function NavTabs() {
         <Link
           to="/login"
           className={`block px-4 py-2 rounded ${currentPage === '/login' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-eerieBlack bg-whiteSmoke transition hover:bg-hunterGreen hover:text-whiteSmoke focus:outline-none focus:ring focus:ring-hunterGreen'}`}
-          aria-current={currentPage === '/login' ? 'page' : undefined}
+          aria-current={currentPage === '/login' ? 'login page' : undefined}
         >
           Login
         </Link>
@@ -46,9 +45,9 @@ function NavTabs() {
         <Link
           to="/signup"
           className={`block px-4 py-2 rounded ${currentPage === '/signup' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-white bg-hunterGreen border border-outerSpace transition hover:bg-whiteSmoke hover:text-eerieBlack focus:outline-none focus:ring focus:ring-hunterGreen'}`}
-          aria-current={currentPage === '/signup' ? 'page' : undefined}
+          aria-current={currentPage === '/signup' ? 'signup page' : undefined}
         >
-          Sign Up
+          Signup
         </Link>
       </li>
     </ul>
