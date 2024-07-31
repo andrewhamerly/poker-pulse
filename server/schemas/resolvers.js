@@ -1,7 +1,8 @@
 const User = require('../models/User');
 const Event = require('../models/Event');
-const Schedule = require('../models/schedule');
-const { signToken, AuthenticationError } = require('../utils/auth');
+const Schedule = require('../models/Schedule');
+const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
   Query: {
@@ -29,19 +30,19 @@ const resolvers = {
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user);
-      return { token, user};
+      return { token, user };
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw AuthenticationError;
+        throw new AuthenticationError('No user found with this email address');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw AuthenticationError;
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const token = signToken(user);
@@ -56,6 +57,17 @@ const resolvers = {
     },
     deleteSchedule: async (parent, { _id }) => {
       await Schedule.findByIdAndDelete(_id);
+      return true;
+    },
+
+    addEvent: async (parent, args) => {
+      return Event.create(args);
+    },
+    updateEvent: async (parent, { _id, ...args }) => {
+      return Event.findByIdAndUpdate(_id, args, { new: true });
+    },
+    deleteEvent: async (parent, { _id }) => {
+      await Event.findByIdAndDelete(_id);
       return true;
     },
   },
