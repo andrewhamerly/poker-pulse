@@ -23,6 +23,7 @@ const seedDB = async () => {
     mongoose.connection.close();
   } catch (err) {
     console.error(err);
+    mongoose.connection.close();
   }
 };
 

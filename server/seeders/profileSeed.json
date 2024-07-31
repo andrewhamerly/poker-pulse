@@ -1,15 +1,14 @@
 [
   {
-    "username": "Chris",
+    "name": "Chris",
     "email": "chris@example.com",
     "password": "password123",
-    "bio": "A passionate poker player."
+    "skills": ["strategy", "bluffing"]
   },
   {
-    "username": "John",
+    "name": "John",
     "email": "john@example.com",
     "password": "password123",
-    "bio": "Loves high stakes games."
+    "skills": ["high stakes", "tournament play"]
   }
 ]
-  
