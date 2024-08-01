@@ -64,8 +64,12 @@ const resolvers = {
 
       return { token, user };
     },
-    addSchedule: async (parent, { userId, scheduleTitle, events }) => {
-      return Schedule.create({ userId, scheduleTitle, events });
+    addEventToSchedule: async (parent, { eventData }, context) => {
+      return User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $addToSet: { schedule: eventData}},
+        { new: true}
+      );
     },
     updateSchedule: async (parent, { _id, scheduleTitle, events }) => {
       return Schedule.findByIdAndUpdate(_id, { scheduleTitle, events }, { new: true });
