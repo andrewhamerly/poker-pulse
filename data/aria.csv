@@ -1,4 +1,4 @@
-﻿eventDate,eventTime,venue,entryFee,eventType,series,eventTitle,multiDay,chipCount,levels,guarantee
+eventDate,eventTime,venue,entryFee,eventType,series,eventTitle,multiDay,chipCount,levels,guarantee,
 2024-08-07,11:00:00,Aria,800,PLO,Aria Poker Classic,Mystery Bounty,false,30000,30 Min,"$150,000",
 2024-08-08,11:00:00,Aria,600,PLO,Aria Poker Classic,,false,30000,30 Min,"$100,000",
 2024-08-09,11:00:00,Aria,600,NLH,Aria Poker Classic,,false,30000,30 Min,"$150,000",
