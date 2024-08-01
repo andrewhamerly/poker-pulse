@@ -31,11 +31,8 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    latestEvent: async (parent, args, context) => {
-      if (context.user) {
+    latestEvent: async () => {
         return Event.findOne().sort({ eventDate: -1 });
-      }
-      throw new AuthenticationError('You need to be logged in!');
     },
     schedules: async (parent, args, context) => {
       if (context.user) {
