@@ -5,6 +5,8 @@ import './index.css';
 import App from './App.jsx'
 import Home from './pages/Home';
 import Profile from './pages/Profile';
+import Feed from './pages/Feed';
+import Event from './pages/Event';
 // import Schedule from './pages/Schedule';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
       {
         path: '/profile',
         element: <Profile />
+      },
+      {
+        path: '/feed',
+        element: <Feed />
+      },
+      {
+        path: '/event',
+        element: <Event />
       },
       // {
       //   path: '/schedule',
