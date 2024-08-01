@@ -6,7 +6,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom'; 
 import { ChakraProvider } from '@chakra-ui/react'
 import theme from './theme';
 import Header from './components/Header/Header';
@@ -37,13 +37,20 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <ChakraProvider theme={theme}>
+<<<<<<< Updated upstream
       <div className="flex flex-col justify-start min-h-screen">
         <Header />
         <div className="container mx-auto ">
           <Outlet />
+=======
+        <div className="flex flex-col justify-start min-h-screen">
+          <Header />
+          <div className="container mx-auto">
+            <Outlet />
+          </div>
+          <Footer />
+>>>>>>> Stashed changes
         </div>
-        <Footer />
-      </div>
       </ChakraProvider>
     </ApolloProvider>
   );
