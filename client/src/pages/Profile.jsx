@@ -1,6 +1,7 @@
 import ProfileSection from "../components/Profile/Sections/ProfileSection";
 import ScheduleAndPostsSection from "../components/Profile/Sections/PostsScheduleSection/ScheduleAndPostsSection";
 import BottomSection from "../components/Profile/Sections/BottomSection";
+import { Flex } from "@chakra-ui/react";
 
 const user = {
     avatar: "",
@@ -11,10 +12,10 @@ const user = {
 
 export default function Profile() {
     return (
-        <div className="profile">
+        <Flex direction='column' w='100%'>
             <ProfileSection avatar={user.avatar} username={user.username} pokerlevel={user.pokerlevel} userbio={user.userbio}/>
             <ScheduleAndPostsSection />
             <BottomSection />
-        </div>
+        </Flex>
     )
 }
