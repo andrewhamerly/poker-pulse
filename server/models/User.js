@@ -25,7 +25,7 @@ const userSchema = new Schema({
   schedule: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Schedule"
+      ref: "Event"
     }
   ],
 
