@@ -30,23 +30,23 @@ export const ADD_USER = gql`
 `;
 
 // Mutation to add a new schedule
-export const ADD_SCHEDULE = gql`
-  mutation addSchedule($userId: ID!, $events: [ID]!) {
-    addSchedule(userId: $userId, events: $events) {
-      _id
-      userId {
-        _id
-        username
-      }
-      events {
-        _id
-        eventDate
-        eventTime
-        venue
-      }
-    }
-  }
-`;
+// export const ADD_SCHEDULE = gql`
+//   mutation addSchedule($userId: ID!, $events: [ID]!) {
+//     addSchedule(userId: $userId, events: $events) {
+//       _id
+//       userId {
+//         _id
+//         username
+//       }
+//       events {
+//         _id
+//         eventDate
+//         eventTime
+//         venue
+//       }
+//     }
+//   }
+// `;
 
 // Mutation to update a schedule
 export const UPDATE_SCHEDULE = gql`
@@ -76,17 +76,24 @@ export const DELETE_SCHEDULE = gql`
 
 // Mutation to add an event to a schedule
 export const ADD_TO_SCHEDULE = gql`
-  mutation addToSchedule($eventId: ID!) {
-    addToSchedule(eventId: $eventId) {
+  mutation AddEventToSchedule($eventData: eventInput!) {
+  addEventToSchedule(eventData: $eventData) {
+    schedule {
       _id
-      userId
-      events {
-        _id
-        eventDate
-        eventTime
-      }
+      eventDate
+      eventTime
+      venue
+      entryFee
+      eventType
+      series
+      eventTitle
+      multiDay
+      chipCount
+      levels
+      guarantee
     }
   }
+}
 `;
 
 export const ADD_POST = gql`

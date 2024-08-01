@@ -10,7 +10,7 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     email: String!
-    schedule: [Schedule]
+    schedule: [Event]
     userBio: String
     youStake: String
     hendonMob: String
@@ -72,15 +72,33 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     updateUser(_id: ID!, username: String, email: String, password: String, userBio: String, youStake: String, hendonMob: String): Auth
     login(email: String!, password: String!): Auth
-    addSchedule(userId: ID!, events: [ID]!): Schedule
-    updateSchedule(_id: ID!, events: [ID]): Schedule
+
+    addEventToSchedule(eventData: eventInput!): User
+    updateSchedule(_id: ID!, events: [ID]): User
     deleteSchedule(_id: ID!): Boolean
-    addEvent(eventDate: String!, eventTime: String!, venue: String!, entryFee: Float!, eventType: String!, series: String, eventTitle: String, multiDay: Boolean, chipCount: String!, levels: String!, guarantee: String!): Event
-    updateEvent(_id: ID!, eventDate: String, eventTime: String, venue: String, entryFee: Float, eventType: String, series: String, eventTitle: String, multiDay: Boolean, chipCount: String, levels: String, guarantee: String): Event
+
+    addEvent(eventData: eventInput!): Event
+    updateEvent(_id: ID!, eventData: eventInput!): Event
+
     deleteEvent(_id: ID!): Boolean
     addPost(userId: ID!, content: String!): Post
     deletePost(_id: ID!): Boolean
-  }
+}
+
+  input eventInput {
+    _id: ID
+    eventDate: String
+    eventTime: String
+    venue: String
+    entryFee: Float
+    eventType: String
+    series: String
+    eventTitle: String
+    multiDay: Boolean
+    chipCount: String
+    levels: String
+    guarantee: String
+}
 `;
 
 module.exports = typeDefs;
