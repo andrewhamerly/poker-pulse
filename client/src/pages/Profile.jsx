@@ -14,7 +14,7 @@ const user = {
 }
 
 export default function Profile() {
-    // UNCOMMENT OUT LINES 18-32 FOR JWT AUTH WHEN FINISHED
+    // UNCOMMENT OUT LINES 18-32 FOR JWT AUTH WHEN APP IS FINISHED - ANDREW
 //     const navigate = useNavigate();
 
 //   useEffect(() => {
