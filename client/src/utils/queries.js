@@ -119,7 +119,6 @@ export const GET_SCHEDULE = gql`
   }
 `;
 
-<<<<<<< Updated upstream
 export const GET_POSTS = gql`
   query getPosts {
     posts {
@@ -146,7 +145,6 @@ export const GET_POST = gql`
   }
 `;
 
-=======
 export const GET_LATEST_EVENT = gql`
 query Events {
   latestEvent {
@@ -165,5 +163,4 @@ query Events {
   }
 }
 `
->>>>>>> Stashed changes
 // We can add more queries as needed
