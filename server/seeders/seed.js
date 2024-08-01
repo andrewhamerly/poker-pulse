@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Event = require('../models/Event');
-const Profile = require('../models/Profile');
-const eventSeed = require('./tournamentSeed.json');
-const profileSeed = require('./profileSeed.json');
+const User = require('../models/User');
+const eventSeed = require('./eventSeed.json');
+const userSeed = require('./userSeed.json');
 
 const seedDB = async () => {
   try {
@@ -14,10 +14,10 @@ const seedDB = async () => {
     console.log('Database connected.');
 
     await Event.deleteMany({});
-    await Profile.deleteMany({});
+    await User.deleteMany({});
 
     await Event.insertMany(eventSeed);
-    await Profile.insertMany(profileSeed);
+    await User.insertMany(userSeed);
 
     console.log('Database seeded.');
     mongoose.connection.close();
