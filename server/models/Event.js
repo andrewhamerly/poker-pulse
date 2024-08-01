@@ -7,7 +7,7 @@ const eventSchema = new Schema({
   },
 
   eventTime: {
-    type: Date,
+    type: String,
     required: true,
   },
 
@@ -54,10 +54,7 @@ const eventSchema = new Schema({
   guarantee: {
     type: String,
     required: true,
-    //we could create an if statement in the component iterating over each guarantee looking for 'seats' and return code that puts a $ infront of dollar values and nothing infront to 'seats'
   }
-
-  
 });
 
 const Event = model('Event', eventSchema);

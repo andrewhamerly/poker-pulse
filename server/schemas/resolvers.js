@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const Event = require('../models/Event');
 const Schedule = require('../models/Schedule');
+const Post = require('../models/Post');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 
@@ -23,6 +24,12 @@ const resolvers = {
     },
     schedule: async (parent, { _id }) => {
       return Schedule.findById(_id).populate('events');
+    },
+    posts: async () => {
+      return Post.find().populate('user');
+    },
+    post: async (parent, { _id }) => {
+      return Post.findById(_id).populate('user');
     },
   },
 
@@ -68,6 +75,15 @@ const resolvers = {
     },
     deleteEvent: async (parent, { _id }) => {
       await Event.findByIdAndDelete(_id);
+      return true;
+    },
+
+    addPost: async (parent, { userId, content }) => {
+      const post = await Post.create({ user: userId, content });
+      return post.populate('user').execPopulate();
+    },
+    deletePost: async (parent, { _id }) => {
+      await Post.findByIdAndDelete(_id);
       return true;
     },
   },

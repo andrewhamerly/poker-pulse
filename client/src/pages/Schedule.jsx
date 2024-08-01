@@ -1,9 +1,11 @@
 // import { useState } from 'react';
+import '../components/Schedule/Schedule.css'
 import { useQuery } from '@apollo/client'
 // import { ScheduleFunctions } from '../components/Schedule';
 import GuaranteeType from '../components/Schedule/guaranteePrefix'
 import FormattedDate from '../components/Schedule/formattedDate'
 import FormattedTime from '../components/Schedule/formattedTime'
+import MultiDayValue from '../components/Schedule/multiDay'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
 import { GET_EVENTS } from '../utils/queries'
@@ -14,13 +16,8 @@ const Schedule = () => {
 const {loading, data} = useQuery(GET_EVENTS);
 const events = data?.events || [];
 
-// const mEventDate = moment(`${events.eventDate}`, 'MM-DD-YYYY');
-// const mEventTime = moment(`${events.eventTime}`, 'HH:mm');
-  // try {
-  //   const data = await getEvents({})
-  // } catch (error) {
-  //   console.error(error)
-  // }
+// const [scheduledEvents, setScheduledEvents] = useState([])
+
 
   return (
     <div>
@@ -32,7 +29,7 @@ const events = data?.events || [];
           <thead>
             <tr>
               <th>Date:</th>
-              <th>Time:</th>
+              <th>Start Time:</th>
               <th>Venue:</th>
               <th>Fee:</th>
               <th>Type:</th>
@@ -51,11 +48,11 @@ const events = data?.events || [];
                 <td><FormattedDate eventDate={events.eventDate}/></td>
                 <td><FormattedTime eventTime={events.eventTime}/></td>
                 <td><div>{events.venue}</div></td>
-                <td><div>{events.entryFee}</div></td>
+                <td><div>${events.entryFee}</div></td>
                 <td><div>{events.eventType}</div></td>
                 <td><div>{events.series}</div></td>
                 <td><div>{events.eventTitle}</div></td>
-                <td><div>{events.multiDay}</div></td>
+                <td><MultiDayValue multiDay={events.multiDay}/></td>
                 <td><div>{events.chipCount}</div></td>
                 <td><div>{events.levels}</div></td>
                 <td><GuaranteeType guarantee={events.guarantee}/></td>
