@@ -39,7 +39,7 @@ function App() {
       <ChakraProvider theme={theme}>
       <div className="flex flex-col justify-start min-h-screen">
         <Header />
-        <div className="container mx-auto">
+        <div className="container mx-auto ">
           <Outlet />
         </div>
         <Footer />
