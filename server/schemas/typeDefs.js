@@ -55,6 +55,17 @@ const typeDefs = gql`
     schedule(_id: ID!): Schedule
     posts: [Post]
     post(_id: ID!): Post
+    searchEvents(
+      eventDate: String,
+      eventTime: String,
+      venue: String,
+      entryFee: Float,
+      eventType: String,
+      multiDay: Boolean,
+      chipCount: String,
+      levels: String,
+      guarantee: String
+    ): [Event]
   }
 
   type Mutation {
@@ -68,8 +79,8 @@ const typeDefs = gql`
 
     addEvent(eventData: eventInput!): Event
     updateEvent(_id: ID!, eventData: eventInput!): Event
-    deleteEvent(_id: ID!): Boolean
 
+    deleteEvent(_id: ID!): Boolean
     addPost(userId: ID!, content: String!): Post
     deletePost(_id: ID!): Boolean
 }
