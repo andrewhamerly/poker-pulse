@@ -1,7 +1,7 @@
 [
   {
     "eventDate": "2024-08-01",
-    "eventTime": "18:00",
+    "eventTime": "18:00:00",
     "venue": "Casino Royale",
     "entryFee": 100,
     "eventType": "NLH",
@@ -14,7 +14,7 @@
   },
   {
     "eventDate": "2024-08-02",
-    "eventTime": "12:00",
+    "eventTime": "12:00:00",
     "venue": "High Stakes Club",
     "entryFee": 50,
     "eventType": "PLO",
@@ -27,7 +27,7 @@
   },
   {
     "eventDate": "2024-08-03",
-    "eventTime": "14:00",
+    "eventTime": "14:00:00",
     "venue": "Downtown Poker Lounge",
     "entryFee": 200,
     "eventType": "Mixed",
