@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_POSTS } from '../../utils/queries';
+import { GET_POSTS } from '../utils/queries';
 
 const Feed = () => {
     const { data } = useQuery(GET_POSTS);

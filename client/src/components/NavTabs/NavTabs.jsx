@@ -25,6 +25,24 @@ function NavTabs() {
       </li>
       <li className="nav-item">
         <Link
+          to="/feed"
+          className={`block px-4 py-2 ${currentPage === '/feed' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
+          aria-current={currentPage === '/feed' ? 'feed page' : undefined}
+        >
+          Feed
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link
+          to="/event"
+          className={`block px-4 py-2 ${currentPage === '/event' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
+          aria-current={currentPage === '/event' ? 'event page' : undefined}
+        >
+          Event
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link
           to="/schedule"
           className={`block px-4 py-2 ${currentPage === '/schedule' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
           aria-current={currentPage === '/schedule' ? 'schedule page' : undefined}
