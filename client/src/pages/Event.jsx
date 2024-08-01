@@ -16,24 +16,23 @@ const Event = () => {
   const events = data?.events || [];
 
   // const eDate = Number(events.eventDate)
-  console.log()
-
+console.log(events)
   // const [scheduledEvents, setScheduledEvents] = useState([])
-  const handleAddToSchedule = async (events) => {
+  const handleAddToSchedule = async (event) => {
     try {
       const eventToSave = {
-        _id: events._id,
-        eventDate: events.eventDate,
-        eventTime: events.eventTime,
-        venue: events.venue,
-        entryFee: events.entryFee,
-        eventType: events.eventType,
-        series: events.series,
-        eventTitle: events.eventTitle,
-        multiDay: events.multiDay,
-        chipCount: events.chipCount,
-        levels: events.levels,
-        guarantee: events.guarantee,
+        _id: event._id,
+        eventDate: event.eventDate,
+        eventTime: event.eventTime,
+        venue: event.venue,
+        entryFee: event.entryFee,
+        eventType: event.eventType,
+        series: event.series,
+        eventTitle: event.eventTitle,
+        multiDay: event.multiDay,
+        chipCount: event.chipCount,
+        levels: event.levels,
+        guarantee: event.guarantee,
       };
 
       await addEventToSchedule({
@@ -44,6 +43,7 @@ const Event = () => {
       console.error('Error adding event to schedule', error)
     }
   }
+  
 
   return (
     <div>
@@ -70,24 +70,24 @@ const Event = () => {
             </thead>
 
             <tbody>
-              {events.map((events) => (
-                <tr key={events.id}>
-                  <td><FormattedDate eventDate={events.eventDate} /></td>
-                  <td><FormattedTime eventTime={events.eventTime} /></td>
-                  <td><div>{events.venue}</div></td>
-                  <td><div>${events.entryFee}</div></td>
-                  <td><div>{events.eventType}</div></td>
-                  <td><div>{events.series}</div></td>
-                  <td><div>{events.eventTitle}</div></td>
-                  <td><MultiDayValue multiDay={events.multiDay} /></td>
-                  <td><div>{events.chipCount}</div></td>
-                  <td><div>{events.levels}</div></td>
-                  <td><GuaranteeType guarantee={events.guarantee} /></td>
+              {events.map((event) => (
+                <tr key={event.id}>
+                  <td><FormattedDate eventDate={event.eventDate} /></td>
+                  <td><FormattedTime eventDate={event.eventDate} eventTime={event.eventTime} /></td>
+                  <td><div>{event.venue}</div></td>
+                  <td><div>${event.entryFee}</div></td>
+                  <td><div>{event.eventType}</div></td>
+                  <td><div>{event.series}</div></td>
+                  <td><div>{event.eventTitle}</div></td>
+                  <td><MultiDayValue multiDay={event.multiDay} /></td>
+                  <td><div>{event.chipCount}</div></td>
+                  <td><div>{event.levels}</div></td>
+                  <td><GuaranteeType guarantee={event.guarantee} /></td>
                   <td>
                     <button
                       className='addToSchedule'
                       type='button'
-                      onClick={() => handleAddToSchedule(events)}
+                      onClick={() => handleAddToSchedule(event)}
                     >
                       <span role="img" aria-label="add to schedule">
                         <p>
