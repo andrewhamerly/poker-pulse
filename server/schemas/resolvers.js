@@ -19,6 +19,10 @@ const resolvers = {
     event: async (parent, { _id }) => {
       return Event.findById(_id);
     },
+    latestEvent: async (parent) => {
+      return Event.findOne().sort({eventDate: -1});
+    },
+
     schedules: async () => {
       return Schedule.find().populate('events');
     },
@@ -31,6 +35,7 @@ const resolvers = {
     post: async (parent, { _id }) => {
       return Post.findById(_id).populate('user');
     },
+
   },
 
   Mutation: {
