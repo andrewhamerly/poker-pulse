@@ -1,52 +1,52 @@
 ﻿eventDate,eventTime,venue,entryFee,eventType,series,eventTitle,multiDay,chipCount,levels,guarantee
-2024-08-07,11:00:00,Aria,$800 ,PLO,Aria Poker Classic,Mystery Bounty,false,30000,30 Min,"$150,000",
-2024-08-08,11:00:00,Aria,$600 ,PLO,Aria Poker Classic,,false,30000,30 Min,"$100,000",
-2024-08-09,11:00:00,Aria,$600 ,NLH,Aria Poker Classic,,false,30000,30 Min,"$150,000",
-2024-08-10,11:00:00,Aria,$600 ,NLH,Aria Poker Classic,,false,30000,30 Min,"$150,000",
-2024-08-11,11:00:00,Aria,$600 ,PLO,Aria Poker Classic,,false,30000,30 Min,"$100,000",
-2024-08-12,11:00:00,Aria,$800 ,PLO 8/B,Aria Poker Classic,,false,30000,30 Min,"$150,000",
-2024-08-13,11:00:00,Aria,$600 ,NLH,Aria Poker Classic,,false,30000,30 Min,"$150,000",
-2024-08-14,11:00:00,Aria,$800 ,NLH,Aria Poker Classic,Seniors (50+),false,30000,30 Min,"$200,000",
-2024-08-15,11:00:00,Aria,"$1,100",NLH,BETMGM,Mystery Bounty,false,30000,30 Min,"$500,000",
-2024-08-15,18:00:00,Aria,$400,NLH,BETMGM,Satellite (1 in 10),false,25000,20 Min,10 Seats,
-2024-08-16,12:00:00,Aria,"$3,500",NLH,BETMGM,Championship NLH Day 1A (4-Day Event),true,50000,50 Min,"$3,000,000",
-2024-08-16,18:00:00,Aria,$400,NLH,BETMGM,Satellite (1 in 10),false,25000,20 Min,10 Seats,
-2024-08-17,12:00:00,Aria,"$3,500",NLH,BETMGM,Championship NLH Day 1B (2-Day Event),true,50000,50 Min,"$3,000,000",
-2024-08-18,11:00:00,Aria,$800 ,NLH,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-08-19,11:00:00,Aria,"$1,100 ",NLH,Aria Poker Classic,Mystery Bounty,false,30000,30 Min,"$250,000",
-2024-08-20,11:00:00,Aria,$800 ,NLH,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-08-21,11:00:00,Aria,$800 ,PLO,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-08-22,11:00:00,Aria,"$1,100 ",NLH,Aria Poker Classic,,false,30000,30 Min,"$250,000",
-2024-08-23,11:00:00,Aria,"$1,100 ",Big O,Aria Poker Classic,,false,30000,30 Min,"$250,000",
-2024-08-24,11:00:00,Aria,"$1,100 ",PLO,Aria Poker Classic,Mystery Bounty,false,30000,30 Min,"$250,000",
-2024-08-25,11:00:00,Aria,$800 ,NLH,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-08-26,11:00:00,Aria,$800 ,NLH,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-08-27,11:00:00,Aria,$800 ,PLO,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-08-28,11:00:00,Aria,$800 ,NLH,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-08-28,17:00:00,Aria,$240 ,NLH,Aria Poker Classic,"Satellite to $1,600 Mystery Bounty (1 in 8)",false,25000,20 Min,10 Seats,
-2024-08-29,11:00:00,Aria,"$1,600 ",NLH,Aria Poker Classic,Mystery Bounty (2-Day Event),true,40000,40 Min,"$500,000",
-2024-08-30,11:00:00,Aria,$800 ,MIXED,Aria Poker Classic,Omaha 8 / Stud 8,false,30000,30 Min,"$100,000",
-2024-08-31,11:00:00,Aria,$800 ,NLH,Aria Poker Classic,Seniors (50+),false,30000,30 Min,"$200,000",
-2024-09-01,11:00:00,Aria,$800 ,NLH,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-09-02,11:00:00,Aria,"$1,100 ",PLO,Aria Poker Classic,Mystery Bounty,false,30000,30 Min,"$250,000",
-2024-09-03,11:00:00,Aria,$800 ,NLH,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-09-04,11:00:00,Aria,$800 ,PLO,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-09-04,12:00:00,Aria,$500 ,NLH,Aria Poker Classic,Ladies Event,false,30000,30 Min,"$75,000",
-2024-09-05,11:00:00,Aria,$800 ,NLH,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-09-06,11:00:00,Aria,$800 ,NLH,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-09-07,11:00:00,Aria,"$1,100",NLH,Aria Poker Classic,Mystery Bounty,false,30000,30 Min,"$250,000",
-2024-09-07,17:00:00,Aria,$240,NLH,Aria Poker Classic,"Satellite to $1,600 NLH (1 in 8)",false,25000,20 Min,10 Seats,
-2024-09-08,12:00:00,Aria,"$1,600",NLH,Aria Poker Classic,NLH Championship (2-Day Event),true,40000,40 Min,"$500,000",
-2024-09-09,11:00:00,Aria,$800 ,MIXED,Aria Poker Classic,H.O.R.S.E.,false,30000,30 Min,"$100,000",
-2024-09-09,17:00:00,Aria,$240 ,PLO,Aria Poker Classic,"Satellite to $1,600 PLO (1 in 8)",false,25000,20 Min,10 Seats,
-2024-09-10,12:00:00,Aria,"$1,600 ",PLO,Aria Poker Classic,PLO Championship (2-Day Event),true,40000,40 Min,"$500,000",
-2024-09-11,11:00:00,Aria,$800 ,PLO,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-09-12,11:00:00,Aria,$800 ,NLH,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-09-13,11:00:00,Aria,$800 ,PLO,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-09-14,11:00:00,Aria,$800 ,NLH,Aria Poker Classic,Mystery Bounty,false,30000,30 Min,"$200,000",
-2024-09-15,11:00:00,Aria,$800 ,PLO,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-09-16,11:00:00,Aria,$800 ,NLH,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-09-17,11:00:00,Aria,$800 ,NLH,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-09-18,11:00:00,Aria,$800 ,NLH,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-09-19,11:00:00,Aria,$800 ,PLO,Aria Poker Classic,,false,30000,30 Min,"$200,000",
-2024-09-20,11:00:00,Aria,$800 ,NLH,Aria Poker Classic,Mystery Bounty,false,30000,30 Min,"$200,000",
+2024-08-07,11:00,Aria,$800,PLO,Aria Poker Classic,Mystery Bounty,false,30000,"30 Min","$150,000"
+2024-08-08,11:00,Aria,$600,PLO,Aria Poker Classic,,false,30000,"30 Min","$100,000"
+2024-08-09,11:00,Aria,$600,NLH,Aria Poker Classic,,false,30000,"30 Min","$150,000"
+2024-08-10,11:00,Aria,$600,NLH,Aria Poker Classic,,false,30000,"30 Min","$150,000"
+2024-08-11,11:00,Aria,$600,PLO,Aria Poker Classic,,false,30000,"30 Min","$100,000"
+2024-08-12,11:00,Aria,$800,PLO 8/B,Aria Poker Classic,,false,30000,"30 Min","$150,000"
+2024-08-13,11:00,Aria,$600,NLH,Aria Poker Classic,,false,30000,"30 Min","$150,000"
+2024-08-14,11:00,Aria,$800,NLH,Aria Poker Classic,Seniors (50+),false,30000,"30 Min","$200,000"
+2024-08-15,11:00,Aria,$1,100,NLH,BETMGM,Mystery Bounty,false,30000,"30 Min","$500,000"
+2024-08-15,18:00,Aria,$400,NLH,BETMGM,Satellite (1 in 10),false,25000,"20 Min","10 Seats"
+2024-08-16,12:00,Aria,$3,500,NLH,BETMGM,Championship NLH Day 1A (4-Day Event),true,50000,"50 Min","$3,000,000"
+2024-08-16,18:00,Aria,$400,NLH,BETMGM,Satellite (1 in 10),false,25000,"20 Min","10 Seats"
+2024-08-17,12:00,Aria,$3,500,NLH,BETMGM,Championship NLH Day 1B (2-Day Event),true,50000,"50 Min","$3,000,000"
+2024-08-18,11:00,Aria,$800,NLH,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-08-19,11:00,Aria,$1,100,NLH,Aria Poker Classic,Mystery Bounty,false,30000,"30 Min","$250,000"
+2024-08-20,11:00,Aria,$800,NLH,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-08-21,11:00,Aria,$800,PLO,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-08-22,11:00,Aria,$1,100,NLH,Aria Poker Classic,,false,30000,"30 Min","$250,000"
+2024-08-23,11:00,Aria,$1,100,Big O,Aria Poker Classic,,false,30000,"30 Min","$250,000"
+2024-08-24,11:00,Aria,$1,100,PLO,Aria Poker Classic,Mystery Bounty,false,30000,"30 Min","$250,000"
+2024-08-25,11:00,Aria,$800,NLH,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-08-26,11:00,Aria,$800,NLH,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-08-27,11:00,Aria,$800,PLO,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-08-28,11:00,Aria,$800,NLH,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-08-28,17:00,Aria,$240,NLH,Aria Poker Classic,Satellite to $1,600 Mystery Bounty (1 in 8),false,25000,"20 Min","10 Seats"
+2024-08-29,11:00,Aria,$1,600,NLH,Aria Poker Classic,Mystery Bounty (2-Day Event),true,40000,"40 Min","$500,000"
+2024-08-30,11:00,Aria,$800,MIXED,Aria Poker Classic,Omaha 8 / Stud 8,false,30000,"30 Min","$100,000"
+2024-08-31,11:00,Aria,$800,NLH,Aria Poker Classic,Seniors (50+),false,30000,"30 Min","$200,000"
+2024-09-01,11:00,Aria,$800,NLH,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-09-02,11:00,Aria,$1,100,PLO,Aria Poker Classic,Mystery Bounty,false,30000,"30 Min","$250,000"
+2024-09-03,11:00,Aria,$800,NLH,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-09-04,11:00,Aria,$800,PLO,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-09-04,12:00,Aria,$500,NLH,Aria Poker Classic,Ladies Event,false,30000,"30 Min","$75,000"
+2024-09-05,11:00,Aria,$800,NLH,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-09-06,11:00,Aria,$800,NLH,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-09-07,11:00,Aria,$1,100,NLH,Aria Poker Classic,Mystery Bounty,false,30000,"30 Min","$250,000"
+2024-09-07,17:00,Aria,$240,NLH,Aria Poker Classic,Satellite to $1,600 NLH (1 in 8),false,25000,"20 Min","10 Seats"
+2024-09-08,12:00,Aria,$1,600,NLH,Aria Poker Classic,NLH Championship (2-Day Event),true,40000,"40 Min","$500,000"
+2024-09-09,11:00,Aria,$800,MIXED,Aria Poker Classic,H.O.R.S.E.,false,30000,"30 Min","$100,000"
+2024-09-09,17:00,Aria,$240,PLO,Aria Poker Classic,Satellite to $1,600 PLO (1 in 8),false,25000,"20 Min","10 Seats"
+2024-09-10,12:00,Aria,$1,600,PLO,Aria Poker Classic,PLO Championship (2-Day Event),true,40000,"40 Min","$500,000"
+2024-09-11,11:00,Aria,$800,PLO,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-09-12,11:00,Aria,$800,NLH,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-09-13,11:00,Aria,$800,PLO,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-09-14,11:00,Aria,$800,NLH,Aria Poker Classic,Mystery Bounty,false,30000,"30 Min","$200,000"
+2024-09-15,11:00,Aria,$800,PLO,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-09-16,11:00,Aria,$800,NLH,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-09-17,11:00,Aria,$800,NLH,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-09-18,11:00,Aria,$800,NLH,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-09-19,11:00,Aria,$800,PLO,Aria Poker Classic,,false,30000,"30 Min","$200,000"
+2024-09-20,11:00,Aria,$800,NLH,Aria Poker Classic,Mystery Bounty,false,30000,"30 Min","$200,000"

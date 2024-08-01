@@ -1,0 +1,26 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: center; /* Center the text horizontally */
+  vertical-align: middle; /* Center the text vertically */
+  padding: 8px; /* Add some padding for better readability */
+  border: 1px solid #ddd; /* Add a border for better visibility */
+}
+
+/* Optional: Add some styling to the header cells */
+th {
+  background-color: #f4f4f4; /* Light grey background for headers */
+  font-weight: bold; /* Make the header text bold */
+}
+
+/* Optional: Add alternating row colors for better readability */
+tr:nth-child(even) {
+  background-color: #f9f9f9; /* Light grey background for even rows */
+}
+
+tr:hover {
+  background-color: #f1f1f1; /* Highlight rows on hover */
+}

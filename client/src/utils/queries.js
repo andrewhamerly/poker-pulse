@@ -109,12 +109,37 @@ export const GET_SCHEDULE = gql`
         _id
         username
       }
-      scheduleTitle
       events {
         _id
         eventDate
         eventTime
         venue
+      }
+    }
+  }
+`;
+
+export const GET_POSTS = gql`
+  query getPosts {
+    posts {
+      _id
+      content
+      createdAt
+      user {
+        username
+      }
+    }
+  }
+`;
+
+export const GET_POST = gql`
+  query getPost($id: ID!) {
+    post(_id: $id) {
+      _id
+      content
+      createdAt
+      user {
+        username
       }
     }
   }
