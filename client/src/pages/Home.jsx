@@ -1,34 +1,47 @@
 import React from 'react';
-import { Box, Button, Grid, Image, VStack, SimpleGrid, Input, Center, Flex, Heading, Text } from '@chakra-ui/react';
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react';
+import { Box, Button, VStack, SimpleGrid, Heading, Text, Card, CardBody } from '@chakra-ui/react';
 import backgroundImage from '../assets/images/pexels-photospublic-444964.jpg';
 import { motion } from 'framer-motion';
-// import { useQuery } from '@apollo/client';
-// import ProfileList from '../components/ProfileList';
-// import { QUERY_PROFILES } from '../utils/queries';
-// import { useHistory } from 'react-router-dom'; // Uncomment if using react-router-dom for routing
+import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { GET_LATEST_EVENT } from '../utils/queries';
+
 
 const Home = () => {
-  // const history = useHistory(); // Uncomment if using react-router-dom for routing
+  const navigate = useNavigate();
+  let { loading, error, data} = useQuery(GET_LATEST_EVENT);
 
   const handleLogin = () => {
-    // history.push('/login'); // Uncomment if using react-router-dom for routing
+    navigate('/login');
     console.log('Navigate to Login page');
   };
 
   const handleSignup = () => {
-    // history.push('/signup'); // Uncomment if using react-router-dom for routing
+    navigate('/signup')
     console.log('Navigate to Signup page');
   };
-  //   const { loading, data } = useQuery(QUERY_PROFILES);
-  //   const profiles = data?.profiles || [];
+  
+  const handleEventClick = (id) => {
+    navigate(`/events/${id}`);
+  };
 
+  
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>
+  let events = data.latestEvent;
+  // let events = data?.events || [];
+console.log(events)
+  console.log(events)
+  const upcomingEvent = events;
   return (
     <main>
 
       <Box
         position="relative"
         p={10}
+        color={'white'}
+        textAlign="center"
+        boxShadow={'xl'}
         _before={{
           content: `""`,
           position: "absolute",
@@ -42,14 +55,7 @@ const Home = () => {
           backgroundRepeat: "no-repeat",
           filter: "grayscale(100%)",
           zIndex: -1
-
-        }}
-
-        color={'white'}
-
-        textAlign="center"
-        boxShadow={'xl'}
-      >
+        }}>
 
 
         <Heading color={'brand.eerieBlack'} borderBlock={'Background'} as="h1" size="2xl" mb={4}>
@@ -71,21 +77,27 @@ const Home = () => {
 
             <Box filter="grayscale(0%)" as={motion.div} whileHover={{ scale: 1.05 }} transition={'0.3s'} bg={'brand.hunterGreen'} borderRadius={'lg'} width={'300px'} p={6} m={4} boxShadow={'lg'}>
               <Heading color={'white'} as={"h3"} size={"md"} textAlign={'center'} fontWeight={'bold'} >Checkout these upcoming tournaments!</Heading>
-              <Card mb={4}>
+              { upcomingEvent ? (
+                <Card key={upcomingEvent._id} mb={4} onClick={() => handleEventClick(upcomingEvent._id)} cursor={'pointer'} >
                 <CardBody>
-                  <Text>Tournament #1</Text>
+                <Text>Event Type: {upcomingEvent.eventType}</Text>
+                <Text>Entry Fee: ${upcomingEvent.entryFee}</Text>
+                <Text>Guarantee: ${upcomingEvent.guarantee}</Text>
+                <Text>Venue: {upcomingEvent.venue}</Text>
+                <Text>Time: {upcomingEvent.eventTime}, {new Date(upcomingEvent.eventDate).toLocaleDateString()}</Text>
                 </CardBody>
               </Card>
-              <Card mb={4}>
-                <CardBody>
-                  <Text>Tournament #2</Text>
-                </CardBody>
-              </Card>
-              <Card>
-                <CardBody>
-                  <Text>Tournament #3</Text>
-                </CardBody>
-              </Card>
+              ) : (
+                <Text>No upcoming events</Text>
+              )}
+              {/* {events.slice(1, 4).map(event => (
+                <Card key={event._id} mb={4} onClick={() => handleEventClick(event._id)} cursor={'pointer'}>
+                  <CardBody>
+                    <Text>{event.eventTitle}</Text>
+                  </CardBody>
+                </Card>
+              ))} */}
+              
             </Box>
 
             <Box width="300px" p={6} m={4} borderRadius="lg" boxShadow="lg" bg={'brand.hunterGreen'} as={motion.div} whileHover={{ scale: 1.05 }} transition={'0.3s'} >

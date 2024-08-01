@@ -4,12 +4,18 @@ import { GET_EVENT_DETAILS } from '../../utils/queries';
 
 const EventDetails = ({ eventId }) => {
   const { loading, error, data } = useQuery(GET_EVENT_DETAILS, {
-    variables: { id: eventId },
+    variables: { _id: eventId },
   });
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) {
+    console.error('Error fetching event details:', error); 
+    return <p>Error: {error.message}</p>;
+  }
 
+  if (!data || !data.event) {
+    return <p> No event found.</p>
+  }
   const event = data.event;
 
   return (
