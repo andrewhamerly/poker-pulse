@@ -1,12 +1,12 @@
 [
   {
-    "name": "Chris",
+    "username": "Chris",
     "email": "chris@example.com",
     "password": "password123",
     "skills": ["strategy", "bluffing"]
   },
   {
-    "name": "John",
+    "username": "John",
     "email": "john@example.com",
     "password": "password123",
     "skills": ["high stakes", "tournament play"]

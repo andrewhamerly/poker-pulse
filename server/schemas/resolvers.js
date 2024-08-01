@@ -19,10 +19,9 @@ const resolvers = {
     event: async (parent, { _id }) => {
       return Event.findById(_id);
     },
-    latestEvent: async (parent) => {
-      return Event.findOne().sort({eventDate: -1});
+    latestEvent: async () => {
+      return Event.findOne().sort({ eventDate: -1 });
     },
-
     schedules: async () => {
       return Schedule.find().populate('events');
     },
@@ -35,7 +34,20 @@ const resolvers = {
     post: async (parent, { _id }) => {
       return Post.findById(_id).populate('user');
     },
+    searchEvents: async (_, { eventDate, eventTime, venue, entryFee, eventType, multiDay, chipCount, levels, guarantee }) => {
+      const query = {};
+      if (eventDate) query.eventDate = eventDate;
+      if (eventTime) query.eventTime = eventTime;
+      if (venue) query.venue = venue;
+      if (entryFee !== undefined) query.entryFee = { $lte: entryFee };
+      if (eventType) query.eventType = eventType;
+      if (multiDay !== undefined) query.multiDay = multiDay;
+      if (chipCount) query.chipCount = chipCount;
+      if (levels) query.levels = levels;
+      if (guarantee) query.guarantee = guarantee;
 
+      return Event.find(query);
+    },
   },
 
   Mutation: {
@@ -64,17 +76,22 @@ const resolvers = {
 
       return { token, user };
     },
-    addSchedule: async (parent, { userId, scheduleTitle, events }) => {
-      return Schedule.create({ userId, scheduleTitle, events });
+    
+    addEventToSchedule: async (parent, { eventData }, context) => {
+      return User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $addToSet: { schedule: eventData}},
+        { new: true}
+      );
+      
     },
-    updateSchedule: async (parent, { _id, scheduleTitle, events }) => {
-      return Schedule.findByIdAndUpdate(_id, { scheduleTitle, events }, { new: true });
+    updateSchedule: async (parent, { _id, events }) => {
+      return Schedule.findByIdAndUpdate(_id, { events }, { new: true });
     },
     deleteSchedule: async (parent, { _id }) => {
       await Schedule.findByIdAndDelete(_id);
       return true;
     },
-
     addEvent: async (parent, args) => {
       return Event.create(args);
     },
@@ -85,7 +102,6 @@ const resolvers = {
       await Event.findByIdAndDelete(_id);
       return true;
     },
-
     addPost: async (parent, { userId, content }) => {
       const post = await Post.create({ user: userId, content });
       return post.populate('user').execPopulate();

@@ -7,20 +7,12 @@ const FormatDate = (eventDate) => {
   const eDate = new Date(eDateNumber);
   const formattedDate = eDate.toLocaleDateString();
   return formattedDate
-}
+};
 
 const FormatTime = (eventTime) => {
-  const eDateNumber = Number(eventTime);
-  const eDate = new Date(eDateNumber);
-  const formattedDate = eDate.toLocaleTimeString();
-  return formattedDate
-}
-
-// const MultiDayValue = (multiDay) => {
-//   if (multiDay === true) {
-//     return <div>✔</div>
-//   } else
-//     return <div>-</div>
-// }
+  const eTime = new Date(eventTime);
+  const formattedTime = eTime.toLocaleTimeString();
+  return formattedTime
+};
 
 export { GetPrefix, FormatDate, FormatTime }
