@@ -1,7 +1,7 @@
 import { FormatTime } from '../../utils/scheduleHelper'
 
-const FormattedTime = ({ eventTime }) => {
-  const formattedTime = FormatTime(eventTime)
+const FormattedTime = ({ eventDate, eventTime }) => {
+  const formattedTime = FormatTime(eventDate, eventTime)
   return (
     <div>{formattedTime}</div>
   )
