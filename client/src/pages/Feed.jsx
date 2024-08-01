@@ -5,10 +5,10 @@ import { motion } from 'framer-motion';
 import { GET_POSTS } from '../utils/queries';
 import NewPostForm from '../components/Post/NewPost';
 
-const Feed = () => {
+const Feed = ({ userId }) => {
     const { data } = useQuery(GET_POSTS);
 
-    const posts = data.posts;
+    const posts = data?.posts || [];
 
     return (
       <Box bg={'brand.onyx'} p={6}>
