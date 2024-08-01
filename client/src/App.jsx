@@ -37,19 +37,12 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <ChakraProvider theme={theme}>
-<<<<<<< Updated upstream
-      <div className="flex flex-col justify-start min-h-screen">
-        <Header />
-        <div className="container mx-auto ">
-          <Outlet />
-=======
         <div className="flex flex-col justify-start min-h-screen">
           <Header />
-          <div className="container mx-auto">
+          <div>
             <Outlet />
           </div>
           <Footer />
->>>>>>> Stashed changes
         </div>
       </ChakraProvider>
     </ApolloProvider>
