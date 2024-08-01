@@ -44,6 +44,9 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    updateUser: async (parent, { _id, ...args }) => {
+      return User.findByIdAndUpdate(_id, args, { new: true });
+    },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 

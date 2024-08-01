@@ -55,7 +55,7 @@ export default function ProfileSection(props) {
                             <Button bg='#2a3030' color='#f5f5f5' _hover={{ bg: '#646b6b' }} mr={3} onClick={onClose}>
                                 Cancel
                             </Button>
-                            <Button variant='ghost' _hover={{ bg: '#c4c4c4' }}>Post</Button>
+                            <Button variant='ghost' _hover={{ bg: '#c4c4c4' }}>Update</Button>
                         </ModalFooter>
                     </ModalContent>
                 </Modal>
