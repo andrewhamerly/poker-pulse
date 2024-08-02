@@ -152,7 +152,13 @@ const resolvers = {
     addPost: async (parent, { content }, context) => {
       if (context.user) {
         const post = await Post.create({ user: context.user._id, content });
-        return post.populate('user').execPopulate();
+        User.findOneAndUpdate(  
+          { _id: context.user._id },
+          { $addToSet: { post: post}},
+          { new: true}
+        )
+        console.log(context.user);
+        return post.populate('user');
       }
       throw new AuthenticationError('You need to be logged in!');
     },

@@ -44,7 +44,14 @@ const userSchema = new Schema({
     type: String,
     required: false,
     match: [/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/, 'Must be a valid URL!']
-  }
+  },
+
+  posts:  [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Post"
+    }
+  ],
 });
 
 userSchema.pre('save', async function (next) {
