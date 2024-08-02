@@ -53,7 +53,7 @@ const typeDefs = gql`
     event(_id: ID!): Event
     latestEvent: Event
     schedules: [Schedule]
-    schedule(_id: ID!): Schedule
+    getSchedule: User
     posts: [Post]
     post(_id: ID!): Post
     searchEvents(

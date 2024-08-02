@@ -42,13 +42,13 @@ const resolvers = {
     },
     schedules: async (parent, args, context) => {
       if (context.user) {
-        return Schedule.find().populate('events');
+        return User.find().populate('schedule');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    schedule: async (parent, { _id }, context) => {
+    getSchedule: async (parent, args, context) => {
       if (context.user) {
-        return Schedule.findById(_id).populate('events');
+        return User.findOne({_id: context.user._id}).populate('schedule');
       }
       throw new AuthenticationError('You need to be logged in!');
     },

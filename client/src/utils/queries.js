@@ -121,21 +121,28 @@ export const GET_SCHEDULES = gql`
 
 //Query to get a specific Schedule by ID
 export const GET_SCHEDULE = gql`
-  query getSchedule($_id: ID!) {
-    schedule(_id: $_id) {
+  query GetSchedule {
+  getSchedule {
+    _id
+    email
+    username
+    schedule {
       _id
-      userId {
-        _id
-        username
-      }
-      events {
-        _id
-        eventDate
-        eventTime
-        venue
-      }
+      chipCount
+      entryFee
+      eventDate
+      eventTime
+      eventTitle
+      eventType
+      guarantee
+      levels
+      multiDay
+      series
+      venue
     }
   }
+}
+
 `;
 
 export const GET_POSTS = gql`

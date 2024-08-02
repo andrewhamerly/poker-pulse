@@ -7,7 +7,7 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Feed from './pages/Feed';
 import Event from './pages/Event';
-// import Schedule from './pages/Schedule';
+import Schedule from './pages/Schedule';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Error from './pages/Error';
@@ -34,10 +34,10 @@ const router = createBrowserRouter([
         path: '/event',
         element: <Event />
       },
-      // {
-      //   path: '/schedule',
-      //   element: <Schedule />
-      // },
+      {
+        path: '/schedule',
+        element: <Schedule />
+      },
       {
         path: '/login',
         element: <Login />

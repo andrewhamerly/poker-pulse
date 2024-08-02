@@ -36,7 +36,6 @@ const FormatTime = (eventDate, eventTime) => {
 };
 
 const AbsentTitle = (eventTitle) => {
-  console.log(eventTitle)
   return (eventTitle === null) ? '-' : eventTitle
 }
 

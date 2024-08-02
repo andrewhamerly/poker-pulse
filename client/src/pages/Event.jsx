@@ -41,7 +41,7 @@ console.log(events)
       });
       console.log('Event added to schedule!')
     } catch (error) {
-      console.error('Error adding event to schedule', error)
+      console.error('Error adding event to schedule.', error)
     }
   }
   
