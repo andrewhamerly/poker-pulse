@@ -1,5 +1,5 @@
 // import { useSate } from 'react';
-import { GetPrefix } from '../../utils/scheduleHelper'
+import { GetPrefix }  from '../../utils/scheduleHelper'
 
   const GuaranteeType = ({ guarantee }) => {
     const prefix = GetPrefix(guarantee)

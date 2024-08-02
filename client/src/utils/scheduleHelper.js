@@ -1,5 +1,6 @@
 const GetPrefix = (guarantee) => {
-  return guarantee.includes('seats') ? '' : '$';
+  let lowerCaseGuarantee = guarantee.toLowerCase();
+  return (lowerCaseGuarantee.includes('seats') || lowerCaseGuarantee.includes('$')) ? '' : '$';
 };
 
 const FormatDate = (eventDate) => {
@@ -34,4 +35,8 @@ const FormatTime = (eventDate, eventTime) => {
   return formattedTime
 };
 
-export { GetPrefix, FormatDate, FormatTime }
+const AbsentTitle = (eventTitle) => {
+  return (eventTitle === null) ? '-' : eventTitle
+}
+
+export { GetPrefix, FormatDate, FormatTime, AbsentTitle }
