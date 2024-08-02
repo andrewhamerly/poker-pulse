@@ -9,21 +9,21 @@ import Auth from '../utils/auth';
 
 export default function Feed({ userId }) {
   // UNCOMMENT LINES 12-26 FOR JWT AUTH WHEN APP IS FINISHED - ANDREW
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     const token = Auth.getToken();
+    useEffect(() => {
+        const token = Auth.getToken();
 
-    //     if (!token) {
-    //         navigate('/signup');
-    //     }
-    // }, [navigate]);
+        if (!token) {
+            navigate('/signup');
+        }
+    }, [navigate]);
 
-    // const token = Auth.getToken();
+    const token = Auth.getToken();
 
-    // if (!token) {
-    //     return null;
-    // }
+    if (!token) {
+        return null;
+    }
 
     const { data } = useQuery(GET_POSTS);
     const posts = data?.posts || [];
