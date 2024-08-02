@@ -1,13 +1,21 @@
-import '../components/Schedule/Schedule.css'
-import { useQuery } from '@apollo/client'
-import GuaranteeType from '../components/Schedule/guaranteePrefix'
-import FormattedDate from '../components/Schedule/formattedDate'
-import FormattedTime from '../components/Schedule/formattedTime'
-import MultiDayValue from '../components/Schedule/multiDay'
-import HandleEventTitle from '../components/Schedule/absentTitle'
+import '../components/Schedule/Schedule.css';
+
+import { Link } from 'react-router-dom';
+import { useQuery, useMutation } from '@apollo/client';
+
+import GuaranteeType from '../components/Schedule/guaranteePrefix';
+import FormattedDate from '../components/Schedule/formattedDate';
+import FormattedTime from '../components/Schedule/formattedTime';
+import MultiDayValue from '../components/Schedule/multiDay';
+import HandleEventTitle from '../components/Schedule/absentTitle';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarXmark } from '@fortawesome/free-solid-svg-icons';
-import { GET_SCHEDULE } from '../utils/queries'
+
+import { GET_SCHEDULE } from '../utils/queries';
+// import { REMOVE_FROM_SCHEDULE } from '../utils/mutations';
+
+import { useRemoveFromSchedule } from '../utils/scheduleHelper';
 
 
 const Schedule = () => {
@@ -30,21 +38,43 @@ const Schedule = () => {
 
 
 const {loading, data} = useQuery(GET_SCHEDULE);
+const handleRemoveFromSchedule = useRemoveFromSchedule()
+// const [ removeEventFromSchedule ] = useMutation(REMOVE_FROM_SCHEDULE)
 const events = data?.getSchedule.schedule || [];
 
-  const handleDeleteFromSchedule = async (event) => {
-    try {
-      console.log('Event removed from schedule!')
-    } catch (error) {
-      console.log('Error removing event from schedule.')
-    }
-  }
+  // const handleRemoveFromSchedule = async (event) => {
+  //   try {
+  //       const eventToRemove = {
+  //         _id: event._id
+  //       };
+
+  //       await removeEventFromSchedule({
+  //         variables: {eventData: eventToRemove}
+  //       });
+
+  //     console.log('Event removed from schedule!')
+  //   } catch (error) {
+  //     console.log('Error removing event from schedule.')
+  //   }
+  // };
 
 
 return (
   <div>
     {loading ? (
       <div>Loading...</div>
+    ) : events.length ===0 ? (
+      <div className='noEventsContainer'>
+        <div className='noEventText'>No events scheduled.</div>
+        <div>
+        <Link 
+          to='/event'>
+          <button>
+            Add Events
+          </button>
+        </Link>
+        </div>
+      </div>
     ) : (
       <section className="scheduleList">
         <table>
@@ -99,7 +129,7 @@ return (
                   <button
                     className='deleteFromSchedule'
                     type='button'
-                    onClick={() => handleDeleteFromSchedule(event)}
+                    onClick={() => handleRemoveFromSchedule(event)}
                   >
                     <span role="img" aria-label="add to schedule">
                       <p>

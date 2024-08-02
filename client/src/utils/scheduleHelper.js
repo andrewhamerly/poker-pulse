@@ -1,3 +1,6 @@
+import { REMOVE_FROM_SCHEDULE } from './mutations';
+import { useMutation } from '@apollo/client';
+
 const GetPrefix = (guarantee) => {
   let lowerCaseGuarantee = guarantee.toLowerCase();
   return (lowerCaseGuarantee.includes('seats') || lowerCaseGuarantee.includes('$')) ? '' : '$';
@@ -39,4 +42,26 @@ const AbsentTitle = (eventTitle) => {
   return (eventTitle === null) ? '-' : eventTitle
 }
 
-export { GetPrefix, FormatDate, FormatTime, AbsentTitle }
+const useRemoveFromSchedule = () => {
+  const [ removeEventFromSchedule ] = useMutation(REMOVE_FROM_SCHEDULE)
+
+  const handleRemoveFromSchedule = async (event) => {
+    try {
+        const eventToRemove = {
+          _id: event._id
+        };
+
+        await removeEventFromSchedule({
+          variables: {eventData: eventToRemove}
+        });
+
+      console.log('Event removed from schedule!')
+    } catch (error) {
+      console.log('Error removing event from schedule.')
+    }
+  };
+
+  return handleRemoveFromSchedule
+}
+
+export { GetPrefix, FormatDate, FormatTime, AbsentTitle, useRemoveFromSchedule }

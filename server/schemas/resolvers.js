@@ -111,7 +111,7 @@ const resolvers = {
     // if (context.user) {
       return User.findOneAndUpdate(  
         { _id: context.user._id },
-        { $addToSet: { schedule: args.eventData}},
+        { $addToSet: { schedule: args.eventData }},
         { new: true}
       ).populate('schedule');
     // }
@@ -123,11 +123,14 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    deleteSchedule: async (parent, { _id }, context) => {
-      if (context.user) {
-        await Schedule.findByIdAndDelete(_id);
-        return true;
-      }
+    removeEventFromSchedule: async (parent, args, context) => {
+      // if (context.user) {
+        return User.findOneAndUpdate(  
+          { _id: context.user._id },
+          { $pull: { schedule: args.eventData._id } },
+          { new: true}
+        ).populate('schedule');
+      // }
       throw new AuthenticationError('You need to be logged in!');
     },
     addEvent: async (parent, args, context) => {

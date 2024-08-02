@@ -68,10 +68,28 @@ export const UPDATE_SCHEDULE = gql`
 `;
 
 // Mutation to delete a schedule
-export const DELETE_SCHEDULE = gql`
-  mutation deleteSchedule($_id: ID!) {
-    deleteSchedule(_id: $_id)
+export const REMOVE_FROM_SCHEDULE = gql`
+  mutation RemoveEventFromSchedule($eventData: eventInput!) {
+  removeEventFromSchedule(eventData: $eventData) {
+    _id
+    email
+    username
+    schedule {
+      _id
+      chipCount
+      entryFee
+      eventDate
+      eventTime
+      eventTitle
+      eventType
+      guarantee
+      levels
+      multiDay
+      series
+      venue
+    }
   }
+}
 `;
 
 // Mutation to add an event to a schedule
@@ -80,7 +98,6 @@ export const ADD_TO_SCHEDULE = gql`
   addEventToSchedule(eventData: $eventData) {
     _id
     email
-    hendonMob
     username
     schedule {
       _id
