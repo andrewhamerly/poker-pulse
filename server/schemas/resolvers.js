@@ -101,12 +101,7 @@ const resolvers = {
       return { token, user };
     },
     
-addEventToSchedule: async (parent, args, context) => {
-      console.log(new Date(args.eventData.eventDate))
-      const eDateNumber = Number(args.eventData.eventDate);
-      const eDate = new Date(eDateNumber);
-      const formattedDate = eDate.toLocaleDateString();
-      console.log(context.user)
+    addEventToSchedule: async (parent, args, context) => {
     // if (context.user) {
       return User.findOneAndUpdate(  
         { _id: context.user._id },
