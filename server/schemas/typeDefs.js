@@ -76,7 +76,7 @@ const typeDefs = gql`
 
     addEventToSchedule(eventData: eventInput!): User
     updateSchedule(_id: ID!, events: [ID]): User
-    deleteSchedule(_id: ID!): Boolean
+    removeEventFromSchedule(eventData: eventInput!): User
 
     addEvent(eventData: eventInput!): Event
     updateEvent(_id: ID!, eventData: eventInput!): Event

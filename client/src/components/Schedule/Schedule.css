@@ -119,6 +119,38 @@ tr:hover {
   color: #166534;
 }
 
+.noEventText {
+  font-size: 125%;
+}
+
+.noEventsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align items at the top */
+  padding: 20px; /* Add some padding at the top */
+  text-align: center;
+}
+
+.noEventsContainer div {
+  margin: 10px 0; /* Space between message and button */
+}
+
+.noEventsContainer button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff; /* Button color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.noEventsContainer button:hover {
+  background-color: #0056b3; /* Darker button color on hover */
+}
+
 /* Responsive styling */
 @media (max-width: 1200px) {
   th, td {

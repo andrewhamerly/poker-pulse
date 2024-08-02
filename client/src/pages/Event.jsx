@@ -1,24 +1,38 @@
 import '../components/Schedule/Schedule.css'
-import { useMutation, useQuery } from '@apollo/client'
+
+import { useQuery, useMutation } from '@apollo/client'
+
 import GuaranteeType from '../components/Schedule/guaranteePrefix'
 import FormattedDate from '../components/Schedule/formattedDate'
 import FormattedTime from '../components/Schedule/formattedTime'
 import MultiDayValue from '../components/Schedule/multiDay'
 import HandleEventTitle from '../components/Schedule/absentTitle'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
-import { ADD_TO_SCHEDULE} from '../utils/mutations'
-import { GET_EVENTS } from '../utils/queries'
+import { faCalendarPlus, faCalendarXmark } from '@fortawesome/free-solid-svg-icons';
+
+import { ADD_TO_SCHEDULE, REMOVE_FROM_SCHEDULE } from '../utils/mutations'
+import { GET_EVENTS, GET_SCHEDULE } from '../utils/queries'
+
+import { useRemoveFromSchedule } from '../utils/scheduleHelper';
 
 
 const Event = () => {
-  const { loading, data } = useQuery(GET_EVENTS);
-  const [ addEventToSchedule ] = useMutation(ADD_TO_SCHEDULE)
-  const events = data?.events || [];
+  const { loading: eventsLoading, data: eventsData } = useQuery(GET_EVENTS);
+  const { loading: scheduleLoading, data: scheduleData } = useQuery(GET_SCHEDULE);
 
-  // const eDate = Number(events.eventDate)
-console.log(events)
-  // const [scheduledEvents, setScheduledEvents] = useState([])
+  const handleRemoveFromSchedule = useRemoveFromSchedule()
+  
+  const [ addEventToSchedule ] = useMutation(ADD_TO_SCHEDULE)
+  // const [ removeEventFromSchedule ] = useMutation(REMOVE_FROM_SCHEDULE)
+  
+  const events = eventsData?.events || [];
+  const userSchedule = scheduleData?.getSchedule.schedule || []
+
+  const isEventInSchedule = (eventId) =>{
+    return userSchedule.some(event => event._id === eventId);
+  }
+
   const handleAddToSchedule = async (event) => {
     try {
       const eventToSave = {
@@ -39,16 +53,32 @@ console.log(events)
       await addEventToSchedule({
         variables: {eventData: eventToSave}
       });
+
       console.log('Event added to schedule!')
     } catch (error) {
       console.error('Error adding event to schedule.', error)
     }
-  }
-  
+  };
 
+  // const handleRemoveFromSchedule = async (event) => {
+  //   try {
+  //       const eventToRemove = {
+  //         _id: event._id
+  //       };
+
+  //       await removeEventFromSchedule({
+  //         variables: {eventData: eventToRemove}
+  //       });
+
+  //     console.log('Event removed from schedule!')
+  //   } catch (error) {
+  //     console.log('Error removing event from schedule.')
+  //   }
+  // };
+  
   return (
     <div>
-      {loading ? (
+      {(eventsLoading || scheduleLoading) ? (
         <div>Loading...</div>
       ) : (
         <section className="scheduleList">
@@ -101,17 +131,31 @@ console.log(events)
                       guarantee={event.guarantee} />
                     </td>
                   <td>
-                    <button
-                      className='addToSchedule'
-                      type='button'
-                      onClick={() => handleAddToSchedule(event)}
-                    >
-                      <span role="img" aria-label="add to schedule">
-                        <p>
-                          <FontAwesomeIcon icon={faCalendarPlus} />
-                        </p>
-                      </span>
-                    </button>
+                    {isEventInSchedule(event._id) ? (
+                      <button
+                        className='deleteFromSchedule'
+                        type='button'
+                        onClick={() => handleRemoveFromSchedule(event)}
+                      >
+                        <span role="img" aria-label="remove from schedule">
+                          <p>
+                            <FontAwesomeIcon icon={faCalendarXmark} />
+                          </p>
+                        </span>
+                      </button>
+                    ) : (
+                      <button
+                        className='addToSchedule'
+                        type='button'
+                        onClick={() => handleAddToSchedule(event)}
+                      >
+                        <span role="img" aria-label="add to schedule">
+                          <p>
+                            <FontAwesomeIcon icon={faCalendarPlus} />
+                            </p>
+                        </span>
+                      </button>
+                    )}
                   </td>
                 </tr>
               )
