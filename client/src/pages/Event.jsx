@@ -2,9 +2,12 @@ import '../components/Schedule/Schedule.css'
 
 import { useQuery, useMutation } from '@apollo/client'
 
+import FormattedEntryFee from '../components/Schedule/formattedEntryFee'
 import GuaranteeType from '../components/Schedule/guaranteePrefix'
 import FormattedDate from '../components/Schedule/formattedDate'
 import FormattedTime from '../components/Schedule/formattedTime'
+import FormattedChips from '../components/Schedule/formattedChips';
+import FormattedLevels from '../components/Schedule/formattedLevels';
 import MultiDayValue from '../components/Schedule/multiDay'
 import HandleEventTitle from '../components/Schedule/absentTitle'
 
@@ -14,7 +17,7 @@ import { faCalendarPlus, faCalendarXmark } from '@fortawesome/free-solid-svg-ico
 import { ADD_TO_SCHEDULE, REMOVE_FROM_SCHEDULE } from '../utils/mutations'
 import { GET_EVENTS, GET_SCHEDULE } from '../utils/queries'
 
-import { useRemoveFromSchedule } from '../utils/scheduleHelper';
+import { useRemoveFromSchedule, sortByDateTime } from '../utils/scheduleHelper';
 
 
 const Event = () => {
@@ -22,14 +25,19 @@ const Event = () => {
   const { loading: scheduleLoading, data: scheduleData } = useQuery(GET_SCHEDULE);
 
   const handleRemoveFromSchedule = useRemoveFromSchedule()
-  
-  const [ addEventToSchedule ] = useMutation(ADD_TO_SCHEDULE)
-  // const [ removeEventFromSchedule ] = useMutation(REMOVE_FROM_SCHEDULE)
-  
+
+  const [addEventToSchedule] = useMutation(ADD_TO_SCHEDULE)
+
   const events = eventsData?.events || [];
   const userSchedule = scheduleData?.getSchedule.schedule || []
 
-  const isEventInSchedule = (eventId) =>{
+  const sortedEvents = [...events].sort((a, b) => {
+    const timeA = sortByDateTime(a.eventDate, a.eventTime);
+    const timeB = sortByDateTime(b.eventDate, b.eventTime);
+    return timeA - timeB;
+  });
+
+  const isEventInSchedule = (eventId) => {
     return userSchedule.some(event => event._id === eventId);
   }
 
@@ -51,7 +59,7 @@ const Event = () => {
       };
 
       await addEventToSchedule({
-        variables: {eventData: eventToSave}
+        variables: { eventData: eventToSave }
       });
 
       console.log('Event added to schedule!')
@@ -60,22 +68,6 @@ const Event = () => {
     }
   };
 
-  // const handleRemoveFromSchedule = async (event) => {
-  //   try {
-  //       const eventToRemove = {
-  //         _id: event._id
-  //       };
-
-  //       await removeEventFromSchedule({
-  //         variables: {eventData: eventToRemove}
-  //       });
-
-  //     console.log('Event removed from schedule!')
-  //   } catch (error) {
-  //     console.log('Error removing event from schedule.')
-  //   }
-  // };
-  
   return (
     <div>
       {(eventsLoading || scheduleLoading) ? (
@@ -101,35 +93,44 @@ const Event = () => {
             </thead>
 
             <tbody>
-              {events.map((event) => (
+              {sortedEvents.map((event) => (
                 <tr key={event.id}>
                   <td>
-                    <FormattedDate 
+                    <FormattedDate
                       eventDate={event.eventDate} />
                   </td>
                   <td>
-                    <FormattedTime 
-                      eventDate={event.eventDate} 
+                    <FormattedTime
+                      eventDate={event.eventDate}
                       eventTime={event.eventTime} />
                   </td>
                   <td><div>{event.venue}</div></td>
-                  <td><div>${event.entryFee}</div></td>
+                  <td>
+                    <FormattedEntryFee
+                      entryFee={event.entryFee}/>
+                  </td>
                   <td><div>{event.eventType}</div></td>
                   <td><div>{event.series}</div></td>
                   <td>
-                    <HandleEventTitle 
+                    <HandleEventTitle
                       eventTitle={event.eventTitle} />
                   </td>
                   <td>
-                    <MultiDayValue 
+                    <MultiDayValue
                       multiDay={event.multiDay} />
                   </td>
-                  <td><div>{event.chipCount}</div></td>
-                  <td><div>{event.levels}</div></td>
                   <td>
-                    <GuaranteeType 
+                    <FormattedChips 
+                      chipCount={event.chipCount}/>
+                  </td>
+                  <td>
+                    <FormattedLevels 
+                      levels={event.levels} />
+                  </td>
+                  <td>
+                    <GuaranteeType
                       guarantee={event.guarantee} />
-                    </td>
+                  </td>
                   <td>
                     {isEventInSchedule(event._id) ? (
                       <button
@@ -152,7 +153,7 @@ const Event = () => {
                         <span role="img" aria-label="add to schedule">
                           <p>
                             <FontAwesomeIcon icon={faCalendarPlus} />
-                            </p>
+                          </p>
                         </span>
                       </button>
                     )}

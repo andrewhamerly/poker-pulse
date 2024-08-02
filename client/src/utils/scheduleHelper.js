@@ -1,19 +1,36 @@
 import { REMOVE_FROM_SCHEDULE } from './mutations';
 import { useMutation } from '@apollo/client';
 
-const GetPrefix = (guarantee) => {
+const formatEntryFee = (entryFee) => {
+  let entryFeeString = JSON.stringify(entryFee)
+  let lowerCaseEntryFee = entryFeeString.toLowerCase();
+  const removeNaN = entryFeeString.replace(/[^0-9]/g, '')
+  const formattedNumber = parseInt(removeNaN, 10).toLocaleString();
+  
+  return (lowerCaseEntryFee.includes('$') || lowerCaseEntryFee.includes(',')) ? entryFee : formattedNumber;
+};
+
+const getPrefix = (guarantee) => {
   let lowerCaseGuarantee = guarantee.toLowerCase();
   return (lowerCaseGuarantee.includes('seats') || lowerCaseGuarantee.includes('$')) ? '' : '$';
 };
 
-const FormatDate = (eventDate) => {
+const formatGuarantee = (guarantee) => {
+  let lowerCaseGuarantee = guarantee.toLowerCase();
+  const removeNaN = guarantee.replace(/[^0-9]/g, '')
+  const formattedNumber = parseInt(removeNaN, 10).toLocaleString();
+  
+  return (lowerCaseGuarantee.includes('seats') || lowerCaseGuarantee.includes('$') || lowerCaseGuarantee.includes(',')) ? guarantee : formattedNumber;
+};
+
+const formatDate = (eventDate) => {
   const eDateNumber = Number(eventDate);
   const eDate = new Date(eDateNumber);
   const formattedDate = eDate.toLocaleDateString();
   return formattedDate
 };
 
-const FormatTime = (eventDate, eventTime) => {
+const formatTime = (eventDate, eventTime) => {
   const eDateNumber = Number(eventDate);
   const date = new Date(eDateNumber);
   // turn date from a string to miliseconds into a type of date
@@ -38,7 +55,36 @@ const FormatTime = (eventDate, eventTime) => {
   return formattedTime
 };
 
-const AbsentTitle = (eventTitle) => {
+const formatChips = (chipCount) => {
+  const formattedNumber = parseInt(chipCount, 10).toLocaleString();
+  
+  return chipCount.includes(',') ? chipCount : formattedNumber;
+};
+
+const formatLevels = (levels) => {
+  let lowerCaseLevels = levels.toLowerCase()
+  const formattedLevels = lowerCaseLevels.replace(/minutes?|mins?/gi, 'Min').trim();
+  return formattedLevels
+}
+
+const sortByDateTime = (eventDate, eventTime) => {
+  const eDateNumber = Number(eventDate);
+  const date = new Date(eDateNumber);
+  // turn date from a string to miliseconds into a type of date
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const formattedDate = `${year}-${month}-${day}`;
+  // format date YYYY-MM-DD
+
+  let dateTime = `${formattedDate}T${eventTime}`
+  const eTime = new Date(dateTime);
+
+  return eTime.getTime();
+}
+
+const absentTitle = (eventTitle) => {
   return (eventTitle === null) ? '-' : eventTitle
 }
 
@@ -64,4 +110,13 @@ const useRemoveFromSchedule = () => {
   return handleRemoveFromSchedule
 }
 
-export { GetPrefix, FormatDate, FormatTime, AbsentTitle, useRemoveFromSchedule }
+export { formatEntryFee,
+         getPrefix, 
+         formatGuarantee,
+         formatDate, 
+         formatTime, 
+         formatChips,
+         formatLevels,
+         sortByDateTime, 
+         absentTitle, 
+         useRemoveFromSchedule }
