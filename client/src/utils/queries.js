@@ -181,5 +181,22 @@ query Events {
     guarantee
   }
 }
-`
+`;
+
+export const GET_ME = gql`
+  query getMe {
+    me {
+      _id
+      username
+      email
+      schedule {
+        _id
+        scheduleTitle
+      }
+      userBio
+      youStake
+      hendonMob
+    }
+  }
+`;
 // We can add more queries as needed
