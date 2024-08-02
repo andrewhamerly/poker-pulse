@@ -1,19 +1,19 @@
 import { REMOVE_FROM_SCHEDULE } from './mutations';
 import { useMutation } from '@apollo/client';
 
-const GetPrefix = (guarantee) => {
+const getPrefix = (guarantee) => {
   let lowerCaseGuarantee = guarantee.toLowerCase();
   return (lowerCaseGuarantee.includes('seats') || lowerCaseGuarantee.includes('$')) ? '' : '$';
 };
 
-const FormatDate = (eventDate) => {
+const formatDate = (eventDate) => {
   const eDateNumber = Number(eventDate);
   const eDate = new Date(eDateNumber);
   const formattedDate = eDate.toLocaleDateString();
   return formattedDate
 };
 
-const FormatTime = (eventDate, eventTime) => {
+const formatTime = (eventDate, eventTime) => {
   const eDateNumber = Number(eventDate);
   const date = new Date(eDateNumber);
   // turn date from a string to miliseconds into a type of date
@@ -38,7 +38,24 @@ const FormatTime = (eventDate, eventTime) => {
   return formattedTime
 };
 
-const AbsentTitle = (eventTitle) => {
+const sortByDateTime = (eventDate, eventTime) => {
+  const eDateNumber = Number(eventDate);
+  const date = new Date(eDateNumber);
+  // turn date from a string to miliseconds into a type of date
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const formattedDate = `${year}-${month}-${day}`;
+  // format date YYYY-MM-DD
+
+  let dateTime = `${formattedDate}T${eventTime}`
+  const eTime = new Date(dateTime);
+
+  return eTime.getTime();
+}
+
+const absentTitle = (eventTitle) => {
   return (eventTitle === null) ? '-' : eventTitle
 }
 
@@ -64,4 +81,4 @@ const useRemoveFromSchedule = () => {
   return handleRemoveFromSchedule
 }
 
-export { GetPrefix, FormatDate, FormatTime, AbsentTitle, useRemoveFromSchedule }
+export { getPrefix, formatDate, formatTime, sortByDateTime, absentTitle, useRemoveFromSchedule }
