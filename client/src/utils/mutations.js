@@ -78,19 +78,23 @@ export const DELETE_SCHEDULE = gql`
 export const ADD_TO_SCHEDULE = gql`
   mutation AddEventToSchedule($eventData: eventInput!) {
   addEventToSchedule(eventData: $eventData) {
+    _id
+    email
+    hendonMob
+    username
     schedule {
       _id
+      chipCount
+      entryFee
       eventDate
       eventTime
-      venue
-      entryFee
-      eventType
-      series
       eventTitle
-      multiDay
-      chipCount
-      levels
+      eventType
       guarantee
+      levels
+      multiDay
+      series
+      venue
     }
   }
 }
