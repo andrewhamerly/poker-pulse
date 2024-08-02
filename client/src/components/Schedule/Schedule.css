@@ -150,39 +150,3 @@ tr:hover {
 .noEventsContainer button:hover {
   background-color: #0056b3; /* Darker button color on hover */
 }
-
-/* Responsive styling */
-@media (max-width: 1200px) {
-  th, td {
-    font-size: 14px; /* Smaller font size for medium screens */
-  }
-}
-
-@media (max-width: 992px) {
-  th, td {
-    font-size: 12px; /* Smaller font size for smaller screens */
-    padding: 6px; /* Less padding for smaller screens */
-  }
-}
-
-@media (max-width: 768px) {
-  th, td {
-    font-size: 10px; /* Smaller font size for smaller screens */
-    padding: 3px; /* Less padding for smaller screens */
-  }
-
-  .addToSchedule {
-    font-size: 120%;
-  }
-}
-
-@media (max-width: 576px) {
-  th, td {
-    font-size: 8px; /* Even smaller font size for the smallest screens */
-    padding: 2px; /* Minimal padding for the smallest screens */
-  }
-
-  .addToSchedule {
-    font-size: 100%;
-  }
-}
