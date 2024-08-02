@@ -5,9 +5,10 @@ import { Box, SimpleGrid, Heading, Card, CardBody, Text } from '@chakra-ui/react
 import { motion } from 'framer-motion';
 import { GET_POSTS } from '../utils/queries';
 import NewPostForm from '../components/Post/NewPost';
+import { GET_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
-export default function Feed({ userId }) {
+export default function Feed() {
   // UNCOMMENT LINES 12-26 FOR JWT AUTH WHEN APP IS FINISHED - ANDREW
     // const navigate = useNavigate();
 
@@ -24,6 +25,9 @@ export default function Feed({ userId }) {
     // if (!token) {
     //     return null;
     // }
+
+    const { data: userData } = useQuery(GET_ME);
+    const userId = userData?.me?._id;
 
     const { data } = useQuery(GET_POSTS);
     const posts = data?.posts || [];
