@@ -21,13 +21,13 @@ export default function PlayerPosts() {
     const [value, setValue] = React.useState('')
     const handleChange = (event) => setValue(event.target.value)
     return (
-        <Flex direction='column' w='40%' align='center' justify='center' bg='#2a3030' borderRadius={25} p={5}>
+        <Flex direction='column' w={{base:'95%', md:'40%', lg:'40%'}} align='center' justify='center' bg='#2a3030' borderRadius={25} p={5}>
             <Heading size='md' color='#f5f5f5' mb={3}>Player Posts</Heading>
             {/* <Post /> */}
             {/* <Post /> */}
             {/* <Post /> */}
             <Flex justify='center' w='100%'>
-                <Button onClick={onOpen} bg='#f5f5f5' w='60%' mt={3} _hover={{ bg: '#c4c4c4' }}>Create A Post</Button>
+                <Button onClick={onOpen} bg='#f5f5f5' w={{base:'95%', md:'70%', lg:'60%'}} mt={3} _hover={{ bg: '#c4c4c4' }}>Create A Post</Button>
                 <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
                     <ModalContent>
