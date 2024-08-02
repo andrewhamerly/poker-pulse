@@ -3,9 +3,12 @@ import '../components/Schedule/Schedule.css';
 import { Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 
+import FormattedEntryFee from '../components/Schedule/formattedEntryFee';
 import GuaranteeType from '../components/Schedule/guaranteePrefix';
 import FormattedDate from '../components/Schedule/formattedDate';
 import FormattedTime from '../components/Schedule/formattedTime';
+import FormattedChips from '../components/Schedule/formattedChips';
+import FormattedLevels from '../components/Schedule/formattedLevels';
 import MultiDayValue from '../components/Schedule/multiDay';
 import HandleEventTitle from '../components/Schedule/absentTitle';
 
@@ -96,7 +99,10 @@ const Schedule = () => {
                       eventTime={event.eventTime} />
                   </td>
                   <td><div>{event.venue}</div></td>
-                  <td><div>${event.entryFee}</div></td>
+                  <td>
+                    <FormattedEntryFee
+                      entryFee={event.entryFee}/>
+                  </td>
                   <td><div>{event.eventType}</div></td>
                   <td><div>{event.series}</div></td>
                   <td>
@@ -107,8 +113,14 @@ const Schedule = () => {
                     <MultiDayValue
                       multiDay={event.multiDay} />
                   </td>
-                  <td><div>{event.chipCount}</div></td>
-                  <td><div>{event.levels}</div></td>
+                  <td>
+                    <FormattedChips 
+                      chipCount={event.chipCount}/>
+                  </td>
+                  <td>
+                    <FormattedLevels 
+                      levels={event.levels} />
+                  </td>
                   <td>
                     <GuaranteeType
                       guarantee={event.guarantee} />

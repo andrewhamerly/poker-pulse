@@ -1,9 +1,26 @@
 import { REMOVE_FROM_SCHEDULE } from './mutations';
 import { useMutation } from '@apollo/client';
 
+const formatEntryFee = (entryFee) => {
+  let entryFeeString = JSON.stringify(entryFee)
+  let lowerCaseEntryFee = entryFeeString.toLowerCase();
+  const removeNaN = entryFeeString.replace(/[^0-9]/g, '')
+  const formattedNumber = parseInt(removeNaN, 10).toLocaleString();
+  
+  return (lowerCaseEntryFee.includes('$') || lowerCaseEntryFee.includes(',')) ? entryFee : formattedNumber;
+};
+
 const getPrefix = (guarantee) => {
   let lowerCaseGuarantee = guarantee.toLowerCase();
   return (lowerCaseGuarantee.includes('seats') || lowerCaseGuarantee.includes('$')) ? '' : '$';
+};
+
+const formatGuarantee = (guarantee) => {
+  let lowerCaseGuarantee = guarantee.toLowerCase();
+  const removeNaN = guarantee.replace(/[^0-9]/g, '')
+  const formattedNumber = parseInt(removeNaN, 10).toLocaleString();
+  
+  return (lowerCaseGuarantee.includes('seats') || lowerCaseGuarantee.includes('$') || lowerCaseGuarantee.includes(',')) ? guarantee : formattedNumber;
 };
 
 const formatDate = (eventDate) => {
@@ -37,6 +54,18 @@ const formatTime = (eventDate, eventTime) => {
   // conver date 'YYY-MM-DDTHH:MM:SS' to time 'HH:MM'
   return formattedTime
 };
+
+const formatChips = (chipCount) => {
+  const formattedNumber = parseInt(chipCount, 10).toLocaleString();
+  
+  return chipCount.includes(',') ? chipCount : formattedNumber;
+};
+
+const formatLevels = (levels) => {
+  let lowerCaseLevels = levels.toLowerCase()
+  const formattedLevels = lowerCaseLevels.replace(/minutes?|mins?/gi, 'Min').trim();
+  return formattedLevels
+}
 
 const sortByDateTime = (eventDate, eventTime) => {
   const eDateNumber = Number(eventDate);
@@ -81,4 +110,13 @@ const useRemoveFromSchedule = () => {
   return handleRemoveFromSchedule
 }
 
-export { getPrefix, formatDate, formatTime, sortByDateTime, absentTitle, useRemoveFromSchedule }
+export { formatEntryFee,
+         getPrefix, 
+         formatGuarantee,
+         formatDate, 
+         formatTime, 
+         formatChips,
+         formatLevels,
+         sortByDateTime, 
+         absentTitle, 
+         useRemoveFromSchedule }
