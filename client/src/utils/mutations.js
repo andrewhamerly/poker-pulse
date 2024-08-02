@@ -101,8 +101,8 @@ export const ADD_TO_SCHEDULE = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($userId: ID!, $content: String!) {
-    addPost(userId: $userId, content: $content) {
+  mutation addPost($content: String!) {
+    addPost(content: $content) {
       _id
       content
       createdAt

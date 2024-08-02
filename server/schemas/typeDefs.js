@@ -82,7 +82,7 @@ const typeDefs = gql`
     updateEvent(_id: ID!, eventData: eventInput!): Event
 
     deleteEvent(_id: ID!): Boolean
-    addPost(userId: ID!, content: String!): Post
+    addPost(content: String!): Post
     deletePost(_id: ID!): Boolean
 }
 
