@@ -12,6 +12,23 @@ import { GET_EVENTS } from '../utils/queries'
 
 
 const Schedule = () => {
+  // UNCOMMENT OUT LINES 15-30 FOR JWT AUTH WHEN APP FINISHED
+//     const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const token = Auth.getToken();
+
+//     if (!token) {
+//       navigate('/signup');
+//     }
+//     }, [navigate]);
+
+//     const token = Auth.getToken();
+
+//     if (!token) {
+//         return null;
+//     }
+
 // const [getEvent, setEvent] = useState('');
 const {loading, data} = useQuery(GET_EVENTS);
 const events = data?.events || [];
