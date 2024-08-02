@@ -4,6 +4,7 @@ import GuaranteeType from '../components/Schedule/guaranteePrefix'
 import FormattedDate from '../components/Schedule/formattedDate'
 import FormattedTime from '../components/Schedule/formattedTime'
 import MultiDayValue from '../components/Schedule/multiDay'
+import HandleEventTitle from '../components/Schedule/absentTitle'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
 import { ADD_TO_SCHEDULE} from '../utils/mutations'
@@ -72,17 +73,33 @@ console.log(events)
             <tbody>
               {events.map((event) => (
                 <tr key={event.id}>
-                  <td><FormattedDate eventDate={event.eventDate} /></td>
-                  <td><FormattedTime eventDate={event.eventDate} eventTime={event.eventTime} /></td>
+                  <td>
+                    <FormattedDate 
+                      eventDate={event.eventDate} />
+                  </td>
+                  <td>
+                    <FormattedTime 
+                      eventDate={event.eventDate} 
+                      eventTime={event.eventTime} />
+                  </td>
                   <td><div>{event.venue}</div></td>
                   <td><div>${event.entryFee}</div></td>
                   <td><div>{event.eventType}</div></td>
                   <td><div>{event.series}</div></td>
-                  <td><div>{event.eventTitle}</div></td>
-                  <td><MultiDayValue multiDay={event.multiDay} /></td>
+                  <td>
+                    <HandleEventTitle 
+                      eventTitle={event.eventTitle} />
+                  </td>
+                  <td>
+                    <MultiDayValue 
+                      multiDay={event.multiDay} />
+                  </td>
                   <td><div>{event.chipCount}</div></td>
                   <td><div>{event.levels}</div></td>
-                  <td><GuaranteeType guarantee={event.guarantee} /></td>
+                  <td>
+                    <GuaranteeType 
+                      guarantee={event.guarantee} />
+                    </td>
                   <td>
                     <button
                       className='addToSchedule'
