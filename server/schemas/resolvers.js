@@ -7,29 +7,50 @@ const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
   Query: {
-    users: async () => {
-      return User.find();
+    users: async (parent, args, context) => {
+      if (context.user) {
+        return User.find();
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
-    user: async (parent, { _id }) => {
-      return User.findById(_id);
+    user: async (parent, { _id }, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id });
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
-    events: async () => {
-      return Event.find();
+    events: async (parent, args, context) => {
+      if (context.user) {
+        return Event.find();
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
-    event: async (parent, { _id }) => {
-      return Event.findById(_id);
+    event: async (parent, { _id }, context) => {
+      if (context.user) {
+        return Event.findById(_id);
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
     latestEvent: async () => {
-      return Event.findOne().sort({ eventDate: -1 });
+        return Event.findOne().sort({ eventDate: -1 });
     },
-    schedules: async () => {
-      return Schedule.find().populate('events');
+    schedules: async (parent, args, context) => {
+      if (context.user) {
+        return Schedule.find().populate('events');
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
-    schedule: async (parent, { _id }) => {
-      return Schedule.findById(_id).populate('events');
+    schedule: async (parent, { _id }, context) => {
+      if (context.user) {
+        return Schedule.findById(_id).populate('events');
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
-    posts: async () => {
-      return Post.find().populate('user');
+    posts: async (parent, args, context) => {
+      if (context.user) {
+        return Post.find().populate('user');
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
     post: async (parent, { _id }) => {
       return Post.findById(_id).populate('user');
@@ -56,14 +77,17 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    updateUser: async (parent, { _id, ...args }) => {
-      return User.findByIdAndUpdate(_id, args, { new: true });
+    updateUser: async (parent, { _id, ...args }, context) => {
+      if (context.user) {
+        return User.findByIdAndUpdate(_id, args, { new: true });
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('No user found with this email address');
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const correctPw = await user.isCorrectPassword(password);
@@ -77,7 +101,7 @@ const resolvers = {
       return { token, user };
     },
     
-    addEventToSchedule: async (parent, args, context) => {
+addEventToSchedule: async (parent, args, context) => {
       console.log(new Date(args.eventData.eventDate))
       const eDateNumber = Number(args.eventData.eventDate);
       const eDate = new Date(eDateNumber);
@@ -90,31 +114,53 @@ const resolvers = {
         { new: true}
       ).populate('schedule');
     // }
+  
     },
-    updateSchedule: async (parent, { _id, events }) => {
-      return Schedule.findByIdAndUpdate(_id, { events }, { new: true });
+    updateSchedule: async (parent, { _id, scheduleTitle, events }, context) => {
+      if (context.user) {
+        return Schedule.findByIdAndUpdate(_id, { scheduleTitle, events }, { new: true });
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
-    deleteSchedule: async (parent, { _id }) => {
-      await Schedule.findByIdAndDelete(_id);
-      return true;
+    deleteSchedule: async (parent, { _id }, context) => {
+      if (context.user) {
+        await Schedule.findByIdAndDelete(_id);
+        return true;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
-    addEvent: async (parent, args) => {
-      return Event.create(args);
+    addEvent: async (parent, args, context) => {
+      if (context.user) {
+        return Event.create(args);
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
-    updateEvent: async (parent, { _id, ...args }) => {
-      return Event.findByIdAndUpdate(_id, args, { new: true });
+    updateEvent: async (parent, { _id, ...args }, context) => {
+      if (context.user) {
+        return Event.findByIdAndUpdate(_id, args, { new: true });
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
-    deleteEvent: async (parent, { _id }) => {
-      await Event.findByIdAndDelete(_id);
-      return true;
+    deleteEvent: async (parent, { _id }, context) => {
+      if (context.user) {
+        await Event.findByIdAndDelete(_id);
+        return true;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
-    addPost: async (parent, { userId, content }) => {
-      const post = await Post.create({ user: userId, content });
-      return post.populate('user').execPopulate();
+    addPost: async (parent, { content }, context) => {
+      if (context.user) {
+        const post = await Post.create({ user: context.user._id, content });
+        return post.populate('user').execPopulate();
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
-    deletePost: async (parent, { _id }) => {
-      await Post.findByIdAndDelete(_id);
-      return true;
+    deletePost: async (parent, { _id }, context) => {
+      if (context.user) {
+        await Post.findByIdAndDelete(_id);
+        return true;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
 };

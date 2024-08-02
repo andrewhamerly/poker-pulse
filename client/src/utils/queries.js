@@ -23,6 +23,25 @@ export const GET_EVENT_DETAILS = gql`
   }
 `;
 
+export const SEARCH_EVENTS = gql`
+  query SearchEvents($eventDate: String, $eventTime: String, $venue: String, $entryFee: Float, $eventType: String, $multiDay: Boolean, $chipCount: String, $levels: String, $guarantee: String) {
+    searchEvents(eventDate: $eventDate, eventTime: $eventTime, venue: $venue, entryFee: $entryFee, eventType: $eventType, multiDay: $multiDay, chipCount: $chipCount, levels: $levels, guarantee: $guarantee) {
+      _id
+      eventDate
+      eventTime
+      venue
+      entryFee
+      eventType
+      series
+      eventTitle
+      multiDay
+      chipCount
+      levels
+      guarantee
+    }
+  }
+`;
+
 // Query to get all tournaments
 
 export const GET_EVENTS = gql`
