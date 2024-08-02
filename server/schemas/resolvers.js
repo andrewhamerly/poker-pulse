@@ -100,20 +100,12 @@ const resolvers = {
 
       return { token, user };
     },
-    
     addEventToSchedule: async (parent, { eventData }, context) => {
       return User.findOneAndUpdate(
         { _id: context.user._id },
         { $addToSet: { schedule: eventData}},
         { new: true}
       );
-      
-    },
-    addSchedule: async (parent, { scheduleTitle, events }, context) => {
-      if (context.user) {
-        return Schedule.create({ userId: context.user._id, scheduleTitle, events });
-      }
-      throw new AuthenticationError('You need to be logged in!');
     },
     updateSchedule: async (parent, { _id, scheduleTitle, events }, context) => {
       if (context.user) {
