@@ -94,7 +94,8 @@ const Event = () => {
 
             <tbody>
               {sortedEvents.map((event) => (
-                <tr key={event.id}>
+                <tr key={event._id}>
+                  {/* changed from event.id to get rid of error: 'Each child in a list should have a unique "key" prop.' */}
                   <td>
                     <FormattedDate
                       eventDate={event.eventDate} />
