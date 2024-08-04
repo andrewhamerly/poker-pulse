@@ -37,9 +37,12 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    latestEvent: async () => {
-        return Event.findOne().sort({ eventDate: -1 });
+    nextEvents: async (_, {limit}) => {
+      return Event.find().sort({ eventDate: 1}).limit(limit);
     },
+    // latestEvent: async () => {
+    //     return Event.findOne().sort({ eventDate: -1 });
+    // },
     schedules: async (parent, args, context) => {
       if (context.user) {
         return User.find().populate('schedule');
