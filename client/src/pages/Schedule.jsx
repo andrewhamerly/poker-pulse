@@ -1,7 +1,11 @@
 import '../components/Schedule/Schedule.css';
-
+import React from 'react';
+import HorizontalTable from '../components/Schedule/HorizontalTable';
+import VerticalTable from '../components/Schedule/VerticalTable';
+import { Box } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
+import useWindowSize from '../utils/useWindowSize';
 
 import FormattedEntryFee from '../components/Schedule/formattedEntryFee';
 import GuaranteeType from '../components/Schedule/guaranteePrefix';
@@ -38,114 +42,12 @@ const Schedule = () => {
   //         return null;
   //     }
 
-
-  const { loading, data } = useQuery(GET_SCHEDULE);
-  const handleRemoveFromSchedule = useRemoveFromSchedule()
-
-  const events = data?.getSchedule.schedule || [];
-
-  const sortedEvents = [...events].sort((a, b) => {
-    const timeA = sortByDateTime(a.eventDate, a.eventTime);
-    const timeB = sortByDateTime(b.eventDate, b.eventTime);
-    return timeA - timeB;
-  });
+  const size = useWindowSize();
 
   return (
     <div>
-      {loading ? (
-        <div>Loading...</div>
-      ) : events.length === 0 ? (
-        <div className='noEventsContainer'>
-          <div className='noEventText'>No events scheduled.</div>
-          <div>
-            <Link
-              to='/event'>
-              <button>
-                Add Events
-              </button>
-            </Link>
-          </div>
-        </div>
-      ) : (
-        <section className="scheduleList">
-          <table>
-            <thead>
-              <tr>
-                <th>Date:</th>
-                <th>Start Time:</th>
-                <th>Venue:</th>
-                <th>Fee:</th>
-                <th>Type:</th>
-                <th>Series:</th>
-                <th>Title:</th>
-                <th>Multi-Day:</th>
-                <th>Chips:</th>
-                <th>Levels:</th>
-                <th>Guarantee:</th>
-                <th>Remove From Schedule:</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {sortedEvents.map((event) => (
-                <tr key={event._id}>
-                  {/* changed from event.id to get rid of error: 'Each child in a list should have a unique "key" prop.' */}
-                  <td>
-                    <FormattedDate
-                      eventDate={event.eventDate} />
-                  </td>
-                  <td>
-                    <FormattedTime
-                      eventDate={event.eventDate}
-                      eventTime={event.eventTime} />
-                  </td>
-                  <td><div>{event.venue}</div></td>
-                  <td>
-                    <FormattedEntryFee
-                      entryFee={event.entryFee}/>
-                  </td>
-                  <td><div>{event.eventType}</div></td>
-                  <td><div>{event.series}</div></td>
-                  <td>
-                    <HandleEventTitle
-                      eventTitle={event.eventTitle} />
-                  </td>
-                  <td>
-                    <MultiDayValue
-                      multiDay={event.multiDay} />
-                  </td>
-                  <td>
-                    <FormattedChips 
-                      chipCount={event.chipCount}/>
-                  </td>
-                  <td>
-                    <FormattedLevels 
-                      levels={event.levels} />
-                  </td>
-                  <td>
-                    <GuaranteeType
-                      guarantee={event.guarantee} />
-                  </td>
-                  <td>
-                    <button
-                      className='deleteFromSchedule'
-                      type='button'
-                      onClick={() => handleRemoveFromSchedule(event)}
-                    >
-                      <span role="img" aria-label="add to schedule">
-                        <p>
-                          <FontAwesomeIcon icon={faCalendarXmark} />
-                        </p>
-                      </span>
-                    </button>
-                  </td>
-                </tr>
-              )
-              )}
-            </tbody>
-          </table>
-        </section>
-      )}
+      {size.width >= 600 && <HorizontalTable />}
+      {size.width < 600 && <VerticalTable />}
     </div>
   )
 };
