@@ -171,9 +171,10 @@ export const GET_POST = gql`
   }
 `;
 
-export const GET_LATEST_EVENT = gql`
-query Events {
-  latestEvent {
+
+export const GET_NEXT_THREE_EVENTS = gql`
+query getNextEvents($limit: Int!) {
+  nextEvents(limit: $limit) {
     _id
     eventDate
     eventTime

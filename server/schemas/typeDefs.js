@@ -52,6 +52,7 @@ const typeDefs = gql`
     events: [Event]
     event(_id: ID!): Event
     latestEvent: Event
+    nextEvents(limit: Int!): [Event]
     schedules: [Schedule]
     getSchedule: User
     posts: [Post]

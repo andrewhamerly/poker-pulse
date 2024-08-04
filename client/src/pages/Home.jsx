@@ -4,42 +4,40 @@ import backgroundImage from '../assets/images/pexels-photospublic-444964.jpg';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { GET_LATEST_EVENT } from '../utils/queries';
+import { GET_NEXT_THREE_EVENTS } from '../utils/queries';
+import FormattedDate from '../components/Schedule/formattedDate';
+import FormattedTime from '../components/Schedule/formattedTime';
 
 
 const Home = () => {
   const navigate = useNavigate();
-  let { loading, error, data} = useQuery(GET_LATEST_EVENT);
+  let { loading, error, data } = useQuery( GET_NEXT_THREE_EVENTS, {
+    variables: {limit: 3}
+  });
 
-  const handleLogin = () => {
-    navigate('/login');
-    console.log('Navigate to Login page');
-  };
 
-  const handleSignup = () => {
-    navigate('/signup')
-    console.log('Navigate to Signup page');
-  };
-  
   const handleEventClick = (id) => {
-    navigate(`/events/${id}`);
+    navigate(`/event/${id}`);
   };
 
-  
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>
-  let events = data.latestEvent;
-  // let events = data?.events || [];
-console.log(events)
+  let events = data?.nextEvents || [];
   console.log(events)
-  const upcomingEvent = events;
+  // const upcomingEvent = events;
+
+
   return (
     <main>
 
       <Box
         position="relative"
         p={10}
-        color={'white'}
+        as={motion.div}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2 }}
         textAlign="center"
         boxShadow={'xl'}
         _before={{
@@ -58,7 +56,15 @@ console.log(events)
         }}>
 
 
-        <Heading color={'brand.eerieBlack'} borderBlock={'Background'} as="h1" size="2xl" mb={4}>
+        <Heading
+          color={'brand.eerieBlack'}
+          borderBlock={'Background'}
+          size="2xl"
+          mb={4}
+          as={motion.h1}
+          initial={{ y: -50, opacity: 0}}
+          animate={{ y: 0, opacity: 1}}
+          transition={{ duration: 1, delay: 1.5}}>
           <Card bg="rgba(255, 255, 255, 0.6)" mb={4}>
             <CardBody >
               <Text>Welcome Aces!</Text>
@@ -69,50 +75,55 @@ console.log(events)
           </Card>
         </Heading>
 
-      </Box>
-      <Box
-      >
-        <Box bg={'brand.onyx'}>
-          <SimpleGrid columns={[1, null, 2]} spacing={6} justifyItems={'center'}>
 
-            <Box filter="grayscale(0%)" as={motion.div} whileHover={{ scale: 1.05 }} transition={'0.3s'} bg={'brand.hunterGreen'} borderRadius={'lg'} width={'300px'} p={6} m={4} boxShadow={'lg'}>
-              <Heading color={'white'} as={"h3"} size={"md"} textAlign={'center'} fontWeight={'bold'} >Checkout these upcoming tournaments!</Heading>
-              { upcomingEvent ? (
-                <Card key={upcomingEvent._id} mb={4} onClick={() => handleEventClick(upcomingEvent._id)} cursor={'pointer'} >
-                <CardBody>
-                <Text>Event Type: {upcomingEvent.eventType}</Text>
-                <Text>Entry Fee: ${upcomingEvent.entryFee}</Text>
-                <Text>Guarantee: ${upcomingEvent.guarantee}</Text>
-                <Text>Venue: {upcomingEvent.venue}</Text>
-                <Text>Time: {upcomingEvent.eventTime}, {new Date(upcomingEvent.eventDate).toLocaleDateString()}</Text>
-                </CardBody>
-              </Card>
-              ) : (
-                <Text>No upcoming events</Text>
-              )}
-              {/* {events.slice(1, 4).map(event => (
-                <Card key={event._id} mb={4} onClick={() => handleEventClick(event._id)} cursor={'pointer'}>
-                  <CardBody>
-                    <Text>{event.eventTitle}</Text>
-                  </CardBody>
-                </Card>
-              ))} */}
+        <Box
+        >
+          <Box >
+            <SimpleGrid columns={[1, null, 3]} spacing={6} justifyItems={'center'}>
+              {events.map(event => (
+
               
-            </Box>
+              <Box 
+              key={event._id}
+              filter="grayscale(0%)" 
+              as={motion.div} 
+              whileHover={{ scale: 1.05 }} 
+              transition={'0.7s'} 
+              bg={'brand.hunterGreen'} 
+              borderRadius={'lg'} 
+              width={'300px'} 
+              p={6} 
+              m={4} 
+              boxShadow={'lg'}
+              onClick={() => handleEventClick(event._id)} 
+              cursor={'pointer'}>
+                <Heading color={'white'} as={"h3"} size={"md"} textAlign={'center'} fontWeight={'bold'} >
+                  Checkout this upcoming tournaments!</Heading>
+                 
+                  <Card  mb={4}  >
+                    <CardBody>
+                      <Text>Event Type: {event.eventType}</Text>
+                      <Text>Entry Fee: ${event.entryFee}</Text>
+                      <Text>Guarantee: {event.guarantee}</Text>
+                      <Text>Chip Count: {event.chipCount}</Text>
+                      <Text>Series: {event.series}</Text>
+                      <Text>Title: {event.eventTitle}</Text>
+                      <Text>Levels: {event.levels}</Text>
+                      <Text>Venue: {event.venue}</Text>
+                      <FormattedTime eventTime={event.eventTime} eventDate={event.eventDate}/><FormattedDate eventDate={event.eventDate}/>
+                    </CardBody>
+                  </Card>
+               
 
-            <Box width="300px" p={6} m={4} borderRadius="lg" boxShadow="lg" bg={'brand.hunterGreen'} as={motion.div} whileHover={{ scale: 1.05 }} transition={'0.3s'} >
-              <VStack spacing={6}>
-                <Heading as="h3" size="lg" color={'white'}>Login/Signup</Heading>
-                <Button bg={'brand.onyx'} width={'full'} color={'white'} onClick={handleLogin}>Login</Button>
-                <Button bg={'brand.onyx'} width={'full'} color={'white'} onClick={handleSignup}>Signup</Button>
-                <Button bg={'brand.onyx'} width={'full'} color={'white'} size="lg">Future Button</Button>
-              </VStack>
-            </Box>
 
+              </Box>
 
-          </SimpleGrid>
+              
+
+            ))}
+            </SimpleGrid>
+          </Box>
         </Box>
-
       </Box>
     </main>
   );
