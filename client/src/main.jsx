@@ -4,10 +4,12 @@ import './index.css';
 
 import App from './App.jsx'
 import Home from './pages/Home';
+import About from './pages/About';
 import Profile from './pages/Profile';
 import Feed from './pages/Feed';
 import Event from './pages/Event';
 import Schedule from './pages/Schedule';
+import Contact from './pages/Contact';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Error from './pages/Error';
@@ -21,6 +23,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
+      },
+      {
+        path: '/about',
+        element: <About />
       },
       {
         path: '/profile',
@@ -37,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: '/schedule',
         element: <Schedule />
+      },
+      {
+        path: '/contact',
+        element: <Contact />
       },
       {
         path: '/login',

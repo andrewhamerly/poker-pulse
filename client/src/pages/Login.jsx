@@ -42,7 +42,7 @@ const Login = () => {
             <img src={logo} alt="Poker Pulse Logo" className="logo w-36" />
           </Link>
         </div>
-        <h1 className="text-center text-2xl font-bold text-eerieBlack sm:text-3xl">Welcome Back Player</h1>
+        <h1 className="text-center text-2xl font-bold text-onyx sm:text-3xl">Welcome Back Player</h1>
         <form onSubmit={handleFormSubmit} className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
           <p className="text-center text-lg font-medium text-outerSpace">Please enter login details below</p>
           <div>
@@ -117,9 +117,23 @@ const Login = () => {
             Sign in
           </button>
           {error && (
-            <div className="text-center text-md text-red-500 mt-2">
-              {error.message}
+            <div role="alert" className="rounded border-s-4 border-rojo bg-vermillion p-4">
+            <div className="flex items-center gap-2 text-eerieBlack">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+                <path
+                  fillRule="evenodd"
+                  d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                  clipRule="evenodd"
+                />
+              </svg>
+
+              <strong className="block text-eerieBlack font-semibold font-medium"> Unable to login. </strong>
             </div>
+
+            <p className="mt-2 text-md text-eerieBlack">
+              Please try entering your email and password again.
+            </p>
+          </div>
           )}
           {data && (
             <p className="text-center text-md text-eerieBlack mt-2">
@@ -129,7 +143,7 @@ const Login = () => {
           )}
           <p className="text-center text-md text-eerieBlack">
             No account?<span> </span>
-            <Link className="underline font-semibold hover:text-hunterGreen" to="/signup">Sign up</Link>
+            <Link className="underline underline-offset-8 font-semibold hover:text-hunterGreen" to="/signup">Sign up</Link>
           </p>
         </form>
       </div>
