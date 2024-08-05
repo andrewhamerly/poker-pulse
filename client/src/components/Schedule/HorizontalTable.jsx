@@ -53,7 +53,7 @@ const HorizontalTable = () => {
             <Link
               to='/event'>
               <button>
-                Add Events
+                Add Events To Your Schedule
               </button>
             </Link>
           </div>
@@ -124,7 +124,7 @@ const HorizontalTable = () => {
                       type='button'
                       onClick={() => handleRemoveFromSchedule(event)}
                     >
-                      <span role="img" aria-label="add to schedule">
+                      <span role="img" aria-label="delete from schedule">
                         <p>
                           <FontAwesomeIcon icon={faCalendarXmark} />
                         </p>

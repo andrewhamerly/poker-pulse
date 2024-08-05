@@ -1,24 +1,34 @@
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/poker-pulse-logo.png';
-import { Link } from 'react-router-dom';
+import Auth from '../../utils/auth';
 
 const Footer = () => {
+    const navigate = useNavigate();
+    const isLoggedIn = !!Auth.getToken();
+  
+    const handleLogout = () => {
+      Auth.logout();
+      navigate('/');
+    };
+
     return (
     <footer className="bg-gunmetal">
         <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
             <div className="flex justify-center">
                 <Link to="/">
-                <img src={logo} alt="Poker Pulse Logo" className="logo w-36" />
+                <img src={logo} alt="Poker Pulse Logo" className="logo w-20" />
                 </Link>
             </div>
 
             <p className="text-xl font-semibold mx-auto mt-6 max-w-md text-center leading-relaxed text-whiteSmoke">
-            "This is a slogan placeholder!"
+            Your ultimate guide to poker events.
             </p>
 
             <ul className="mt-8 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
                 <li>
                     <Link 
-                    className="text-whiteSmoke font-semibold transition hover:text-whiteSmoke/75" 
+                    className="text-whiteSmoke underline underline-offset-8 font-semibold transition hover:text-whiteSmoke/75" 
                     to="/about">
                     About
                     </Link>
@@ -26,7 +36,7 @@ const Footer = () => {
 
                 <li>
                     <Link 
-                    className="text-whiteSmoke font-semibold transition hover:text-whiteSmoke/75" 
+                    className="text-whiteSmoke underline underline-offset-8 font-semibold transition hover:text-whiteSmoke/75" 
                     to="/profile">
                     Profile
                     </Link>
@@ -34,27 +44,60 @@ const Footer = () => {
 
                 <li>
                     <Link 
-                    className="text-whiteSmoke font-semibold transition hover:text-whiteSmoke/75" 
+                    className="text-whiteSmoke underline underline-offset-8 font-semibold transition hover:text-whiteSmoke/75" 
+                    to="/feed">
+                    Feed
+                    </Link>
+                </li>
+
+                <li>
+                    <Link 
+                    className="text-whiteSmoke underline underline-offset-8 font-semibold transition hover:text-whiteSmoke/75" 
+                    to="/event">
+                    Events
+                    </Link>
+                </li>
+
+                <li>
+                    <Link 
+                    className="text-whiteSmoke underline underline-offset-8 font-semibold transition hover:text-whiteSmoke/75" 
                     to="/schedule">
                     Schedule
                     </Link>
                 </li>
 
-                <li>
-                    <Link 
-                    className="text-whiteSmoke font-semibold transition hover:text-whiteSmoke/75" 
-                    to="/login">
-                    Login
-                    </Link>
-                </li>
+                {!isLoggedIn && (
+                    <>
+                    <li>
+                        <Link
+                        className="text-whiteSmoke underline underline-offset-8 font-semibold transition hover:text-whiteSmoke/75"
+                        to="/login"
+                        >
+                        Login
+                        </Link>
+                    </li>
 
-                <li>
-                    <Link 
-                    className="text-whiteSmoke font-semibold transition hover:text-whiteSmoke/75" 
-                    to="/signup">
-                    Signup
-                    </Link>
-                </li>
+                    <li>
+                        <Link
+                        className="text-whiteSmoke underline underline-offset-8 font-semibold transition hover:text-whiteSmoke/75"
+                        to="/signup"
+                        >
+                        Signup
+                        </Link>
+                    </li>
+                    </>
+                )}
+
+                {isLoggedIn && (
+                    <li>
+                    <button
+                        onClick={handleLogout}
+                        className="text-whiteSmoke underline underline-offset-8 font-semibold transition hover:text-whiteSmoke/75"
+                    >
+                        Logout
+                    </button>
+                    </li>
+                )}
             </ul>
 
             <ul className="mt-12 flex justify-center gap-6 md:gap-8">
@@ -112,7 +155,7 @@ const Footer = () => {
 
             <li>
                 <a
-                href="#"
+                href="https://github.com/andrewhamerly/vegas-poker-pulse"
                 rel="noreferrer"
                 target="_blank"
                 className="text-whiteSmoke transition hover:text-whiteSmoke/75"
