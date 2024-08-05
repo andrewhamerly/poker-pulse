@@ -83,7 +83,7 @@ eventDate,eventTime,venue,entryFee,eventType,series,eventTitle,multiDay,chipCoun
 2024-09-01,11:00,Orleans,200,NLH,Orleans Summer Open,Sunday Special,false,30000,"30 Min","$20,000"
 2024-09-01,18:00,Orleans,200,NLH,Orleans Summer Open,Super Stack,false,30000,"30 Min","$20,000"
 2024-09-02,11:00,Orleans,400,NLH,Orleans Summer Open,Ladies Championship,false,30000,"30 Min","$20,000"
-2024-09-02,16:00,Orleans,240,NL 2-7 TD,Orleans Summer Open,NL 2-7 Single Draw,false,30000,"30 Min","$20,000"
+2024-09-02,16:00,Orleans,240,NL 2-7,Orleans Summer Open,NL 2-7 Single Draw,false,30000,"30 Min","$20,000"
 2024-09-02,18:00,Orleans,200,NLH,Orleans Summer Open,Super Stack,false,30000,"30 Min","$20,000"
 2024-09-03,11:00,Orleans,200,NLH,Orleans Summer Open,Super Stack,false,30000,"30 Min","$20,000"
 2024-09-03,16:00,Orleans,100,NLH,Orleans Summer Open,Main Event Satellite 1 in 7.5,false,30000,"30 Min","$20,000"
