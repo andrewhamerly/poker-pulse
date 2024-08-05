@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
-import errorImage from '../assets/images/poker-pulse-404-graphic.png'
+import AboutCompany from "../components/About/AboutCompany";
+import AboutDevs from "../components/About/AboutDevs";
 
 const About = () => {
   return (
     <>
-    <h2>About Page</h2>
+    < AboutCompany />
+    < AboutDevs />
     </>
   );
 };
