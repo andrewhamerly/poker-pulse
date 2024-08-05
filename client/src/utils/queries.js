@@ -197,10 +197,6 @@ export const GET_ME = gql`
       _id
       username
       email
-      schedule {
-        _id
-        scheduleTitle
-      }
       userBio
       youStake
       hendonMob
@@ -208,3 +204,20 @@ export const GET_ME = gql`
   }
 `;
 // We can add more queries as needed
+
+// export const GET_ME = gql`
+//   query getMe {
+//     me {
+//       _id
+//       username
+//       email
+//       schedule {
+//         _id
+//         scheduleTitle
+//       }
+//       userBio
+//       youStake
+//       hendonMob
+//     }
+//   }
+// `;

@@ -5,13 +5,8 @@ import ScheduleAndPostsSection from "../components/Profile/Sections/PostsSchedul
 import BottomSection from "../components/Profile/Sections/BottomSection";
 import { Flex } from "@chakra-ui/react";
 import Auth from '../utils/auth';
-
-const user = {
-    avatar: "",
-    username: "username",
-    pokerlevel: "lvl 1",
-    userbio: "Insert bio here!"
-}
+import { GET_ME } from '../utils/queries';
+import { useQuery } from '@apollo/client';
 
 export default function Profile() {
     // UNCOMMENT OUT LINES 18-32 FOR JWT AUTH WHEN APP IS FINISHED - ANDREW
@@ -30,10 +25,12 @@ export default function Profile() {
 //     if (!token) {
 //         return null;
 //     }
+
+const { loading, data } = useQuery(GET_ME);
     
-    return (
+    return loading || (
         <Flex direction='column' w='100%'>
-            <ProfileSection avatar={user.avatar} username={user.username} pokerlevel={user.pokerlevel} userbio={user.userbio}/>
+            <ProfileSection avatar={data?.me?.avatar || 'smiley face'} username={data?.me?.username || 'username'} pokerlevel={data?.me?.pokerlevel || 'lvl 0'} userBio={data?.me?.userBio || "You gotta know when to hold 'em and when to fold 'em."}/>
             <ScheduleAndPostsSection />
             <BottomSection />
         </Flex>
