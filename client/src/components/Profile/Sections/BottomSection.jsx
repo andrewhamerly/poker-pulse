@@ -1,5 +1,7 @@
 import { Flex, Heading, Link, Button, Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import { Search2Icon } from '@chakra-ui/icons';
+// import { useLazyQuery } from '@apollo/client';
+// import {SEARCH_PLAYERS} from '.client/src/utils/queries.js'
 
 export default function BottomSection() {
     return (

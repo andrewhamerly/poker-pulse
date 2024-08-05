@@ -137,20 +137,20 @@ export const DELETE_POST = gql`
 `;
 
 // Update user bio
-export const UPDATE_USER = gql`
-  mutation updateUser($username: String!, $email: String!, $password: String!, $userBio: String!, $youStake: String!, $hendonMob: String!) {
-        updateUser(_id: $id!, $username: String, $email: String, $password: String, $userBio: String, $youStake: String, $hendonMob: String) {
-      token
-      user {
-        _id
-        username
-        email
-        userBio
-        youStake
-        hendonMob
-      }
-    }
-  }
-`;
+// export const UPDATE_USER = gql`
+//   mutation updateUser($username: String!, $email: String!, $password: String!, $userBio: String!, $youStake: String!, $hendonMob: String!) {
+//         updateUser(_id: $id!, $username: String, $email: String, $password: String, $userBio: String, $youStake: String, $hendonMob: String) {
+//       token
+//       user {
+//         _id
+//         username
+//         email
+//         userBio
+//         youStake
+//         hendonMob
+//       }
+//     }
+//   }
+// `;
 
 // We can add more mutations as needed

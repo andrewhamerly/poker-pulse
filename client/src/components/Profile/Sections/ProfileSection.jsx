@@ -23,7 +23,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import youstakelogo from '../../../assets/logos/youstakelogo.svg';
 import hendonmoblogo from '../../../assets/logos/hendonmoblogo.svg';
-import { UPDATE_USER } from '../../../utils/mutations';
+// import { UPDATE_USER } from '../../../utils/mutations';
 
 export default function ProfileSection(props) {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -31,7 +31,7 @@ export default function ProfileSection(props) {
     const finalRef = React.useRef(null);
     const [value, setValue] = React.useState('');
     const handleChange = (event) => { setValue(event.target.value) }
-    const [updateUser, { error, data }] = useMutation(UPDATE_USER);
+    // const [updateUser, { error, data }] = useMutation(UPDATE_USER);
     async function saveAndClose() {
         window.alert(value)
         try {
