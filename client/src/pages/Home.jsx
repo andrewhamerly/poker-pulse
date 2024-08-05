@@ -58,7 +58,7 @@ const handleRemoveFromSchedule = useRemoveFromSchedule();
   let events = data?.nextEvents || [];
   // const upcomingEvent = events;
   const userSchedule = scheduleData?.getSchedule.schedule || []
-
+  
   return (
     <main>
 

@@ -136,6 +136,7 @@ export const DELETE_POST = gql`
   }
 `;
 
+
 // // Update user bio
 export const UPDATE_USER = gql`
   mutation UpdateUser($id: ID!) {
@@ -174,5 +175,6 @@ export const UPDATE_USER = gql`
     }
 }
 `;
+
 
 // We can add more mutations as needed

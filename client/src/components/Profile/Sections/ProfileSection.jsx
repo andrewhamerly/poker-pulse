@@ -25,6 +25,7 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import youstakelogo from '../../../assets/logos/youstakelogo.svg';
 import hendonmoblogo from '../../../assets/logos/hendonmoblogo.svg';
 import { UPDATE_USER } from '../../../utils/mutations';
+
 export default function ProfileSection(props) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const initialRef = React.useRef(null);
