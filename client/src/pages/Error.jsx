@@ -25,7 +25,7 @@ const Error = () => {
         404
       </Heading>
       <Text fontSize="lg" mb={6} className="text-whiteSmoke text-lg font-semibold">
-        Oops! The page you’re looking for had to fold.
+        Oops! This page folded.
       </Text>
       <Button
         as={Link}
