@@ -119,11 +119,11 @@ tr:hover {
   color: #166534;
 }
 
-.noEventText {
+.noEventText, .loginToCreateSchedule {
   font-size: 125%;
 }
 
-.noEventsContainer {
+.noEventsContainer, .loginToCreateSchedule {
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,7 +1,9 @@
 import './Schedule.css';
 
 import { Link } from 'react-router-dom';
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery } from '@apollo/client';
+
+import AuthService from '../../utils/auth'
 
 import FormattedEntryFee from './formattedEntryFee';
 import GuaranteeType from './guaranteePrefix';
@@ -23,7 +25,10 @@ import { useRemoveFromSchedule, sortByDateTime } from '../../utils/scheduleHelpe
 const HorizontalTable = () => {
 
   const { loading, data } = useQuery(GET_SCHEDULE);
+
   const handleRemoveFromSchedule = useRemoveFromSchedule()
+
+  const isLoggedIn = AuthService.loggedIn();
 
   const events = data?.getSchedule.schedule || [];
 
@@ -32,6 +37,10 @@ const HorizontalTable = () => {
     const timeB = sortByDateTime(b.eventDate, b.eventTime);
     return timeA - timeB;
   });
+
+  if(!isLoggedIn) {
+    return <div className='loginToCreateSchedule'>Please login to add to your schedule.</div>
+  }
 
   return (
     <div>
