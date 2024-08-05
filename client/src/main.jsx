@@ -4,6 +4,7 @@ import './index.css';
 
 import App from './App.jsx'
 import Home from './pages/Home';
+import About from './pages/About';
 import Profile from './pages/Profile';
 import Feed from './pages/Feed';
 import Event from './pages/Event';
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
+      },
+      {
+        path: '/about',
+        element: <About />
       },
       {
         path: '/profile',
