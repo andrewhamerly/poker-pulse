@@ -47,7 +47,7 @@ function NavTabs() {
           className={`block px-4 py-2 ${currentPage === '/event' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
           aria-current={currentPage === '/event' ? 'event page' : undefined}
         >
-          Event
+          Events
         </Link>
       </li>
       <li className="nav-item">
