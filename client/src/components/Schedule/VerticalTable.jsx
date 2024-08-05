@@ -34,7 +34,7 @@ const Schedule = () => {
     });
 
     return (
-        <div>
+        <div className='schedule'>
             {loading ? (
                 <div>Loading...</div>
             ) : events.length === 0 ? (
