@@ -91,9 +91,8 @@ tr:hover {
 
 .noEventsContainer button {
   padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007bff;
-  /* Button color */
+  font-size: 1.25rem;
+  background-color: #35654D; /* bg-hunterGreen - Button color */
   color: white;
   border: none;
   border-radius: 5px;
