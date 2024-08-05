@@ -5,6 +5,8 @@ import { useQuery } from '@apollo/client';
 
 import AuthService from '../../utils/auth'
 
+import Signup from '../../pages/Signup'
+
 import FormattedEntryFee from './formattedEntryFee';
 import GuaranteeType from './guaranteePrefix';
 import FormattedDate from './formattedDate';
@@ -39,7 +41,10 @@ const HorizontalTable = () => {
   });
 
   if(!isLoggedIn) {
-    return <div className='loginToCreateSchedule'>Please login to view your schedule.</div>
+    return <div>
+            <div className='loginToCreateSchedule'>Please login to view your schedule.</div>
+            <Signup />
+           </div>
   }
 
   return (
