@@ -1,49 +1,35 @@
+/* COMMON =============================================================================================> */
 table {
   width: 100%;
   border-collapse: collapse;
-}
-
-th, td {
-  text-align: center; /* Center the text horizontally */
-  vertical-align: middle; /* Center the text vertically */
-  padding: 8px; /* Add some padding for better readability */
-  border: 1px solid #ddd; /* Add a border for better visibility */
 }
 
 /* Optional: Add some styling to the header cells */
 th {
-  background-color: #f4f4f4; /* Light grey background for headers */
-  font-weight: bold; /* Make the header text bold */
+  background-color: #f4f4f4;
+  /* Light grey background for headers */
+  font-weight: bold;
+  /* Make the header text bold */
 }
 
 /* Optional: Add alternating row colors for better readability */
 tr:nth-child(even) {
-  background-color: #f9f9f9; /* Light grey background for even rows */
+  background-color: #f9f9f9;
+  /* Light grey background for even rows */
 }
 
 tr:hover {
-  background-color: #f1f1f1; /* Highlight rows on hover */
+  background-color: #f1f1f1;
+  /* Highlight rows on hover */
 }
 
 .addToSchedule {
   font-size: 150%;
-  color :rgb(32, 39, 32)
+  color: rgb(32, 39, 32)
 }
 
 .addToSchedule:hover {
   color: #166534
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  text-align: center;
-  vertical-align: middle;
-  padding: 8px;
-  border: 1px solid #ddd;
 }
 
 /* Header styling */
@@ -81,65 +67,33 @@ tr:hover {
   color: #166534;
 }
 
-/* Responsive styling */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  text-align: center;
-  vertical-align: middle;
-  padding: 8px;
-  border: 1px solid #ddd;
-}
-
-/* Header styling */
-th {
-  background-color: #f4f4f4;
-  font-weight: bold;
-}
-
-/* Alternating row colors */
-tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-tr:hover {
-  background-color: #f1f1f1;
-}
-
-/* Button styling */
-.addToSchedule {
-  font-size: 150%;
-  color: rgb(32, 39, 32);
-}
-
-.addToSchedule:hover {
-  color: #166534;
-}
-
-.noEventText, .loginToCreateSchedule {
+.noEventText,
+.loginToCreateSchedule {
   font-size: 125%;
 }
 
-.noEventsContainer, .loginToCreateSchedule {
+.noEventsContainer,
+.loginToCreateSchedule {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Align items at the top */
-  padding: 20px; /* Add some padding at the top */
+  justify-content: flex-start;
+  /* Align items at the top */
+  padding: 20px;
+  /* Add some padding at the top */
   text-align: center;
 }
 
 .noEventsContainer div {
-  margin: 10px 0; /* Space between message and button */
+  margin: 10px 0;
+  /* Space between message and button */
 }
 
 .noEventsContainer button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #007bff; /* Button color */
+  background-color: #007bff;
+  /* Button color */
   color: white;
   border: none;
   border-radius: 5px;
@@ -148,22 +102,53 @@ tr:hover {
 }
 
 .noEventsContainer button:hover {
-  background-color: #0056b3; /* Darker button color on hover */
+  background-color: #0056b3;
+  /* Darker button color on hover */
 }
 
-.hScheduleList {
+/* DESKTOP VIEW =============================================================================================> */
+@media screen and (min-width: 600px) {
 
+  th,
+  td {
+    text-align: center;
+    /* Center the text horizontally */
+    vertical-align: middle;
+    /* Center the text vertically */
+    padding: 8px;
+    /* Add some padding for better readability */
+    border: 1px solid #ddd;
+    /* Add a border for better visibility */
+  }
 }
 
-.vScheduleList {
-  width: 100%;
-}
+/* MOBILE VIEW =============================================================================================> */
+@media screen and (max-width: 600px) { 
+  .vTable {
+    margin-bottom: 20px;
+  }
+  
+  th {
+    text-align: center;
+    /* Center the text horizontally */
+    vertical-align: middle;
+    /* Center the text vertically */
+    padding: 8px;
+    /* Add some padding for better readability */
+    border: 1px solid #ddd;
+    /* Add a border for better visibility */
+    width: 25%;
+  }
 
-.vTables {
-  width: 100%;
-}
-
-.vTable {
-  margin-bottom: 20px;
-  margin-right: 0;
+  td {
+    text-align: center;
+    /* Center the text horizontally */
+    vertical-align: middle;
+    /* Center the text vertically */
+    padding: 8px;
+    /* Add some padding for better readability */
+    border: 1px solid #ddd;
+    /* Add a border for better visibility */
+    width: 100%;
+  }
 }
