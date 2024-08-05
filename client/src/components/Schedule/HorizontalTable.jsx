@@ -39,7 +39,7 @@ const HorizontalTable = () => {
   });
 
   if(!isLoggedIn) {
-    return <div className='loginToCreateSchedule'>Please login to add to your schedule.</div>
+    return <div className='loginToCreateSchedule'>Please login to view your schedule.</div>
   }
 
   return (
