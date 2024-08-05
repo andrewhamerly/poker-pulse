@@ -17,7 +17,7 @@ function NavTabs() {
       <li className="nav-item">
         <Link
           to="/"
-          className={`block px-4 py-2 ${currentPage === '/' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
+          className={`block px-4 py-2 ${currentPage === '/' ? 'font-bold text-xl text-white bg-onyx rounded' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
           aria-current={currentPage === '/' ? 'home page' : undefined}
         >
           Home
@@ -26,7 +26,7 @@ function NavTabs() {
       <li className="nav-item">
         <Link
           to="/profile"
-          className={`block px-4 py-2 ${currentPage === '/profile' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
+          className={`block px-4 py-2 ${currentPage === '/profile' ? 'font-bold text-xl text-white bg-onyx rounded' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
           aria-current={currentPage === '/profile' ? 'profile page' : undefined}
         >
           Profile
@@ -35,7 +35,7 @@ function NavTabs() {
       <li className="nav-item">
         <Link
           to="/feed"
-          className={`block px-4 py-2 ${currentPage === '/feed' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
+          className={`block px-4 py-2 ${currentPage === '/feed' ? 'font-bold text-xl text-white bg-onyx rounded' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
           aria-current={currentPage === '/feed' ? 'feed page' : undefined}
         >
           Feed
@@ -44,7 +44,7 @@ function NavTabs() {
       <li className="nav-item">
         <Link
           to="/event"
-          className={`block px-4 py-2 ${currentPage === '/event' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
+          className={`block px-4 py-2 ${currentPage === '/event' ? 'font-bold text-xl text-white bg-onyx rounded' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
           aria-current={currentPage === '/event' ? 'event page' : undefined}
         >
           Events
@@ -53,10 +53,19 @@ function NavTabs() {
       <li className="nav-item">
         <Link
           to="/schedule"
-          className={`block px-4 py-2 ${currentPage === '/schedule' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
+          className={`block px-4 py-2 ${currentPage === '/schedule' ? 'font-bold text-xl text-white bg-onyx rounded' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
           aria-current={currentPage === '/schedule' ? 'schedule page' : undefined}
         >
           Schedule
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link
+          to="/contact"
+          className={`block px-4 py-2 ${currentPage === '/contact' ? 'font-bold text-xl text-white bg-onyx rounded' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
+          aria-current={currentPage === '/contact' ? 'contact page' : undefined}
+        >
+          Contact
         </Link>
       </li>
       {!isLoggedIn && (
@@ -64,7 +73,7 @@ function NavTabs() {
           <li className="nav-item">
             <Link
               to="/login"
-              className={`block px-4 py-2 rounded ${currentPage === '/login' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-eerieBlack bg-whiteSmoke transition hover:bg-hunterGreen hover:text-whiteSmoke focus:outline-none focus:ring focus:ring-hunterGreen'}`}
+              className={`block px-4 py-2 rounded ${currentPage === '/login' ? 'font-bold text-xl text-white bg-onyx rounded' : 'font-bold text-xl text-eerieBlack bg-whiteSmoke transition hover:bg-hunterGreen hover:text-whiteSmoke focus:outline-none focus:ring focus:ring-hunterGreen'}`}
               aria-current={currentPage === '/login' ? 'login page' : undefined}
             >
               Login
@@ -73,7 +82,7 @@ function NavTabs() {
           <li className="nav-item">
             <Link
               to="/signup"
-              className={`block px-4 py-2 rounded ${currentPage === '/signup' ? 'font-bold text-xl text-white bg-hunterGreen' : 'font-bold text-xl text-white bg-hunterGreen border border-outerSpace transition hover:bg-whiteSmoke hover:text-eerieBlack focus:outline-none focus:ring focus:ring-hunterGreen'}`}
+              className={`block px-4 py-2 rounded ${currentPage === '/signup' ? 'font-bold text-xl text-white bg-onyx rounded' : 'font-bold text-xl text-white bg-hunterGreen border border-outerSpace transition hover:bg-whiteSmoke hover:text-eerieBlack focus:outline-none focus:ring focus:ring-hunterGreen'}`}
               aria-current={currentPage === '/signup' ? 'signup page' : undefined}
             >
               Signup
