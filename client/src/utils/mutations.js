@@ -136,21 +136,43 @@ export const DELETE_POST = gql`
   }
 `;
 
-// Update user bio
+// // Update user bio
 export const UPDATE_USER = gql`
-  mutation updateUser($username: String!, $email: String!, $password: String!, $userBio: String!, $youStake: String!, $hendonMob: String!) {
-        updateUser(_id: $id!, $username: String, $email: String, $password: String, $userBio: String, $youStake: String, $hendonMob: String) {
-      token
+  mutation UpdateUser($id: ID!) {
+    updateUser(_id: $id) {
       user {
         _id
-        username
         email
-        userBio
-        youStake
         hendonMob
+        schedule {
+          _id
+          chipCount
+          entryFee
+          eventDate
+          eventTime
+          eventTitle
+          eventType
+          guarantee
+          levels
+          multiDay
+          series
+          venue
+        }
+        posts {
+          _id
+          content
+          createdAt
+          user {
+            username
+          }
+        }
+        userBio
+        username
+        youStake
       }
+      token
     }
-  }
+}
 `;
 
 // We can add more mutations as needed
