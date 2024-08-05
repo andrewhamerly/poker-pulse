@@ -1,11 +1,11 @@
-# Vegas Poker Pulse
+# Poker Pulse
 
 ## Description
-Vegas Poker Pulse is your premier destination for all things poker in the heart of Las Vegas. Whether you're a seasoned pro or just starting out, our app provides a comprehensive platform to explore, track, and participate in the best poker tournaments across the city. With Vegas Poker Pulse, users can easily search for tournaments based on their preferences such as type, venue, entry fee, and guaranteed prize pools.
+Poker Pulse is your premier destination for all things poker in the heart of Las Vegas and beyond. Whether you're a seasoned pro or just starting out, our app provides a comprehensive platform to explore, track, and participate in the best poker tournaments across the city. With Poker Pulse, users can easily search for tournaments based on their preferences such as type, venue, entry fee, and guaranteed prize pools.
 
-Our platform not only allows you to view detailed information about each event, including dates, times, and special features, but also enables you to schedule and manage your poker calendar effortlessly. With features like real-time updates, personalized schedules, and interactive filters, Vegas Poker Pulse ensures you never miss out on the action.
+Our platform allows you to view detailed information about each event, including dates, times, and special features, while also enabling you to schedule and manage your poker calendar effortlessly. With features like real-time updates, personalized schedules, and interactive filters, Poker Pulse ensures you never miss out on the action.
 
-Designed with the poker community in mind, Vegas Poker Pulse aims to enhance your gaming experience by providing a space where you can connect with fellow enthusiasts, share experiences, and even track your tournament history. Whether you're looking to join your first tournament or you're planning a series of high-stakes games, Vegas Poker Pulse is your ultimate guide to poker in Las Vegas.
+Designed with the poker community in mind, Poker Pulse aims to enhance your gaming experience by providing a space where you can connect with fellow enthusiasts, share experiences, and even track your tournament history. Whether you're looking to join your first tournament or you're planning a series of high-stakes games, Poker Pulse is your ultimate guide to poker in Las Vegas and beyond.
 
 ## Table of Contents
 - [Installation](#installation)
@@ -20,11 +20,11 @@ Designed with the poker community in mind, Vegas Poker Pulse aims to enhance you
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/andrewhamerly/vegas-poker-pulse.git
+   git clone https://github.com/andrewhamerly/poker-pulse.git
    ```
 2. Navigate to the project directory:
    ```sh
-   cd vegas-poker-pulse
+   cd poker-pulse
    ```
 3. Install dependencies for both client and server:
    ```sh
@@ -87,7 +87,8 @@ Designed with the poker community in mind, Vegas Poker Pulse aims to enhance you
 - **Frontend:**
   - React
   - Apollo Client
-  - CSS
+  - Tailwind CSS
+  - Chakra UI
 
 - **Backend:**
   - Node.js
