@@ -16,8 +16,8 @@ const seedDB = async () => {
     await Event.deleteMany({});
     await User.deleteMany({});
 
-    await Event.insertMany(eventSeed);
-    await User.insertMany(userSeed);
+    // await Event.insertMany(eventSeed);
+    // await User.insertMany(userSeed);
 
     console.log('Database seeded.');
     mongoose.connection.close();
