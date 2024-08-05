@@ -20,7 +20,7 @@ import { GET_SCHEDULE } from '../../utils/queries';
 import { useRemoveFromSchedule, sortByDateTime } from '../../utils/scheduleHelper';
 
 
-const Schedule = () => {
+const VerticalEvent = () => {
 
   const { loading, data } = useQuery(GET_SCHEDULE);
   const handleRemoveFromSchedule = useRemoveFromSchedule()
@@ -139,4 +139,4 @@ const Schedule = () => {
   )
 };
 
-export default Schedule;
+export default VerticalEvent;
