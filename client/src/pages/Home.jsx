@@ -3,11 +3,14 @@ import { Box, Button, VStack, SimpleGrid, Heading, Text, Card, CardBody } from '
 import backgroundImage from '../assets/images/pexels-photospublic-444964.jpg';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import { GET_NEXT_THREE_EVENTS } from '../utils/queries';
+import { useMutation, useQuery } from '@apollo/client';
+import { GET_NEXT_THREE_EVENTS, GET_EVENTS, GET_SCHEDULE } from '../utils/queries';
+import { ADD_TO_SCHEDULE, REMOVE_FROM_SCHEDULE } from '../utils/mutations'
 import FormattedDate from '../components/Schedule/formattedDate';
 import FormattedTime from '../components/Schedule/formattedTime';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarPlus, faCalendarXmark } from '@fortawesome/free-solid-svg-icons';
+import { useRemoveFromSchedule} from '../utils/scheduleHelper';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -15,18 +18,46 @@ const Home = () => {
     variables: {limit: 3}
   });
 
+const {loading: scheduleLoading, data: scheduleData} = useQuery(GET_SCHEDULE);
+const [addEventToSchedule] = useMutation(ADD_TO_SCHEDULE);
+const handleRemoveFromSchedule = useRemoveFromSchedule();
 
-  const handleEventClick = (id) => {
-    navigate(`/event/${id}`);
-  };
+  // const handleEventClick = (id) => {
+  //   navigate(`/event/${id}`);
+  // };
+  const isEventInSchedule = (eventId) => {
+    return userSchedule.some(event => event._id === eventId);
+  }
+  const handleAddToSchedule = async (event) => {
+    try {
+      const eventToSave = {
+        _id: event._id,
+        eventDate: event.eventDate,
+        eventTime: event.eventTime,
+        venue: event.venue,
+        entryFee: event.entryFee,
+        eventType: event.eventType,
+        series: event.series,
+        eventTitle: event.eventTitle,
+        multiDay: event.multiDay,
+        chipCount: event.chipCount,
+        levels: event.levels,
+        guarantee: event.guarantee,
+      };
+      await addEventToSchedule({
+        variables: { eventData: eventToSave}
+      });
+      console.log('Event added to schedule');
+    } catch (error) {
+      console.error('Error adding to schedule')
+    }
+  }
 
-
-  if (loading) return <p>Loading...</p>;
+  if (loading || scheduleLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>
   let events = data?.nextEvents || [];
-  console.log(events)
   // const upcomingEvent = events;
-
+  const userSchedule = scheduleData?.getSchedule.schedule || []
 
   return (
     <main>
@@ -95,10 +126,9 @@ const Home = () => {
               p={6} 
               m={4} 
               boxShadow={'lg'}
-              onClick={() => handleEventClick(event._id)} 
               cursor={'pointer'}>
                 <Heading color={'white'} as={"h3"} size={"md"} textAlign={'center'} fontWeight={'bold'} >
-                  Checkout this upcoming tournaments!</Heading>
+                  Checkout this upcoming tournament!</Heading>
                  
                   <Card  mb={4}  >
                     <CardBody>
@@ -111,6 +141,31 @@ const Home = () => {
                       <Text>Levels: {event.levels}</Text>
                       <Text>Venue: {event.venue}</Text>
                       <FormattedTime eventTime={event.eventTime} eventDate={event.eventDate}/><FormattedDate eventDate={event.eventDate}/>
+                      {isEventInSchedule(event._id) ? (
+                      <button
+                        className='deleteFromSchedule'
+                        type='button'
+                        onClick={() => handleRemoveFromSchedule(event)}
+                      >
+                        <span role="img" aria-label="remove from schedule">
+                          <p>
+                            <FontAwesomeIcon icon={faCalendarXmark} />
+                          </p>
+                        </span>
+                      </button>
+                    ) : (
+                      <button
+                        className='addToSchedule'
+                        type='button'
+                        onClick={() => handleAddToSchedule(event)}
+                      >
+                        <span role="img" aria-label="add to schedule">
+                          <p>
+                            <FontAwesomeIcon icon={faCalendarPlus} />
+                          </p>
+                        </span>
+                      </button>
+                    )}
                     </CardBody>
                   </Card>
                
