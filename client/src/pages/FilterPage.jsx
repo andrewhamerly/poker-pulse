@@ -11,11 +11,12 @@ import FormattedChips from '../components/Schedule/formattedChips';
 import FormattedLevels from '../components/Schedule/formattedLevels';
 import MultiDayValue from '../components/Schedule/multiDay';
 import HandleEventTitle from '../components/Schedule/absentTitle';
+import EventFilters from '../components/Event/EventFilters';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus, faCalendarXmark } from '@fortawesome/free-solid-svg-icons';
 
-import { ADD_TO_SCHEDULE, REMOVE_FROM_SCHEDULE } from '../utils/mutations';
+import { ADD_TO_SCHEDULE } from '../utils/mutations';
 import { GET_EVENTS, GET_SCHEDULE } from '../utils/queries';
 import { useRemoveFromSchedule, sortByDateTime } from '../utils/scheduleHelper';
 
@@ -23,13 +24,15 @@ const Event = () => {
   const { loading: eventsLoading, data: eventsData } = useQuery(GET_EVENTS);
   const { loading: scheduleLoading, data: scheduleData } = useQuery(GET_SCHEDULE);
 
-  const [addEventToSchedule] = useMutation(ADD_TO_SCHEDULE);
-  const handleRemoveFromSchedule = useRemoveFromSchedule();
-  const isLoggedIn = AuthService.loggedIn();
-
   const [venueFilter, setVenueFilter] = useState('');
   const [typeFilters, setTypeFilters] = useState([]);
   const [feeRanges, setFeeRanges] = useState([]);
+
+  const handleRemoveFromSchedule = useRemoveFromSchedule()
+
+  const [addEventToSchedule] = useMutation(ADD_TO_SCHEDULE)
+
+  const isLoggedIn = AuthService.loggedIn();
 
   const handleTypeChange = (type) => {
     setTypeFilters(prev => prev.includes(type) ? prev.filter(t => t !== type) : [...prev, type]);
@@ -60,6 +63,14 @@ const Event = () => {
              filterByFee(event.entryFee);
     }) || [];
   }, [eventsData, venueFilter, typeFilters, feeRanges]);
+
+  const sortedEvents = [...events].sort((a, b) => {
+    const timeA = sortByDateTime(a.eventDate, a.eventTime);
+    const timeB = sortByDateTime(b.eventDate, b.eventTime);
+    return timeA - timeB;
+  });
+
+  const results = sortedEvents.length
 
   const isEventInSchedule = (eventId) => {
     return scheduleData?.getSchedule.schedule.some(event => event._id === eventId);
@@ -92,88 +103,139 @@ const Event = () => {
     }
   };
 
+  if (sortedEvents.length === 0) {
+    return( 
+    <div>
+      <EventFilters
+        venueFilter={venueFilter}
+        setVenueFilter={setVenueFilter}
+        typeFilters={typeFilters}
+        feeRanges={feeRanges}
+        handleTypeChange={handleTypeChange}
+        handleFeeRangeChange={handleFeeRangeChange}
+        results={results}/>
+      
+        
+        <div className='noEventWithFilter'>
+          No events to display for the applied filters.
+        </div>
+    </div>
+    )
+  }
+
   return (
     <div>
-      <div>
-        <input
-          type="text"
-          placeholder="Filter by venue"
-          value={venueFilter}
-          onChange={e => setVenueFilter(e.target.value)}
-        />
-        <div>
-          {/* Event Type Filters */}
-          <label><input type="checkbox" checked={typeFilters.includes('NLH')} onChange={() => handleTypeChange('NLH')} /> NLH</label>
-          <label><input type="checkbox" checked={typeFilters.includes('PLO')} onChange={() => handleTypeChange('PLO')} /> PLO</label>
-          <label><input type="checkbox" checked={typeFilters.includes('PLO 8/B')} onChange={() => handleTypeChange('PLO 8/B')} /> PLO 8/B</label>
-          <label><input type="checkbox" checked={typeFilters.includes('Limit HE')} onChange={() => handleTypeChange('Limit HE')} /> Limit HE</label>
-          <label><input type="checkbox" checked={typeFilters.includes('Omaha 8/B')} onChange={() => handleTypeChange('Omaha 8/B')} /> Omaha 8/B</label>
-          <label><input type="checkbox" checked={typeFilters.includes('Mixed')} onChange={() => handleTypeChange('Mixed')} /> Mixed</label>
-          <label><input type="checkbox" checked={typeFilters.includes('Big O')} onChange={() => handleTypeChange('Big O')} /> Big O</label>
-          <label><input type="checkbox" checked={typeFilters.includes('Stud')} onChange={() => handleTypeChange('Stud')} /> Stud</label>
-          <label><input type="checkbox" checked={typeFilters.includes('2-7 TD')} onChange={() => handleTypeChange('2-7 TD')} /> 2-7 TD</label>
-          <label><input type="checkbox" checked={typeFilters.includes('NL 2-7')} onChange={() => handleTypeChange('NL 2-7')} /> NL 2-7</label>
-        </div>
-        <div>
-          {/* Fee Range Filters */}
-          <label><input type="checkbox" checked={feeRanges.includes('0-599')} onChange={() => handleFeeRangeChange('0-599')} /> $0 - $599</label>
-          <label><input type="checkbox" checked={feeRanges.includes('600-1099')} onChange={() => handleFeeRangeChange('600-1099')} /> $600 - $1099</label>
-          <label><input type="checkbox" checked={feeRanges.includes('1100-4999')} onChange={() => handleFeeRangeChange('1100-4999')} /> $1100 - $4999</label>
-          <label><input type="checkbox" checked={feeRanges.includes('5000-9999')} onChange={() => handleFeeRangeChange('5000-9999')} /> $5000 - $9999</label>
-          <label><input type="checkbox" checked={feeRanges.includes('10000+')} onChange={() => handleFeeRangeChange('10000+')} /> $10000+</label>
-        </div>
-      </div>
-      {eventsLoading ? (
+      <EventFilters
+        venueFilter={venueFilter}
+        setVenueFilter={setVenueFilter}
+        typeFilters={typeFilters}
+        feeRanges={feeRanges}
+        handleTypeChange={handleTypeChange}
+        handleFeeRangeChange={handleFeeRangeChange}
+        results={results}/>
+    
+      {(eventsLoading || scheduleLoading) ? (
         <div>Loading...</div>
       ) : (
         <section className="scheduleList">
           <table>
             <thead>
               <tr>
-                <th>Date</th>
-                <th>Start Time</th>
-                <th>Venue</th>
-                <th>Fee</th>
-                <th>Type</th>
-                <th>Series</th>
-                <th>Title</th>
-                <th>Multi-Day</th>
-                <th>Chips</th>
-                <th>Levels</th>
-                <th>Guarantee</th>
-                <th>Add to Schedule</th>
+                <th>Date:</th>
+                <th>Start Time:</th>
+                <th>Venue:</th>
+                <th>Fee:</th>
+                <th>Type:</th>
+                <th>Series:</th>
+                <th>Title:</th>
+                <th>Multi-Day:</th>
+                <th>Chips:</th>
+                <th>Levels:</th>
+                <th>Guarantee:</th>
+                {isLoggedIn ? (
+                <th>Add to Schedule:</th>
+                  ) : null}
               </tr>
             </thead>
+
             <tbody>
-              {events.map((event) => (
+              {sortedEvents.map((event) => (
                 <tr key={event._id}>
-                  <td><FormattedDate eventDate={event.eventDate} /></td>
-                  <td><FormattedTime eventDate={event.eventDate} eventTime={event.eventTime} /></td>
-                  <td>{event.venue}</td>
-                  <td><FormattedEntryFee entryFee={event.entryFee}/></td>
-                  <td>{event.eventType}</td>
-                  <td>{event.series}</td>
-                  <td><HandleEventTitle eventTitle={event.eventTitle} /></td>
-                  <td><MultiDayValue multiDay={event.multiDay} /></td>
-                  <td><FormattedChips chipCount={event.chipCount}/></td>
-                  <td><FormattedLevels levels={event.levels} /></td>
-                  <td><GuaranteeType guarantee={event.guarantee} /></td>
+                  {/* changed from event.id to get rid of error: 'Each child in a list should have a unique "key" prop.' */}
                   <td>
-                    <button
-                      className='addToSchedule'
-                      onClick={() => handleAddToSchedule(event)}
-                    >
-                      <FontAwesomeIcon icon={faCalendarPlus} />
-                    </button>
+                    <FormattedDate
+                      eventDate={event.eventDate} />
                   </td>
+                  <td>
+                    <FormattedTime
+                      eventDate={event.eventDate}
+                      eventTime={event.eventTime} />
+                  </td>
+                  <td><div>{event.venue}</div></td>
+                  <td>
+                    <FormattedEntryFee
+                      entryFee={event.entryFee}/>
+                  </td>
+                  <td><div>{event.eventType}</div></td>
+                  <td><div>{event.series}</div></td>
+                  <td>
+                    <HandleEventTitle
+                      eventTitle={event.eventTitle} />
+                  </td>
+                  <td>
+                    <MultiDayValue
+                      multiDay={event.multiDay} />
+                  </td>
+                  <td>
+                    <FormattedChips 
+                      chipCount={event.chipCount}/>
+                  </td>
+                  <td>
+                    <FormattedLevels 
+                      levels={event.levels} />
+                  </td>
+                  <td>
+                    <GuaranteeType
+                      guarantee={event.guarantee} />
+                  </td>
+                  {isLoggedIn ? (
+                  <td>
+                    {isEventInSchedule(event._id) ? (
+                      <button
+                        className='deleteFromSchedule'
+                        type='button'
+                        onClick={() => handleRemoveFromSchedule(event)}
+                      >
+                        <span role="img" aria-label="remove from schedule">
+                          <p>
+                            <FontAwesomeIcon icon={faCalendarXmark} />
+                          </p>
+                        </span>
+                      </button>
+                    ) : (
+                      <button
+                        className='addToSchedule'
+                        type='button'
+                        onClick={() => handleAddToSchedule(event)}
+                      >
+                        <span role="img" aria-label="add to schedule">
+                          <p>
+                            <FontAwesomeIcon icon={faCalendarPlus} />
+                          </p>
+                        </span>
+                      </button>
+                    )}
+                  </td>
+                  ) : null}
                 </tr>
-              ))}
+              )
+              )}
             </tbody>
           </table>
         </section>
       )}
     </div>
-  );
+  )
 };
 
 export default Event;
