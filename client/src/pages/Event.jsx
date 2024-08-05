@@ -2,6 +2,8 @@ import '../components/Schedule/Schedule.css'
 
 import { useQuery, useMutation } from '@apollo/client'
 
+import AuthService from '../utils/auth'
+
 import FormattedEntryFee from '../components/Schedule/formattedEntryFee'
 import GuaranteeType from '../components/Schedule/guaranteePrefix'
 import FormattedDate from '../components/Schedule/formattedDate'
@@ -28,8 +30,12 @@ const Event = () => {
 
   const [addEventToSchedule] = useMutation(ADD_TO_SCHEDULE)
 
+  const isLoggedIn = AuthService.loggedIn();
+
   const events = eventsData?.events || [];
   const userSchedule = scheduleData?.getSchedule.schedule || []
+
+  console.log(events)
 
   const sortedEvents = [...events].sort((a, b) => {
     const timeA = sortByDateTime(a.eventDate, a.eventTime);
@@ -88,7 +94,9 @@ const Event = () => {
                 <th>Chips:</th>
                 <th>Levels:</th>
                 <th>Guarantee:</th>
+                {isLoggedIn ? (
                 <th>Add to Schedule:</th>
+                  ) : null}
               </tr>
             </thead>
 
@@ -132,6 +140,7 @@ const Event = () => {
                     <GuaranteeType
                       guarantee={event.guarantee} />
                   </td>
+                  {isLoggedIn ? (
                   <td>
                     {isEventInSchedule(event._id) ? (
                       <button
@@ -159,6 +168,7 @@ const Event = () => {
                       </button>
                     )}
                   </td>
+                  ) : null}
                 </tr>
               )
               )}
