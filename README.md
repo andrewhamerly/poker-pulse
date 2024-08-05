@@ -1,7 +1,11 @@
 # Vegas Poker Pulse
 
 ## Description
-Vegas Poker Pulse is a companion app designed for poker players and fans participating in live tournaments in Las Vegas. The app allows players to manage their profiles, track tournament schedules, and receive real-time updates. This ensures that players and attendees stay organized and informed throughout their playing experience.
+Vegas Poker Pulse is your premier destination for all things poker in the heart of Las Vegas. Whether you're a seasoned pro or just starting out, our app provides a comprehensive platform to explore, track, and participate in the best poker tournaments across the city. With Vegas Poker Pulse, users can easily search for tournaments based on their preferences such as type, venue, entry fee, and guaranteed prize pools.
+
+Our platform not only allows you to view detailed information about each event, including dates, times, and special features, but also enables you to schedule and manage your poker calendar effortlessly. With features like real-time updates, personalized schedules, and interactive filters, Vegas Poker Pulse ensures you never miss out on the action.
+
+Designed with the poker community in mind, Vegas Poker Pulse aims to enhance your gaming experience by providing a space where you can connect with fellow enthusiasts, share experiences, and even track your tournament history. Whether you're looking to join your first tournament or you're planning a series of high-stakes games, Vegas Poker Pulse is your ultimate guide to poker in Las Vegas.
 
 ## Table of Contents
 - [Installation](#installation)
