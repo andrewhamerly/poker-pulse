@@ -50,10 +50,9 @@ export default function ProfileSection(props) {
             <Flex direction='column' w='20%' align='center' justify='center'>
                 <Avatar name={props.username} src={props.avatar} size='2xl' />
                 <Heading size='2x1'>{props.username}</Heading>
-                <Heading size='2x1'>{props.pokerlevel}</Heading>
             </Flex>
             <Flex direction='column' w={{ base: '95%', md: '40%', lg: '40%' }} h={{ base: '40vw', md: '20vw', lg: '15vw' }} bg='#E3E3E3' borderRadius='25'>
-                <Text fontSize='lg' align='center' h='85%' justify='center' >{props.userBio}</Text>
+                <Text fontSize='lg' align='center' h='85%' justify='center' p='4'>{props.userBio}</Text>
                 <Tooltip hasArrow label='Edit Bio' bg='#2A3030' color='#F5F5F5'>
                     <Button onClick={onOpen} alignSelf='flex-end' bg='#2A3030' borderRadius='25' color='#F5F5F5' w='10%' h='15%' _hover={{ bg: '#646B6B' }}>
                         <FontAwesomeIcon icon={faPenToSquare} />
