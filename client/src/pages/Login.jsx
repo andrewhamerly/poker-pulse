@@ -43,7 +43,7 @@ const Login = () => {
             <img src={logo} alt="Poker Pulse Logo" className="logo w-36" />
           </Link>
         </div>
-        <h1 className="text-center text-2xl font-bold text-eerieBlack sm:text-3xl">Welcome Back Player</h1>
+        <h1 className="text-center text-2xl font-bold text-onyx sm:text-3xl">Welcome Back Player</h1>
         <form onSubmit={handleFormSubmit} className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
           <p className="text-center text-lg font-medium text-outerSpace">Please enter login details below</p>
           <div>
