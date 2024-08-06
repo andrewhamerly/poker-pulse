@@ -1,4 +1,4 @@
-import { useFilteredSortedEvents } from '../../utils/scheduleHelper'
+import { useFilteredSortedEvents } from '../../utils/EventAndScheduleHelpers'
 
 const EventFilters = (
   // {

@@ -1,4 +1,4 @@
-import { formatGuarantee, getPrefix }  from '../../utils/scheduleHelper'
+import { formatGuarantee, getPrefix }  from '../../utils/EventAndScheduleHelpers'
 
   const GuaranteeType = ({ guarantee }) => {
     const prefix = getPrefix(guarantee)

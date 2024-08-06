@@ -13,8 +13,8 @@ import { Spinner, Box } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus, faCalendarXmark } from '@fortawesome/free-solid-svg-icons';
 
-import { useFilteredSortedEvents } from '../../utils/scheduleHelper';
-import { useAddToSchedule, useRemoveFromSchedule } from '../../utils/scheduleHelper';
+import { useFilteredSortedEvents } from '../../utils/EventAndScheduleHelpers';
+import { useAddToSchedule, useRemoveFromSchedule } from '../../utils/EventAndScheduleHelpers';
 
 const DesktopEventTableAndFilters = () => {
 

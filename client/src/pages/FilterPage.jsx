@@ -18,7 +18,7 @@ import { faCalendarPlus, faCalendarXmark } from '@fortawesome/free-solid-svg-ico
 
 import { ADD_TO_SCHEDULE } from '../utils/mutations';
 import { GET_EVENTS, GET_SCHEDULE } from '../utils/queries';
-import { useRemoveFromSchedule, sortByDateTime } from '../utils/scheduleHelper';
+import { useRemoveFromSchedule, sortByDateTime } from '../utils/EventAndScheduleHelpers';
 
 const Event = () => {
   const { loading: eventsLoading, data: eventsData } = useQuery(GET_EVENTS);

@@ -1,4 +1,4 @@
-import { formatLevels } from '../../utils/scheduleHelper'
+import { formatLevels } from '../../utils/EventAndScheduleHelpers'
 
 const FormattedLevels = ({ levels }) => {
   const formattedLevels = formatLevels(levels)

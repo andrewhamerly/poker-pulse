@@ -1,4 +1,4 @@
-import { formatChips } from '../../utils/scheduleHelper'
+import { formatChips } from '../../utils/EventAndScheduleHelpers'
 
 const FormattedChips = ({ chipCount }) => {
   const formattedChips = formatChips(chipCount)
