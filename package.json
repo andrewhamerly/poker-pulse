@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "apollo-server-express": "^3.13.0",
-    "csv-parser": "^3.0.0"
+    "csv-parser": "^3.0.0",
+    "dotenv": "^16.4.5"
   }
 }
