@@ -9,10 +9,11 @@ import FormattedDate from '../../components/Schedule/formattedDate';
 import FormattedTime from '../../components/Schedule/formattedTime';
 import FormattedChips from '../../components/Schedule/formattedChips';
 import FormattedLevels from '../../components/Schedule/formattedLevels';
-import MultiDayValue from '../../components/Schedule/multiDay';
-import HandleEventTitle from '../../components/Schedule/absentTitle';
 import EventFilters from '../../components/Event/EventFilters';
 
+import MultiDayValue from '../../components/Schedule/multiDay'
+import HandleEventTitle from '../../components/Schedule/absentTitle'
+import { Spinner, Box } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus, faCalendarXmark } from '@fortawesome/free-solid-svg-icons';
 
@@ -135,7 +136,20 @@ const VerticalEvent = () => {
         results={results}/>
     
       {(eventsLoading || scheduleLoading) ? (
-        <div>Loading...</div>
+        <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="100vh"
+      >
+        <Spinner
+          thickness='4px'
+          speed='0.65s'
+          emptyColor='gray.200'
+          color='hunterGreen'
+          size='xl'
+        />
+      </Box>
       ) : events.length === 0 ? (
         <div className='noEventsContainer'>
           <div className='noEventText'>No events scheduled.</div>

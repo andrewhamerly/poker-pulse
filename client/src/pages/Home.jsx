@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, VStack, SimpleGrid, Heading, Text, Card, CardBody } from '@chakra-ui/react';
+import { Box, Button, VStack, SimpleGrid, Heading, Text, Card, CardBody, Spinner, AbsoluteCenter } from '@chakra-ui/react';
 import backgroundImage from '../assets/images/pexels-photospublic-444964.jpg';
 import AuthService from '../utils/auth';
 import { motion } from 'framer-motion';
@@ -25,9 +25,6 @@ const Home = () => {
 
   const isLoggedIn = AuthService.loggedIn();
 
-  // const handleEventClick = (id) => {
-  //   navigate(`/event/${id}`);
-  // };
   const isEventInSchedule = (eventId) => {
     return userSchedule.some(event => event._id === eventId);
   }
@@ -56,7 +53,21 @@ const Home = () => {
     }
   }
 
-  if (loading || scheduleLoading) return <p>Loading...</p>;
+  if (loading || scheduleLoading) return 
+  <Box
+  display="flex"
+  justifyContent="center"
+  alignItems="center"
+  height="100vh"
+>
+  <Spinner
+    thickness='4px'
+    speed='0.65s'
+    emptyColor='gray.200'
+    color='hunterGreen'
+    size='xl'
+  />
+</Box>;
   if (error) return <p>Error: {error.message}</p>
   let events = data?.nextEvents || [];
   // const upcomingEvent = events;
