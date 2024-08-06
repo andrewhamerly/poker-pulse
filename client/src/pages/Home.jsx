@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Button, VStack, SimpleGrid, Heading, Text, Card, CardBody } from '@chakra-ui/react';
 import backgroundImage from '../assets/images/pexels-photospublic-444964.jpg';
+import AuthService from '../utils/auth';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
@@ -10,17 +11,19 @@ import FormattedDate from '../components/Schedule/formattedDate';
 import FormattedTime from '../components/Schedule/formattedTime';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus, faCalendarXmark } from '@fortawesome/free-solid-svg-icons';
-import { useRemoveFromSchedule} from '../utils/scheduleHelper';
+import { useRemoveFromSchedule } from '../utils/scheduleHelper';
 
 const Home = () => {
   const navigate = useNavigate();
-  let { loading, error, data } = useQuery( GET_NEXT_THREE_EVENTS, {
-    variables: {limit: 3}
+  let { loading, error, data } = useQuery(GET_NEXT_THREE_EVENTS, {
+    variables: { limit: 3 }
   });
 
-const {loading: scheduleLoading, data: scheduleData} = useQuery(GET_SCHEDULE);
-const [addEventToSchedule] = useMutation(ADD_TO_SCHEDULE);
-const handleRemoveFromSchedule = useRemoveFromSchedule();
+  const { loading: scheduleLoading, data: scheduleData } = useQuery(GET_SCHEDULE);
+  const [addEventToSchedule] = useMutation(ADD_TO_SCHEDULE);
+  const handleRemoveFromSchedule = useRemoveFromSchedule();
+
+  const isLoggedIn = AuthService.loggedIn();
 
   // const handleEventClick = (id) => {
   //   navigate(`/event/${id}`);
@@ -45,7 +48,7 @@ const handleRemoveFromSchedule = useRemoveFromSchedule();
         guarantee: event.guarantee,
       };
       await addEventToSchedule({
-        variables: { eventData: eventToSave}
+        variables: { eventData: eventToSave }
       });
       console.log('Event added to schedule');
     } catch (error) {
@@ -58,7 +61,7 @@ const handleRemoveFromSchedule = useRemoveFromSchedule();
   let events = data?.nextEvents || [];
   // const upcomingEvent = events;
   const userSchedule = scheduleData?.getSchedule.schedule || []
-  
+
   return (
     <main>
 
@@ -93,9 +96,9 @@ const handleRemoveFromSchedule = useRemoveFromSchedule();
           size="2xl"
           mb={4}
           as={motion.h1}
-          initial={{ y: -50, opacity: 0}}
-          animate={{ y: 0, opacity: 1}}
-          transition={{ duration: 1, delay: 1.5}}>
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1, delay: 1.5 }}>
           <Card bg="rgba(255, 255, 255, 0.6)" mb={4}>
             <CardBody >
               <Text>Welcome Aces!</Text>
@@ -113,24 +116,24 @@ const handleRemoveFromSchedule = useRemoveFromSchedule();
             <SimpleGrid columns={[1, null, 3]} spacing={6} justifyItems={'center'}>
               {events.map(event => (
 
-              
-              <Box 
-              key={event._id}
-              filter="grayscale(0%)" 
-              as={motion.div} 
-              whileHover={{ scale: 1.05 }} 
-              transition={'0.7s'} 
-              bg={'brand.hunterGreen'} 
-              borderRadius={'lg'} 
-              width={'300px'} 
-              p={6} 
-              m={4} 
-              boxShadow={'lg'}
-              cursor={'pointer'}>
-                <Heading color={'white'} as={"h3"} size={"md"} textAlign={'center'} fontWeight={'bold'} >
-                  Checkout this upcoming tournament!</Heading>
-                 
-                  <Card  mb={4}  >
+
+                <Box
+                  key={event._id}
+                  filter="grayscale(0%)"
+                  as={motion.div}
+                  whileHover={{ scale: 1.05 }}
+                  transition={'0.7s'}
+                  bg={'brand.hunterGreen'}
+                  borderRadius={'lg'}
+                  width={'300px'}
+                  p={6}
+                  m={4}
+                  boxShadow={'lg'}
+                  cursor={'pointer'}>
+                  <Heading color={'white'} as={"h3"} size={"md"} textAlign={'center'} fontWeight={'bold'} >
+                    Checkout this upcoming tournament!</Heading>
+
+                  <Card mb={4}  >
                     <CardBody>
                       <Text>Event Type: {event.eventType}</Text>
                       <Text>Entry Fee: ${event.entryFee}</Text>
@@ -140,42 +143,46 @@ const handleRemoveFromSchedule = useRemoveFromSchedule();
                       <Text>Title: {event.eventTitle}</Text>
                       <Text>Levels: {event.levels}</Text>
                       <Text>Venue: {event.venue}</Text>
-                      <FormattedTime eventTime={event.eventTime} eventDate={event.eventDate}/><FormattedDate eventDate={event.eventDate}/>
-                      {isEventInSchedule(event._id) ? (
-                      <button
-                        className='deleteFromSchedule'
-                        type='button'
-                        onClick={() => handleRemoveFromSchedule(event)}
-                      >
-                        <span role="img" aria-label="remove from schedule">
-                          <p>
-                            <FontAwesomeIcon icon={faCalendarXmark} />
-                          </p>
-                        </span>
-                      </button>
-                    ) : (
-                      <button
-                        className='addToSchedule'
-                        type='button'
-                        onClick={() => handleAddToSchedule(event)}
-                      >
-                        <span role="img" aria-label="add to schedule">
-                          <p>
-                            <FontAwesomeIcon icon={faCalendarPlus} />
-                          </p>
-                        </span>
-                      </button>
+                      <FormattedTime eventTime={event.eventTime} eventDate={event.eventDate} /><FormattedDate eventDate={event.eventDate} />
+                      {isLoggedIn ? (
+                        <div>
+                        {isEventInSchedule(event._id) ? (
+                          <button
+                            className='deleteFromSchedule'
+                            type='button'
+                            onClick={() => handleRemoveFromSchedule(event)}
+                          >
+                            <span role="img" aria-label="remove from schedule">
+                              <p>
+                                <FontAwesomeIcon icon={faCalendarXmark} />
+                              </p>
+                            </span>
+                          </button>
+                          ) : (
+                          <button
+                            className='addToSchedule'
+                            type='button'
+                            onClick={() => handleAddToSchedule(event)}
+                          >
+                            <span role="img" aria-label="add to schedule">
+                              <p>
+                                <FontAwesomeIcon icon={faCalendarPlus} />
+                              </p>
+                            </span>
+                          </button>
                     )}
+                        </div>
+                      ) : null}
                     </CardBody>
                   </Card>
-               
 
 
-              </Box>
 
-              
+                </Box>
 
-            ))}
+
+
+              ))}
             </SimpleGrid>
           </Box>
         </Box>
