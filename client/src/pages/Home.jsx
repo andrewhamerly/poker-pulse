@@ -12,6 +12,7 @@ import FormattedTime from '../components/Schedule/formattedTime';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus, faCalendarXmark } from '@fortawesome/free-solid-svg-icons';
 import { useRemoveFromSchedule } from '../utils/scheduleHelper';
+import AboutCTA from '../components/About/AboutCTA'
 
 const Home = () => {
   const navigate = useNavigate();
@@ -74,6 +75,7 @@ const Home = () => {
   const userSchedule = scheduleData?.getSchedule.schedule || []
 
   return (
+    <>
     <main>
 
       <Box
@@ -199,6 +201,8 @@ const Home = () => {
         </Box>
       </Box>
     </main>
+    < AboutCTA />
+  </>
   );
 };
 
