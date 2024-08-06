@@ -136,6 +136,14 @@ export const DELETE_POST = gql`
   }
 `;
 
+export const LIKE_POST = gql`
+    mutation LikePost($postId: ID!) {
+        likePost(postId: $postId) {
+            _id
+            likes
+        }
+    }
+`;
 
 // // Update user bio
 export const UPDATE_USER = gql`

@@ -14,6 +14,14 @@ const postSchema = new Schema({
         type: Date,
         default: Date.now,
     },
+    likes: {
+        type: Number,
+        default: 0
+    },
+    likedBy: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 });
 
 const Post = model('Post', postSchema);
