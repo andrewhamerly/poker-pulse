@@ -95,7 +95,7 @@ tr:hover {
   padding: 10px 20px;
   font-size: 1.25rem;
   background-color: #35654D; /* bg-hunterGreen - Button color */
-  color: white;
+  color: rgb(255, 255, 255);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -103,7 +103,7 @@ tr:hover {
 }
 
 .noEventsContainer button:hover {
-  background-color: #2A3030; /* bg-gunMetal - Darker button color on hover */
+  background-color: #244635;
 }
 
 /* Style for the filter container */

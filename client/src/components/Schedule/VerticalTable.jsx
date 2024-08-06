@@ -44,7 +44,7 @@ const VerticalEvent = () => {
             <Link
               to='/event'>
               <button>
-                Add Events To Your Schedule
+                Add Events
               </button>
             </Link>
           </div>
