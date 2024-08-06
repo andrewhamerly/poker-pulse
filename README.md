@@ -13,6 +13,7 @@ Designed with the poker community in mind, Poker Pulse aims to enhance your gami
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [License](#license)
+- [Future Development](#future-development)
 - [Contributing](#contributing)
 - [Contact](#contact)
 
@@ -106,6 +107,38 @@ Designed with the poker community in mind, Poker Pulse aims to enhance your gami
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Future Development
+
+Personalized Notifications and Alerts:
+
+* Users could receive alerts when a new event is added that matches their preferences, or reminders for events they've shown interest in or added to their schedule.
+
+* This feature would keep users informed about relevant events, ensuring they don't miss out on tournaments they might be interested in. It can enhance user engagement with timely, personalized content.
+
+Advanced Search and Filters:
+
+* Expand the search functionality to include more filters such as searching by prize pools, or even events their friends are attending. Include features like saving search preferences or creating custom filters.
+
+* This would povide users with powerful tools to find exactly the events they're interested in, tailored to their specific poker preferences, enhancing the usability and personalized feel of the app.
+
+Social Features:
+
+* Integrate social features such as the ability to see which events friends are attending, share events on social media, or even form groups within the app to discuss upcoming tournaments or share results.
+
+* By adding social features, we can enhance community building within the app, making it not just a tool for finding events but a platform for connecting with other poker enthusiasts. This can increase user retention and deepen engagement.
+
+User Profiles and Stats:
+
+* Allow users to create profiles where they can track their event participation, results, and rankings. Profiles could also display favorite venues and event types, and historical performance statistics.
+
+* Personal profiles would not only help users keep track of their own gaming history but also enable them to compare and compete with friends and other community members, adding a competitive element to the app.
+
+Venue Reviews and Ratings:
+
+* Users can leave reviews and rate venues based on their experiences. Include details such as table quality, dealer professionalism, and overall atmosphere.
+
+* Helps users make informed decisions about which events to attend based on community feedback. This feature can also foster a more engaged community as users contribute valuable insights.
 
 ## Contributing
 Contributions are welcome! Please fork the repository and create a pull request with your changes. 
