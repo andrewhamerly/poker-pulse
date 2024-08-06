@@ -57,7 +57,11 @@ const resolvers = {
     },
     posts: async (parent, args, context) => {
       if (context.user) {
-        return Post.find().populate('user');
+        const posts = await Post.find().populate('user');
+        return posts.map(post => ({
+          ...post.toObject(),
+          createdAt: post.createdAt ? postcreatedAt.toISOString() : null,
+        }));
       }
       throw new AuthenticationError('You need to be logged in!');
     },

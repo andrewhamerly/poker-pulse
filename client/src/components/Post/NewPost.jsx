@@ -2,10 +2,16 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../../utils/mutations';
 import { Button, Textarea, FormControl, FormLabel, FormErrorMessage } from '@chakra-ui/react';
+import { GET_POSTS } from '../../utils/queries';
 
 const NewPostForm = ({ userId }) => {
   const [content, setContent] = useState('');
-  const [addPost, { error }] = useMutation(ADD_POST);
+  const [addPost, { error }] = useMutation(ADD_POST, {
+    refetchQueries: [{ query: GET_POSTS }],
+    onError: (error) => {
+      console.error('Error adding post:', error);
+    },
+  });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -21,7 +27,7 @@ const NewPostForm = ({ userId }) => {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <FormControl isInvalid={error}>
+      <FormControl isInvalid={!!error}>
         <Textarea
           id="postContent"
           value={content}
