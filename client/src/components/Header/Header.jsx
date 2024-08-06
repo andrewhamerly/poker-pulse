@@ -1,16 +1,25 @@
 import { useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/poker-pulse-logo.png';
 import NavTabs from '../../components/NavTabs/NavTabs.jsx';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const currentPage = useLocation().pathname;
+  const navigate = useNavigate();
 
   return (
     <header className="border-b border-outerSpace bg-gunmetal">
       <div className="mx-auto max-w-screen-xl px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <img src={logo} alt="Poker Pulse Logo" className="logo w-36" />
+          <Link
+            to="/"
+            className={`block px-4 py-2 ${currentPage === '/' ? 'font-bold text-xl text-white bg-onyx rounded' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
+            aria-current={currentPage === '/' ? 'home page' : undefined}
+          >
+            <img src={logo} alt="Poker Pulse Logo" className="logo w-32" />
+          </Link>
           </div>
           <div className="md:hidden">
             <button 
