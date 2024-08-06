@@ -60,7 +60,8 @@ const resolvers = {
         const posts = await Post.find().populate('user');
         return posts.map(post => ({
           ...post.toObject(),
-          createdAt: post.createdAt ? postcreatedAt.toISOString() : null,
+          createdAt: post.createdAt.toISOString(),
+          likedBy: post.likedBy || [],
         }));
       }
       throw new AuthenticationError('You need to be logged in!');
@@ -179,6 +180,27 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    likePost: async (parent, { postId }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('You need to be logged in!');
+      }
+      const post = await Post.findById(postId);
+      
+    
+      const userIndex = post.likedBy.indexOf(context.user._id);
+    if (userIndex === -1) {
+        // User has not liked the post, so add the like
+        post.likedBy.push(context.user._id);
+        post.likes += 1;
+    } else {
+        // User has already liked the post, so remove the like
+        post.likedBy.splice(userIndex, 1);
+        post.likes -= 1;
+    }
+    
+      await post.save();
+      return post;
+},
   },
 };
 
