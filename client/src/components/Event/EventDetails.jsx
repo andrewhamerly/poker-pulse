@@ -1,13 +1,27 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_EVENT_DETAILS } from '../../utils/queries';
+import { Spinner } from '@chakra-ui/react';
 
 const EventDetails = ({ eventId }) => {
   const { loading, error, data } = useQuery(GET_EVENT_DETAILS, {
     variables: { _id: eventId },
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Box
+  display="flex"
+  justifyContent="center"
+  alignItems="center"
+  height="100vh"
+>
+  <Spinner
+    thickness='4px'
+    speed='0.65s'
+    emptyColor='gray.200'
+    color='hunterGreen'
+    size='xl'
+  />
+</Box>;
   if (error) {
     console.error('Error fetching event details:', error); 
     return <p>Error: {error.message}</p>;
