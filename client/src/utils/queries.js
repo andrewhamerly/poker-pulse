@@ -154,6 +154,8 @@ export const GET_POSTS = gql`
       user {
         username
       }
+      likes
+      likedBy
     }
   }
 `;

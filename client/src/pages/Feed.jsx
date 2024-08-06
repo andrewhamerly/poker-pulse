@@ -1,24 +1,23 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import { Box, SimpleGrid, Heading, Card, CardBody, Text, Avatar } from '@chakra-ui/react';
+import { useQuery, useMutation } from '@apollo/client';
+import { Box, SimpleGrid, Heading, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { GET_POSTS, GET_ME } from '../utils/queries';
+import { LIKE_POST } from '../utils/mutations';
 import NewPostForm from '../components/Post/NewPost';
+import PostCard from '../components/Post/PostCard';
 import Auth from '../utils/auth';
 
 export default function Feed() {
     const navigate = useNavigate();
+    const token = Auth.getToken();
 
     useEffect(() => {
-        const token = Auth.getToken();
-
         if (!token) {
             navigate('/signup');
         }
-    }, [navigate]);
-
-    const token = Auth.getToken();
+    }, [navigate, token]);
 
     if (!token) {
         return null;
@@ -29,15 +28,32 @@ export default function Feed() {
 
     const { data, refetch, loading, error } = useQuery(GET_POSTS);
 
-    useEffect(() => {
-      console.log('Posts query data:', data);
-      console.log('Posts query error:', error); 
+    const [likePost] = useMutation(LIKE_POST, {
+        onCompleted: (data) => {
+            refetch();
+        },
+        onError: (err) => console.error(err)
+    });
 
+    useEffect(() => {
+        console.log('Posts query data:', data);
+        console.log('Posts query error:', error); 
     }, [data, error]);
   
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error fetching posts!</p>;
+    
     const posts = data?.posts || [];
+
+    const handleLike = async (postId) => {
+        try {
+            const { data } = await likePost({ variables: { postId } });
+            return data.likePost;
+        } catch (err) {
+            console.error('Error liking post:', err);
+            throw new Error('Error liking post');
+        }
+    };
 
     return (
         <Box bg={'brand.onyx'} p={6} minHeight="100vh" display="flex" flexDirection="column" alignItems="center">
@@ -59,7 +75,6 @@ export default function Feed() {
             </Box>
 
             <Box
-                as={motion.div}
                 transition={'0.3s'}
                 bg={'brand.onyx'} 
                 borderRadius={'md'}
@@ -72,19 +87,10 @@ export default function Feed() {
                 <Heading color={'white'} as={"h3"} size={"md"} fontWeight={'bold'} mb={10}>
                     Latest Posts
                 </Heading>
-                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6} justifyItems={'center'}>
+                <SimpleGrid columns={{ base: 1 }} spacing={6} justifyItems={'center'}>
                     {posts.length > 0 ? (
-                        posts.map((post, index) => (
-                            <Card mb={4} key={post._id} bg="white" boxShadow="md" borderRadius="md" width="100%" p={4}>
-                                <CardBody display="flex" alignItems="flex-start">
-                                    <Avatar name={post.user.username} mr={4} size="md" />
-                                    <Box>
-                                        <Text fontWeight="bold" fontSize="lg">{post.user.username}</Text>
-                                        <Text mb={2} color="gray.600" fontSize="sm">{new Date(parseInt(post.createdAt)).toLocaleDateString()}</Text>
-                                        <Text>{post.content}</Text>
-                                    </Box>
-                                </CardBody>
-                            </Card>
+                        posts.map((post) => (
+                            <PostCard key={post._id} post={post} handleLike={handleLike} />
                         ))
                     ) : (
                         <Text color="gray.600">No posts available.</Text>

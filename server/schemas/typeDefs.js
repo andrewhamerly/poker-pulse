@@ -43,6 +43,8 @@ const typeDefs = gql`
     user: User!
     content: String!
     createdAt: String!
+    likes: Int!
+    likedBy: [ID!]!
   }
 
   type Query {
@@ -81,10 +83,11 @@ const typeDefs = gql`
 
     addEvent(eventData: eventInput!): Event
     updateEvent(_id: ID!, eventData: eventInput!): Event
-
     deleteEvent(_id: ID!): Boolean
+
     addPost(content: String!): Post
     deletePost(_id: ID!): Boolean
+    likePost(postId: ID!): Post
 }
 
   input eventInput {
