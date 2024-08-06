@@ -11,7 +11,7 @@ import FormattedDate from '../components/Schedule/formattedDate';
 import FormattedTime from '../components/Schedule/formattedTime';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus, faCalendarXmark } from '@fortawesome/free-solid-svg-icons';
-import { useRemoveFromSchedule } from '../utils/scheduleHelper';
+import { useRemoveFromSchedule } from '../utils/EventAndScheduleHelpers';
 import AboutCTA from '../components/About/AboutCTA'
 
 const Home = () => {

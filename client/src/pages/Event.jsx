@@ -3,7 +3,7 @@ import '../components/Schedule/Schedule.css';
 import { DesktopEventTableAndFilters, MobileEventTableAndFilters } from '../components/Event/EventTableandFilters';
 import EventFilters from '../components/Event/EventFilters';
 
-import { useFilteredSortedEvents } from '../utils/scheduleHelper';
+import { useFilteredSortedEvents } from '../utils/EventAndScheduleHelpers';
 
 import useWindowSize from '../utils/useWindowSize';
 

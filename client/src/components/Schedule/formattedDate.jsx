@@ -1,4 +1,4 @@
-import { formatDate } from '../../utils/scheduleHelper'
+import { formatDate } from '../../utils/EventAndScheduleHelpers'
 
 const FormattedDate = ({ eventDate }) => {
   const formattedDate = formatDate(eventDate)

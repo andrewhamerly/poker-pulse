@@ -19,7 +19,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarXmark } from '@fortawesome/free-solid-svg-icons';
 
 
-import { useRemoveFromSchedule, useSortedScheduleFunctions } from '../../utils/scheduleHelper';
+import { useRemoveFromSchedule, useSortedScheduleFunctions } from '../../utils/EventAndScheduleHelpers';
 
 const DesktopScheduleTable = () => {
 
