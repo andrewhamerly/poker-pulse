@@ -1,6 +1,5 @@
 import '../components/Schedule/Schedule.css';
-import HorizontalTable from '../components/Schedule/HorizontalTable';
-import VerticalTable from '../components/Schedule/VerticalTable';
+import { DesktopScheduleTable, MobileScheduleTable } from '../components/Schedule/ScheduleTable';
 import useWindowSize from '../utils/useWindowSize';
 
 
@@ -26,8 +25,8 @@ const Schedule = () => {
 
   return (
     <div>
-      {size.width >= 600 && <HorizontalTable />}
-      {size.width < 600 && <VerticalTable />}
+      {size.width >= 600 && <DesktopScheduleTable />}
+      {size.width < 600 && <MobileScheduleTable />}
     </div>
   )
 };

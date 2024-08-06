@@ -8,6 +8,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom'; 
 import { ChakraProvider } from '@chakra-ui/react'
+import { EventFilterProvider } from './contexts/EventFilterContext';
 import theme from './theme';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -37,6 +38,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <ChakraProvider theme={theme}>
+        <EventFilterProvider>
         <div className="flex flex-col justify-start min-h-screen">
           <Header />
           <div>
@@ -44,6 +46,7 @@ function App() {
           </div>
           <Footer />
         </div>
+        </EventFilterProvider>
       </ChakraProvider>
     </ApolloProvider>
   );

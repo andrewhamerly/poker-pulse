@@ -1,14 +1,33 @@
+import { useFilteredSortedEvents } from '../../utils/scheduleHelper'
+
 const EventFilters = (
-  { 
-    venueFilter, 
-    setVenueFilter, 
-    typeFilters, 
-    feeRanges, 
-    handleTypeChange, 
-    handleFeeRangeChange, 
-    results 
-  }
-) => {
+  // {
+  //   venueFilter,
+  //   setVenueFilter,
+  //   typeFilters,
+  //   feeRanges,
+  //   handleTypeChange,
+  //   handleFeeRangeChange,
+  //   results
+  // }
+  ) => {
+    const {
+      eventsLoading,
+      sortedEvents,
+      venueFilter,
+      setVenueFilter,
+      typeFilters,
+      setTypeFilters,
+      feeRanges,
+      setFeeRanges,
+      handleTypeChange,
+      handleFeeRangeChange,
+      results,
+      isLoggedIn,
+      isEventInSchedule
+      } = useFilteredSortedEvents();
+  
+
   return (
     <div className='filterContainer'>
       <div className='venueContainer'>
@@ -158,3 +177,5 @@ const EventFilters = (
 };
 
 export default EventFilters
+
+
