@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import bkg from '../../assets/images/poker-pulse-bkg.png';
 
 const ContactHero = () => {
@@ -16,7 +15,7 @@ const ContactHero = () => {
                     Have Questions?
                     <strong className="block font-extrabold text-vermillion">Need Support.</strong>
                 </h1>
-                <p className="mt-4 max-w-lg text-white sm:text-xl">
+                <p className="mt-4 max-w-lg text-white sm:text-xl px-8">
                 Reach out to us through the contact form below or connect with us directly via email or social media. We look forward to hearing from you!
                 </p>
             </div>

@@ -16,15 +16,6 @@ function NavTabs() {
     <ul className="flex flex-col md:flex-row md:space-x-4 border-t border-outerSpace md:border-t-0 bg-gunmetal p-2 md:p-0 md:border-0 md:bg-transparent w-full md:w-auto">
       <li className="nav-item">
         <Link
-          to="/"
-          className={`block px-4 py-2 ${currentPage === '/' ? 'font-bold text-xl text-white bg-onyx rounded' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
-          aria-current={currentPage === '/' ? 'home page' : undefined}
-        >
-          Home
-        </Link>
-      </li>
-      <li className="nav-item">
-        <Link
           to="/profile"
           className={`block px-4 py-2 ${currentPage === '/profile' ? 'font-bold text-xl text-white bg-onyx rounded' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
           aria-current={currentPage === '/profile' ? 'profile page' : undefined}
