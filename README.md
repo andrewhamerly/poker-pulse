@@ -42,11 +42,8 @@ Designed with the poker community in mind, Poker Pulse aims to enhance your gami
 
 5. Start the development server:
    ```sh
-   # In the server directory
-   npm run dev
-
-   # In the client directory
-   npm start
+   # In the project directory
+   npm run develop
    ```
 
 ## Usage
@@ -54,9 +51,9 @@ Designed with the poker community in mind, Poker Pulse aims to enhance your gami
 2. Log in to the app.
 3. Create or update your player profile with personal details and tournament history.
 4. View the event schedule to see upcoming tournaments, including dates, times, and locations.
-5. Select a tournament to view comprehensive details such as buy-ins, prize pools, and structure.
+5. Select a tournament to add it to your personal player schedule.
 6. Mark tournaments as favorites to receive specific notifications about those events. (Coming Soon)
-7. Receive real-time notifications for important updates such as schedule changes, start times, or delays. (Coming Soon)
+7. Players receive reminders for important updates regarding a players personal event schedule. (Coming Soon)
 
 ## Features
 - **User Registration and Authentication:**
@@ -71,17 +68,17 @@ Designed with the poker community in mind, Poker Pulse aims to enhance your gami
 - **Event Schedule:**
   - Players can view a list of upcoming tournaments, including dates, times, and locations.
 
-- **Tournament Details:**
-  - Detailed view of tournaments including buy-ins, prize pools, and structure.
+- **Player Schedule:**
+  - Detailed view of tournaments that player is looking to be a part of their schedule.
 
-- **Real-time Notifications:** (Coming Soon)
-  - Players receive notifications for important updates such as schedule changes, start times, or delays.
-
-- **Favorite Tournaments:** (Coming Soon)
+- **Favorite Tournaments:**
   - Players can mark tournaments as favorites to receive specific notifications about those events.
 
 - **Responsive Design:**
   - The app is designed to provide a seamless user experience across desktops, tablets, and smartphones.
+ 
+- **Real-time Reminders:** (Coming Soon)
+  - Players receive reminders for important updates regarding a players personal event schedule.
 
 ## Technologies Used
 - **Frontend:**
@@ -103,6 +100,7 @@ Designed with the poker community in mind, Poker Pulse aims to enhance your gami
 
 - **Deployment:**
   - Render
+  - GitHub Repo
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
@@ -114,5 +112,5 @@ For major changes, please open an issue first to discuss what you would like to 
 
 ## Contact
 For any questions or feedback, please reach out to us at:
-- **Email:** support@vegaspokerpulse.com
-- **GitHub:** [AndrewHamerly](https://github.com/andrewhamerly), TO DO: Add Collaborators GitHub Links.
+- **Email:** (Email Coming Soon)
+- **GitHub:** [Chris Lose](https://github.com/chrislose23), [John Doyle](https://github.com/JohnTD796), [Brendan Trepal](https://github.com/BeeCeeTee), [Avery Gallagan](https://github.com/averygallagan), [Tim Watson](https://github.com/tawatson02), [Andrew Hamerly](https://github.com/andrewhamerly)
