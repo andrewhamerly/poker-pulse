@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../../../../utils/mutations';
 import { Button, Textarea, FormControl, FormLabel, FormErrorMessage } from '@chakra-ui/react';
-import { GET_POSTS } from '../../../../utils/queries';
+import { GET_POSTS, GET_USER_POSTS } from '../../../../utils/queries';
 
-const NewPostForm = ({ userId }) => {
+const NewPostForm = ({ userId, refetchPosts }) => {
   const [content, setContent] = useState('');
   const [addPost, { error }] = useMutation(ADD_POST, {
-    refetchQueries: [{ query: GET_POSTS }],
+    refetchQueries: [{ query: GET_POSTS }, { query: GET_USER_POSTS, variables: { userId } }],
+    onCompleted: () => {
+      refetchPosts();
+    },
     onError: (error) => {
       console.error('Error adding post:', error);
     },
