@@ -264,9 +264,9 @@ const MobileEventTableAndFilters = () => {
                     <GuaranteeType
                       guarantee={event.guarantee} />
                   </td>
-                  <th>Add to Schedule:</th>
                   {isLoggedIn ? (
                     <td>
+                      <th>Add to Schedule:</th>
                       {isEventInSchedule(event._id) ? (
                         <button
                           className='deleteFromSchedule'
