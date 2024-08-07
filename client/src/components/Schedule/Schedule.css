@@ -166,7 +166,8 @@ tr:hover {
   }
 
   .vTable th,
-  .vTable td {
+  .vTable td,
+  .vTableButton th {
     display: inline-block;
     width: 50%;
     text-align: center;
