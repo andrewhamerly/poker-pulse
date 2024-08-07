@@ -1,6 +1,6 @@
 import '../components/Schedule/Schedule.css';
 
-import { DesktopEventTableAndFilters, MobileEventTableAndFilters } from '../components/Event/EventTableandFilters';
+import { DesktopEventTableAndFilters, MobileEventTableAndFilters } from '../components/Event/EventTableAndFilters';
 import EventFilters from '../components/Event/EventFilters';
 import { useFilteredSortedEvents } from '../utils/EventAndScheduleHelpers';
 
