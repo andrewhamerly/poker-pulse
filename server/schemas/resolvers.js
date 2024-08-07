@@ -25,6 +25,9 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    userPosts: async (parent, { userId }) => {
+      return Post.find({ user: userId }).sort({ createdAt: -1 }).populate('user');
+    },
     events: async (parent, args, context) => {
       // if (context.user) {
         return Event.find();

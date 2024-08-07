@@ -173,6 +173,21 @@ export const GET_POST = gql`
   }
 `;
 
+export const GET_USER_POSTS = gql`
+  query getUserPosts($userId: ID!) {
+    userPosts(userId: $userId) {
+      _id
+      content
+      createdAt
+      likes
+      user {
+        _id
+        username
+      }
+    }
+  }
+`;
+
 
 export const GET_NEXT_THREE_EVENTS = gql`
 query getNextEvents($limit: Int!) {

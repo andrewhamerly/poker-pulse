@@ -51,6 +51,7 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(_id: ID!): User
+    userPosts(userId: ID!): [Post]
     events: [Event]
     event(_id: ID!): Event
     latestEvent: Event
