@@ -1,3 +1,4 @@
+import React from 'react';
 import FormattedEntryFee from '../../components/Schedule/formattedEntryFee';
 import GuaranteeType from '../../components/Schedule/guaranteePrefix';
 import FormattedDate from '../../components/Schedule/formattedDate';
@@ -159,6 +160,10 @@ const DesktopEventTableAndFilters = () => {
 }
 
 const MobileEventTableAndFilters = () => {
+
+  const handleAddToSchedule = useAddToSchedule();
+  const handleRemoveFromSchedule = useRemoveFromSchedule();
+
   const {
     eventsLoading,
     scheduleLoading,
@@ -209,67 +214,56 @@ const MobileEventTableAndFilters = () => {
       ) : (
         <section className="vScheduleList">
           <table className='vTables'>
+            <tbody>
             {sortedEvents.map((event) => (
-              <div className='vTable'>
-                <tr key={event._id}>
+                <tr className='vTable' key={event._id}>
                   <th>Date:</th>
                   <td>
                     <FormattedDate
                       eventDate={event.eventDate} />
                   </td>
-                </tr><tr key={event._id}>
                   <th>Start Time:</th>
                   <td>
                     <FormattedTime
                       eventDate={event.eventDate}
                       eventTime={event.eventTime} />
                   </td>
-                </tr><tr key={event._id}>
                   <th>Venue:</th>
                   <td><div>{event.venue}</div></td>
-                </tr><tr key={event._id}>
                   <th>Fee:</th>
                   <td>
                     <FormattedEntryFee
                       entryFee={event.entryFee} />
                   </td>
-                </tr><tr key={event._id}>
                   <th>Type:</th>
                   <td><div>{event.eventType}</div></td>
-                </tr><tr key={event._id}>
                   <th>Series:</th>
                   <td><div>{event.series}</div></td>
-                </tr><tr key={event._id}>
                   <th>Title:</th>
                   <td>
                     <HandleEventTitle
                       eventTitle={event.eventTitle} />
                   </td>
-                </tr><tr key={event._id}>
                   <th>Multi-Day:</th>
                   <td>
                     <MultiDayValue
                       multiDay={event.multiDay} />
                   </td>
-                </tr><tr key={event._id}>
                   <th>Chips:</th>
                   <td>
                     <FormattedChips
                       chipCount={event.chipCount} />
                   </td>
-                </tr><tr key={event._id}>
                   <th>Levels:</th>
                   <td>
                     <FormattedLevels
                       levels={event.levels} />
                   </td>
-                </tr><tr key={event._id}>
                   <th>Guarantee:</th>
                   <td>
                     <GuaranteeType
                       guarantee={event.guarantee} />
                   </td>
-                </tr><tr key={event._id}>
                   <th>Add to Schedule:</th>
                   {isLoggedIn ? (
                     <td>
@@ -301,9 +295,9 @@ const MobileEventTableAndFilters = () => {
                     </td>
                   ) : null}
                 </tr>
-              </div>
             )
             )}
+            </tbody>
           </table>
         </section>
       )

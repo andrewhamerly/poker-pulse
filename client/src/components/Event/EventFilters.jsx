@@ -1,16 +1,6 @@
 import { useFilteredSortedEvents } from '../../utils/EventAndScheduleHelpers'
 
-const EventFilters = (
-  // {
-  //   venueFilter,
-  //   setVenueFilter,
-  //   typeFilters,
-  //   feeRanges,
-  //   handleTypeChange,
-  //   handleFeeRangeChange,
-  //   results
-  // }
-  ) => {
+const EventFilters = () => {
     const {
       eventsLoading,
       sortedEvents,
