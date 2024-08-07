@@ -18,7 +18,7 @@ const Header = () => {
             className={`block px-4 py-2 ${currentPage === '/' ? 'font-bold text-xl text-white bg-onyx rounded' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
             aria-current={currentPage === '/' ? 'home page' : undefined}
           >
-            <img src={logo} alt="Poker Pulse Logo" className="logo w-32" />
+            <img src={logo} alt="Poker Pulse Logo" className="logo w-24" />
           </Link>
           </div>
           <div className="md:hidden">
