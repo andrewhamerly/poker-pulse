@@ -152,6 +152,7 @@ export const GET_POSTS = gql`
       content
       createdAt
       user {
+      _id
         username
       }
       likes

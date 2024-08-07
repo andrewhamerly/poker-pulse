@@ -177,11 +177,26 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     deletePost: async (parent, { _id }, context) => {
-      if (context.user) {
-        await Post.findByIdAndDelete(_id);
-        return true;
+      console.log('Deleting post with ID:', _id);
+      console.log('User context:', context.user);
+    
+      if (!context.user) {
+        throw new AuthenticationError('You need to be logged in!');
       }
-      throw new AuthenticationError('You need to be logged in!');
+    
+      const post = await Post.findById(_id);
+      console.log('Post found:', post);
+    
+      if (!post) {
+        throw new Error('Post not found');
+      }
+    
+      if (post.user.toString() !== context.user._id.toString()) {
+        throw new Error('You do not have permission to delete this post');
+      }
+    
+      await Post.findByIdAndDelete(_id);
+      return true;
     },
     likePost: async (parent, { postId }, context) => {
       if (!context.user) {
