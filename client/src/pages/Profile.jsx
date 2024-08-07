@@ -9,22 +9,21 @@ import { GET_ME } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 
 export default function Profile() {
-    // UNCOMMENT OUT LINES 18-32 FOR JWT AUTH WHEN APP IS FINISHED - ANDREW
-//     const navigate = useNavigate();
+    const navigate = useNavigate();
 
-//   useEffect(() => {
-//     const token = Auth.getToken();
+  useEffect(() => {
+    const token = Auth.getToken();
 
-//     if (!token) {
-//       navigate('/signup');
-//     }
-//     }, [navigate]);
+    if (!token) {
+      navigate('/signup');
+    }
+    }, [navigate]);
 
-//     const token = Auth.getToken();
+    const token = Auth.getToken();
 
-//     if (!token) {
-//         return null;
-//     }
+    if (!token) {
+        return null;
+    }
 
 const { loading, data } = useQuery(GET_ME);
     
