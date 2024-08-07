@@ -5,7 +5,7 @@ const path = require('path');
 
 const Event = require('../models/Event');
 
-mongoose.connect('mongodb://localhost:27017/vegas-poker-pulse', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/vegas-poker-pulse', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
