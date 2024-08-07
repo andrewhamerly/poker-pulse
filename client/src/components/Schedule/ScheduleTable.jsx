@@ -27,7 +27,6 @@ const DesktopScheduleTable = () => {
           data,
           events,
           sortedEvents
-          // isLoggedIn
         } = useSortedScheduleFunctions();
   
   const isLoggedIn = AuthService.loggedIn();
@@ -149,6 +148,8 @@ const MobileScheduleTable = () => {
           sortedEvents
         } = useSortedScheduleFunctions();
 
+  const isLoggedIn = AuthService.loggedIn();
+
   const handleRemoveFromSchedule = useRemoveFromSchedule();
 
   if(!isLoggedIn) {
@@ -176,68 +177,57 @@ const MobileScheduleTable = () => {
         </div>
       ) : (
         <section className="vScheduleList">
-          <table className='vTables'>
+         <table className='vTables'>
+            <tbody>
             {sortedEvents.map((event) => (
-              <div className='vTable'>
-                <tr key={event._id}>
+                <tr className='vTable' key={event._id}>
                   <th>Date:</th>
                   <td>
                     <FormattedDate
                       eventDate={event.eventDate} />
                   </td>
-                </tr><tr key={event._id}>
                   <th>Start Time:</th>
                   <td>
                     <FormattedTime
                       eventDate={event.eventDate}
                       eventTime={event.eventTime} />
                   </td>
-                </tr><tr key={event._id}>
                   <th>Venue:</th>
                   <td><div>{event.venue}</div></td>
-                </tr><tr key={event._id}>
                   <th>Fee:</th>
                   <td>
                     <FormattedEntryFee
                       entryFee={event.entryFee} />
                   </td>
-                </tr><tr key={event._id}>
                   <th>Type:</th>
                   <td><div>{event.eventType}</div></td>
-                </tr><tr key={event._id}>
                   <th>Series:</th>
                   <td><div>{event.series}</div></td>
-                </tr><tr key={event._id}>
                   <th>Title:</th>
                   <td>
                     <HandleEventTitle
                       eventTitle={event.eventTitle} />
                   </td>
-                </tr><tr key={event._id}>
                   <th>Multi-Day:</th>
                   <td>
                     <MultiDayValue
                       multiDay={event.multiDay} />
                   </td>
-                </tr><tr key={event._id}>
                   <th>Chips:</th>
                   <td>
                     <FormattedChips
                       chipCount={event.chipCount} />
                   </td>
-                </tr><tr key={event._id}>
                   <th>Levels:</th>
                   <td>
                     <FormattedLevels
                       levels={event.levels} />
                   </td>
-                </tr><tr key={event._id}>
                   <th>Guarantee:</th>
                   <td>
                     <GuaranteeType
                       guarantee={event.guarantee} />
                   </td>
-                </tr><tr key={event._id}>
                   <th>Remove From Schedule:</th>
                   <td>
                     <button
@@ -253,9 +243,9 @@ const MobileScheduleTable = () => {
                     </button>
                   </td>
                 </tr>
-              </div>
             )
             )}
+            </tbody>
           </table>
         </section>
       )
