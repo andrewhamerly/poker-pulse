@@ -171,7 +171,6 @@ const resolvers = {
           { $addToSet: { post: post}},
           { new: true}
         )
-        console.log(context.user);
         return post.populate('user');
       }
       throw new AuthenticationError('You need to be logged in!');
