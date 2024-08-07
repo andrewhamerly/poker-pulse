@@ -55,6 +55,9 @@ Designed with the poker community in mind, Poker Pulse aims to enhance your gami
 6. Mark tournaments as favorites to receive specific notifications about those events. (Coming Soon)
 7. Players receive reminders for important updates regarding a players personal event schedule. (Coming Soon)
 
+## Screenshot
+![Deployed Site](./client/src/assets/images/Capture.PNG)
+
 ## Features
 - **User Registration and Authentication:**
   - Users can register with a unique username, email address, and password.
