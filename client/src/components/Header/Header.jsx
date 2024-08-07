@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import logo from '../../assets/images/poker-pulse-logo.png';
+import logo from '../../assets/images/Poker-Pulse.svg';
 import NavTabs from '../../components/NavTabs/NavTabs.jsx';
 
 const Header = () => {
@@ -15,7 +15,7 @@ const Header = () => {
           <div className="flex items-center">
           <Link
             to="/"
-            className={`block px-4 py-2 ${currentPage === '/' ? 'font-bold text-xl text-white bg-onyx rounded' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
+            className={`block px-4 py-2 ${currentPage === '/' ? 'font-bold text-xl text-white rounded' : 'font-bold text-xl text-whiteSmoke hover:text-whiteSmoke/75'}`}
             aria-current={currentPage === '/' ? 'home page' : undefined}
           >
             <img src={logo} alt="Poker Pulse Logo" className="logo w-24" />
