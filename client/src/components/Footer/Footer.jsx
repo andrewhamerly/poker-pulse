@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import logo from '../../assets/images/poker-pulse-logo.png';
+import logo from '../../assets/images/Poker-Pulse.svg';
 import Auth from '../../utils/auth';
 
 const Footer = () => {
