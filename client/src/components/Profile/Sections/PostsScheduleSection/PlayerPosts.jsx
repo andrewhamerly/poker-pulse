@@ -13,12 +13,12 @@ import NewPostForm from './NewPost';
 export default function PlayerPosts() {
     const userId = Auth.getProfile()?.data?._id;
 
-    const { data } = useQuery(GET_USER_POSTS, {
+    const { data, refetch } = useQuery(GET_USER_POSTS, {
         variables: { userId },
         skip: !userId,
     });
-
-    const posts = data?.userPosts.slice(-3).reverse() || [];
+    
+    const posts = data?.userPosts.slice().sort((a, b) => b.createdAt - a.createdAt).slice(0, 3) || [];
 
     return (
         <Flex direction='column' w={{ base: '95%', md: '40%', lg: '40%' }} align='center' justify='center' bg='#2a3030' borderRadius={25} p={5}>
@@ -33,7 +33,7 @@ export default function PlayerPosts() {
               <Text mt={2}>{post.likes} Likes</Text>
             </Box>
           ))}
-          <NewPostForm userId={userId} />
+          <NewPostForm userId={userId} refetchPosts={refetch} />
         </Flex>
       );
     }
