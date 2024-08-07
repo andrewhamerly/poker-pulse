@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Text, Avatar, Button } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-const PostCard = ({ post, handleLike, userId }) => {
+const PostCard = ({ post, handleLike, handleDelete, userId }) => {
     const [likes, setLikes] = useState(post.likes || 0);
     const [hasLiked, setHasLiked] = useState(false);
 
@@ -26,6 +26,16 @@ const PostCard = ({ post, handleLike, userId }) => {
             console.error('Error liking/unliking post:', err);
         }
     };
+    console.log('Post User ID:', post.user._id);
+    console.log('Logged-in User ID:', userId);
+
+    const onDeleteClick = async () => {
+        try {
+            await handleDelete(post._id);
+        } catch (err) {
+            console.error('Error deleting post:', err);
+        }
+    };
 
     const formattedDate = new Date(post.createdAt).toLocaleDateString();
 
@@ -44,6 +54,18 @@ const PostCard = ({ post, handleLike, userId }) => {
                         </Button>
                         <Text ml={2}>{likes} {likes === 1 ? 'Like' : 'Likes'}</Text>
                     </Box>
+                    {post.user._id === userId && (
+                        <Button
+                            size="sm"
+                            colorScheme="red"
+                            variant="outline"
+                            mt={2}
+                            onClick={onDeleteClick}
+                            leftIcon={<FontAwesomeIcon icon={faTrashAlt} />}
+                        >
+                            Delete
+                        </Button>
+                    )}
                 </Box>
                 <Box bg="brand.onyx" p={10} borderRadius="md" flex="1" ml={{ md: 4 }}>
                     <Text color="white">{post.content}</Text>
